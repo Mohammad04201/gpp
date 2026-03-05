@@ -1,7 +1,7 @@
-import MainNavbar from './MainNavbar';
-import CompanyOverviewSection from './company/OverviewSection';
-import CompanyOpenRolesSection from './company/OpenRolesSection';
-import CompanySidebarPanels from './company/SidebarPanels';
+import MainNavbar from './navbars/MainNavbar';
+import CompanyOverviewSection from '../pages/company/OverviewSection';
+import CompanyOpenRolesSection from '../pages/company/OpenRolesSection';
+import CompanySidebarPanels from '../pages/company/SidebarPanels';
 
 function CompanyDashboard() {
   return (

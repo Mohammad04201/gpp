@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MainNavbar from './MainNavbar';
+import MainNavbar from './navbars/MainNavbar';
 
 function DeveloperDashboard() {
   const [profileCompletion] = useState(70);

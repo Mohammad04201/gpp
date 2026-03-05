@@ -1,4 +1,4 @@
-import MainNavbar from './MainNavbar';
+import MainNavbar from './navbars/MainNavbar';
 
 function FeaturesPage() {
   return (

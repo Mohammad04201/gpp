@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MainNavbar from '../../components/MainNavbar';
+import MainNavbar from '../../components/navbars/MainNavbar';
 
 function DeveloperProfilePage() {
   const [profile, setProfile] = useState({

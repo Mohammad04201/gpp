@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import MainNavbar from './MainNavbar';
+import MainNavbar from './navbars/MainNavbar';
 
 function CompaniesPage() {
   return (
