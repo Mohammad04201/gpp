@@ -28,12 +28,7 @@ function MainNavbar() {
             >
               Home
             </Link>
-            <Link 
-              to="/features" 
-              className="text-gray-300 hover:text-white transition-colors duration-200"
-            >
-              Features
-            </Link>
+        
             <Link 
               to="/companies" 
               className="text-gray-300 hover:text-white transition-colors duration-200"
@@ -45,6 +40,12 @@ function MainNavbar() {
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
               Developers
+            </Link>
+            <Link 
+              to="/jobs" 
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              Jobs
             </Link>
             <Link 
               to="/dashboard/developer" 
@@ -124,6 +125,13 @@ function MainNavbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Developers
+              </Link>
+              <Link 
+                to="/jobs" 
+                className="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Jobs
               </Link>
               <Link 
                 to="/dashboard/developer" 

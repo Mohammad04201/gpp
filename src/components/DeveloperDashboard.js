@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import MainNavbar from './navbars/MainNavbar';
 
 function DeveloperDashboard() {
   const [profileCompletion] = useState(70);
@@ -60,132 +59,119 @@ function DeveloperDashboard() {
   };
 
   return (
-    <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-      <MainNavbar />
-      <main className="flex-grow-1 py-4">
-        <div className="container">
-          {/* 1. Developer Profile Section */}
-          <section className="glass-card mb-4">
-            <div className="p-4">
-              <div className="d-flex justify-content-between align-items-start mb-3">
-                <div>
-                  <h2 className="h5 mb-1">Skills</h2>
-                  <p className="small text-white-50 mb-2">
-                    لمحة سريعة عن أهم مهاراتك وروابط ملفاتك الشخصية.
-                  </p>
-                  <div className="d-flex flex-wrap gap-2">
-                    <span className="badge-soft small">React</span>
-                    <span className="badge-soft small">Bootstrap</span>
-                    <span className="badge-soft small">Dart</span>
-                  </div>
-                </div>
-                <div
-                  className="rounded-circle border border-secondary d-flex align-items-center justify-content-center"
-                  style={{ width: 64, height: 64 }}
-                >
-                  <span className="fw-semibold">DV</span>
-                </div>
-              </div>
-              <div className="mb-3">
-                <div className="d-flex justify-content-between small mb-1">
-                  <span className="text-white-50">Profile completion</span>
-                  <span className="fw-semibold">{profileCompletion}%</span>
-                </div>
-                <div className="progress" style={{ height: '8px' }}>
-                  <div
-                    className="progress-bar bg-primary"
-                    role="progressbar"
-                    style={{ width: `${profileCompletion}%` }}
-                  />
-                </div>
-              </div>
-              <div className="d-flex gap-2">
-                <button type="button" className="btn btn-primary btn-sm">
-                  GitHub
-                </button>
-                <button type="button" className="btn btn-outline-light btn-sm">
-                  LinkedIn
-                </button>
+    <div className="min-vh-100 bg-[#20232A] text-white p-6">
+      {/* Developer Section */}
+      <section className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">Developer</h1>
+        <div className="bg-[#282C34] rounded-lg p-6 border border-[#3a4750]">
+          <div className="flex justify-between items-start mb-4">
+            <div className="flex-1">
+              <h2 className="text-xl font-semibold mb-2">Skills</h2>
+              <p className="text-gray-400 mb-4">
+                لمحة سريعة عن أهم مهاراتك وروابط ملفاتك الشخصية.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-3 py-1 bg-[#3a4750] text-white rounded-full text-sm">React</span>
+                <span className="px-3 py-1 bg-[#3a4750] text-white rounded-full text-sm">Bootstrap</span>
+                <span className="px-3 py-1 bg-[#3a4750] text-white rounded-full text-sm">Dart</span>
               </div>
             </div>
-          </section>
-
-          {/* 2. Projects Section */}
-          <section className="glass-card mb-4">
-            <div className="p-4">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h3 className="h5 mb-0">Projects</h3>
-                <button
-                  type="button"
-                  className="btn btn-outline-light btn-sm"
-                  onClick={handleAddProject}
-                >
-                  + Add project
-                </button>
-              </div>
-              <div className="row g-3">
-                {projects.map((project) => (
-                  <div key={project.id} className="col-md-4">
-                    <div className="card bg-dark border-0 h-100">
-                      <div className="card-body card-body-large">
-                        <h4 className="h6 mb-2">{project.title}</h4>
-                        <p className="small text-white-50 mb-3">
-                          {project.description}
-                        </p>
-                        <span className="badge-soft small">{project.label}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="w-16 h-16 bg-[#3a4750] rounded-full flex items-center justify-center border-2 border-[#282C34]">
+              <span className="text-xl font-bold">DV</span>
             </div>
-          </section>
-
-          {/* 3. Skills List Section */}
-          <section className="glass-card">
-            <div className="p-4">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h3 className="h5 mb-0">Skills</h3>
-                <button
-                  type="button"
-                  className="btn btn-outline-light btn-sm"
-                  onClick={handleAddSkill}
-                >
-                  + Add skill
-                </button>
-              </div>
-              <div className="row g-3">
-                {skills.map((skill) => (
-                  <div key={skill.id} className="col-md-4">
-                    <div className="card bg-dark border-0 h-100">
-                      <div className="card-body card-body-large">
-                        <div className="d-flex align-items-center mb-2">
-                          <div className="feature-card-icon me-2">
-                            {skill.name.charAt(0).toUpperCase()}
-                          </div>
-                          <div>
-                            <div className="small fw-semibold">{skill.name}</div>
-                            <div className="small text-white-50">
-                              {skill.level} · {skill.years} yrs
-                            </div>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-outline-light"
-                          onClick={() => handleDeleteSkill(skill.id)}
-                        >
-                          حذف المهارة
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          </div>
+          
+          {/* Profile Completion */}
+          <div className="mb-4">
+            <div className="flex justify-between text-sm mb-2">
+              <span className="text-gray-400">Profile completion</span>
+              <span className="font-semibold">{profileCompletion}%</span>
             </div>
-          </section>
+            <div className="w-full bg-gray-700 rounded-full h-2">
+              <div 
+                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${profileCompletion}%` }}
+              ></div>
+            </div>
+          </div>
+          
+          {/* Social Links */}
+          <div className="flex gap-3">
+            <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+              GitHub
+            </button>
+            <button className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+              LinkedIn
+            </button>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Projects Section */}
+      <section className="mb-8">
+        <div className="bg-[#282C34] rounded-lg p-6 border border-[#3a4750]">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold">صفحة إدارة المشاريع</h2>
+            <button
+              onClick={handleAddProject}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              + إضافة مشروع جديد
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {projects.map((project) => (
+              <div key={project.id} className="bg-[#1a1d23] rounded-lg p-4 border border-[#3a4750] hover:border-blue-500 transition-colors">
+                <h3 className="font-semibold mb-2">{project.title}</h3>
+                <p className="text-gray-400 text-sm mb-3">{project.description}</p>
+                <span className="inline-block px-2 py-1 bg-[#3a4750] text-gray-300 rounded text-xs">
+                  {project.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section>
+        <div className="bg-[#282C34] rounded-lg p-6 border border-[#3a4750]">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold">صفحة إدارة المهارات</h2>
+            <button
+              onClick={handleAddSkill}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              + إضافة مهارة جديدة
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {skills.map((skill) => (
+              <div key={skill.id} className="bg-[#1a1d23] rounded-lg p-4 border border-[#3a4750] hover:border-blue-500 transition-colors">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-[#3a4750] rounded-lg flex items-center justify-center ml-3">
+                    <span className="font-bold">{skill.name.charAt(0).toUpperCase()}</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold">{skill.name}</div>
+                    <div className="text-gray-400 text-sm">
+                      {skill.level} · {skill.years} yrs
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleDeleteSkill(skill.id)}
+                  className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-sm"
+                >
+                  حذف المهارة
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

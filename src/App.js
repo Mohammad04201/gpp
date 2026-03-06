@@ -1,7 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
-import FeaturesPage from './components/FeatersP/FeaturesPage';
 import CompaniesPage from './pages/CompaniesPage';
 import DevelopersPage from './components/DevloperP/DevelopersPage';
 import RoleSelection from './pages/AuthSelect';
@@ -19,6 +18,7 @@ import CompanyDashboardPage from './pages/CompanyDashboardPage';
 import DeveloperDashboardPage from './pages/DeveloperDashboardPage';
 import DashboardPage from './pages/DashboardPage';
 import IndexPage from './pages/IndexPage';
+import Jops from './pages/Jops';
 import MainNavbar from './components/navbars/MainNavbar';
 
 function App() {
@@ -27,9 +27,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<><MainNavbar /><LandingPage /></>} />
-        <Route path="/features" element={<><MainNavbar /><FeaturesPage /></>} />
         <Route path="/companies" element={<><MainNavbar /><CompaniesPage /></>} />
         <Route path="/developers" element={<><MainNavbar /><DevelopersPage /></>} />
+        <Route path="/jobs" element={<><MainNavbar /><Jops /></>} />
         <Route path="/select-role" element={<><MainNavbar /><RoleSelection /></>} />
         <Route path="/login/developer" element={<><MainNavbar /><DeveloperLogin /></>} />
         <Route path="/login/company" element={<><MainNavbar /><CompanyLogin /></>} />
