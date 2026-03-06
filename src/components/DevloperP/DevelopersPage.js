@@ -1,34 +1,34 @@
 import { Link } from 'react-router-dom';
-import MainNavbar from './navbars/MainNavbar';
+import MainNavbar from '../navbars/MainNavbar';
 
-function CompaniesPage() {
+function DevelopersPage() {
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
       <MainNavbar />
       <main className="flex-grow-1 py-5">
         <div className="container">
           <section className="text-center mb-5">
-            <h1 className="display-5 fw-bold mb-3">For Companies</h1>
+            <h1 className="display-5 fw-bold mb-3">For Developers</h1>
             <p className="lead text-white-50 mb-4">
-              Hire vetted tech talent from the Arab world. AI-powered matching,
-              GitHub-verified skills, and a pipeline built for scale.
+              Get matched with top companies in MENA. Connect your GitHub, build your
+              profile, and receive relevant opportunities in real time.
             </p>
-            <Link to="/login/company" className="btn btn-primary btn-lg">
-              Start Hiring
+            <Link to="/login/developer" className="btn btn-primary btn-lg">
+              Join as Developer
             </Link>
           </section>
 
           <section>
-            <h2 className="h4 text-center mb-4">Why companies choose Mawhiba AI</h2>
+            <h2 className="h4 text-center mb-4">Why developers choose Mawhiba AI</h2>
             <div className="row g-4">
               <div className="col-md-4">
                 <div className="card border-0 shadow-sm h-100 bg-dark text-white">
                   <div className="card-body card-body-large">
-                    <div className="feature-card-icon">VT</div>
-                    <h3 className="h5 mb-2">Vetted talent</h3>
+                    <div className="feature-card-icon">GH</div>
+                    <h3 className="h5 mb-2">GitHub-powered profile</h3>
                     <p className="text-white-50 mb-0">
-                      Profiles backed by real repos and skill analysis, not just
-                      self-reported experience.
+                      Your real work speaks. We analyze your repos so companies see your
+                      actual skills.
                     </p>
                   </div>
                 </div>
@@ -36,11 +36,11 @@ function CompaniesPage() {
               <div className="col-md-4">
                 <div className="card border-0 shadow-sm h-100 bg-dark text-white">
                   <div className="card-body card-body-large">
-                    <div className="feature-card-icon">FH</div>
-                    <h3 className="h5 mb-2">Faster hiring</h3>
+                    <div className="feature-card-icon">RM</div>
+                    <h3 className="h5 mb-2">Relevant matches only</h3>
                     <p className="text-white-50 mb-0">
-                      Get matched with developers who fit your stack and culture in
-                      days, not weeks.
+                      AI surfaces jobs that fit your stack and goals — no spam, no
+                      noise.
                     </p>
                   </div>
                 </div>
@@ -48,11 +48,11 @@ function CompaniesPage() {
               <div className="col-md-4">
                 <div className="card border-0 shadow-sm h-100 bg-dark text-white">
                   <div className="card-body card-body-large">
-                    <div className="feature-card-icon">ME</div>
-                    <h3 className="h5 mb-2">MENA focus</h3>
+                    <div className="feature-card-icon">MN</div>
+                    <h3 className="h5 mb-2">MENA opportunities</h3>
                     <p className="text-white-50 mb-0">
-                      Access a growing pool of top developers across the Middle East and
-                      North Africa.
+                      Companies hiring in the Arab world are looking for talent like
+                      you.
                     </p>
                   </div>
                 </div>
@@ -65,5 +65,5 @@ function CompaniesPage() {
   );
 }
 
-export default CompaniesPage;
+export default DevelopersPage;
 

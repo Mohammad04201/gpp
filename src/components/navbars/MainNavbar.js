@@ -42,24 +42,24 @@ function MainNavbar() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/dashboard/developer">
-                لوحة المطور
+                Developer Dashboard
               </Link>
             </li>
 
             <li className="nav-item">
               <Link className="nav-link" to="/dashboard/company">
-                لوحة الشركة
+                Company Dashboard
               </Link>
             </li>
 
             <li className="nav-item ms-lg-3">
               <Link className="btn btn-outline-light btn-sm" to="/select-role">
-                تسجيل الدخول
+                Login
               </Link>
             </li>
             <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
               <Link className="btn btn-primary btn-sm" to="/select-role">
-                ابدأ الآن
+                Get Started
               </Link>
             </li>
           </ul>

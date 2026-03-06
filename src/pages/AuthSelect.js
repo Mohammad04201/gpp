@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import MainNavbar from './navbars/MainNavbar';
+import MainNavbar from '../components/navbars/MainNavbar';
 
-function RoleSelection() {
+function AuthSelect() {
   return (
     <div className="min-vh-100 d-flex flex-column bg-app-dark">
       <MainNavbar />
@@ -72,5 +72,5 @@ function RoleSelection() {
   );
 }
 
-export default RoleSelection;
+export default AuthSelect;
 

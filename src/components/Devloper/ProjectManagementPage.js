@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import MainNavbar from '../../components/navbars/MainNavbar';
 import ProjectCard from './ProjectCard';
 import AddProjectModal from './AddProjectModal';
 
@@ -39,7 +38,6 @@ function ProjectManagementPage() {
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-      <MainNavbar />
       <main className="flex-grow-1 py-4">
         <div className="container">
           {/* Page Header */}

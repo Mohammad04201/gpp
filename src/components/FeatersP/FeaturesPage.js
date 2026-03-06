@@ -1,9 +1,8 @@
-import MainNavbar from './navbars/MainNavbar';
+
 
 function FeaturesPage() {
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-      <MainNavbar />
       <main className="flex-grow-1 py-5">
         <div className="container">
           <section className="mb-5 text-center">

@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function CompanyProfilePage() {
+function CompanyProfile() {
+  const navigate = useNavigate();
   const [about, setAbout] = useState(
     'Mawhiba AI helps companies across MENA hire vetted technical talent with AI-powered matching.'
   );
@@ -88,5 +90,5 @@ function CompanyProfilePage() {
   );
 }
 
-export default CompanyProfilePage;
+export default CompanyProfile;
 

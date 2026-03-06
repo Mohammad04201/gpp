@@ -91,9 +91,9 @@ import CompanyDashboard from './components/CompanyDashboard';
 
 // استيراد الصفحات من مجلد pages/
 import DashboardPage from './pages/DashboardPage';
-import DeveloperProfilePage from './pages/developer/DeveloperProfilePage';
-import SkillsPage from './pages/developer/SkillsPage';
-import ProjectManagementPage from './pages/developer/ProjectManagementPage';
+import DeveloperProfilePage from '../components/Devloper/DeveloperProfilePage';
+import SkillsPage from '../components/Devloper/SkillsPage';
+import ProjectManagementPage from '../components/Devloper/ProjectManagementPage';
 import CompanyProfilePage from './pages/company/CompanyProfilePage';
 
 function App() {
