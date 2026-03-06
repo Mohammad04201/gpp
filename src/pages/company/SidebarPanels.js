@@ -1,52 +1,90 @@
-import { Link } from 'react-router-dom';
-
 function CompanySidebarPanels() {
   return (
-    <>
-      <section className="glass-card mb-4" id="talent">
+    <div className="sidebar-panels">
+      {/* Company Stats Panel */}
+      <div className="glass-card mb-4">
         <div className="p-4">
-          <h3 className="h5 mb-3">Highlighted Talent</h3>
-          <p className="text-white-50 small mb-3">
-            Curated candidates with strong matches to your open roles.
-          </p>
-          <div className="card bg-dark border-0 mb-2">
-            <div className="card-body small">
-              <p className="mb-1 fw-semibold">Ahmed Mohamed · Full-stack</p>
-              <p className="text-white-50 mb-1">Riyadh · React · Node.js</p>
-              <span className="badge-soft small">95% match</span>
+          <h4 className="h5 mb-3">Company Stats</h4>
+          <div className="stats-grid">
+            <div className="stat-item">
+              <div className="stat-number">4</div>
+              <div className="stat-label">Active Roles</div>
             </div>
-          </div>
-          <div className="card bg-dark border-0">
-            <div className="card-body small">
-              <p className="mb-1 fw-semibold">Sara Al-Fares · Product Designer</p>
-              <p className="text-white-50 mb-1">Dubai · Figma · UX Research</p>
-              <span className="badge-soft small">91% match</span>
+            <div className="stat-item">
+              <div className="stat-number">48</div>
+              <div className="stat-label">Total Applicants</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">12</div>
+              <div className="stat-label">Interviews</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">8</div>
+              <div className="stat-label">Hired</div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="glass-card">
+      {/* Recent Activity Panel */}
+      <div className="glass-card mb-4">
         <div className="p-4">
-          <h3 className="h6 mb-2">Next steps</h3>
-          <p className="small text-white-50 mb-3">
-            Keep your pipeline healthy by scheduling interviews and giving quick feedback
-            to candidates.
-          </p>
-          <Link to="/boost" className="btn btn-outline-light btn-sm w-100 mb-2">
-            Explore Boost for companies
-          </Link>
-          <Link
-            to="/opportunities"
-            className="small text-white-50 text-decoration-none"
-          >
-            View all roles and analytics →
-          </Link>
+          <h4 className="h5 mb-3">Recent Activity</h4>
+          <div className="activity-list">
+            <div className="activity-item">
+              <div className="activity-icon">👤</div>
+              <div className="activity-content">
+                <p className="mb-1">New application for Senior Frontend Developer</p>
+                <span className="text-white-50 small">2 hours ago</span>
+              </div>
+            </div>
+            <div className="activity-item">
+              <div className="activity-icon">📅</div>
+              <div className="activity-content">
+                <p className="mb-1">Interview scheduled with Ahmed Mohammed</p>
+                <span className="text-white-50 small">5 hours ago</span>
+              </div>
+            </div>
+            <div className="activity-item">
+              <div className="activity-icon">✅</div>
+              <div className="activity-content">
+                <p className="mb-1">Hired Sarah Ahmed as UI/UX Designer</p>
+                <span className="text-white-50 small">1 day ago</span>
+              </div>
+            </div>
+            <div className="activity-item">
+              <div className="activity-icon">📝</div>
+              <div className="activity-content">
+                <p className="mb-1">Posted new role: Backend Engineer</p>
+                <span className="text-white-50 small">2 days ago</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Quick Actions Panel */}
+      <div className="glass-card">
+        <div className="p-4">
+          <h4 className="h5 mb-3">Quick Actions</h4>
+          <div className="actions-list">
+            <button className="btn btn-outline-primary w-100 mb-2">
+              📝 Post New Role
+            </button>
+            <button className="btn btn-outline-info w-100 mb-2">
+              👥 View All Applicants
+            </button>
+            <button className="btn btn-outline-success w-100 mb-2">
+              📊 View Analytics
+            </button>
+            <button className="btn btn-outline-warning w-100">
+              ⚙️ Company Settings
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default CompanySidebarPanels;
-

@@ -1,102 +1,122 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import MainNavbar from '../navbars/MainNavbar';
+import MainNavbar from '../../components/layout/MainNavbar';
 
 function CompanyRegister() {
+  const [formData, setFormData] = useState({
+    companyName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert('كلمات المرور غير متطابقة');
+      return;
+    }
+    // Add registration logic here
     navigate('/dashboard/company');
   };
 
   return (
-    <div className="min-vh-100 d-flex flex-column bg-app-dark">
+    <div className="min-vh-100 d-flex flex-column bg-dark text-white">
       <MainNavbar />
-      <div className="flex-grow-1 d-flex align-items-center justify-content-center">
+      <main className="flex-grow-1 d-flex align-items-center justify-content-center">
         <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8 col-lg-5">
-            <div className="glass-card text-white">
-              <div className="p-4 p-md-5">
-                <Link
-                  to="/select-role"
-                  className="btn btn-link text-decoration-none p-0 mb-3 text-white-50"
-                >
-                  ← Back
-                </Link>
-                <h1 className="h3 mb-2">Create company account</h1>
-                <p className="text-white-50 mb-4">
-                  Set up your hiring space to start posting roles and discovering talent.
-                </p>
+          <div className="row justify-content-center">
+            <div className="col-lg-5">
+              <div className="glass-card p-4 p-md-5">
+                <div className="text-center mb-4">
+                  <h2 className="h3 mb-3">تسجيل شركة جديدة</h2>
+                  <p className="text-white-50">سجل شركتك في منصة مهيب وابدأ توظيف المطورين</p>
+                </div>
+
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label htmlFor="company-name" className="form-label">
-                      Company name
-                    </label>
+                    <label className="form-label">اسم الشركة</label>
                     <input
                       type="text"
                       className="form-control"
-                      id="company-name"
-                      placeholder="Your company"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleChange}
                       required
                     />
                   </div>
+
                   <div className="mb-3">
-                    <label htmlFor="company-size" className="form-label">
-                      Company size
-                    </label>
-                    <select id="company-size" className="form-select">
-                      <option>1–10</option>
-                      <option>11–50</option>
-                      <option>51–200</option>
-                      <option>200+</option>
-                    </select>
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="company-email" className="form-label">
-                      Work email
-                    </label>
+                    <label className="form-label">البريد الإلكتروني للشركة</label>
                     <input
                       type="email"
                       className="form-control"
-                      id="company-email"
-                      placeholder="you@company.com"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
+
                   <div className="mb-3">
-                    <label htmlFor="company-password" className="form-label">
-                      Password
-                    </label>
+                    <label className="form-label">كلمة المرور</label>
                     <input
                       type="password"
                       className="form-control"
-                      id="company-password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary w-100 mb-3">
-                    Create company account
-                  </button>
-                  <p className="text-center text-white-50 small mb-0">
-                    Demo only – this will not create a real account or store data.
-                  </p>
+
+                  <div className="mb-4">
+                    <label className="form-label">تأكيد كلمة المرور</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="confirmPassword"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="d-grid mb-3">
+                    <button type="submit" className="btn btn-primary btn-lg">
+                      إنشاء حساب الشركة
+                    </button>
+                  </div>
+
+                  <div className="text-center">
+                    <p className="mb-0">
+                      لديك حساب بالفعل؟{' '}
+                      <Link to="/login/company" className="text-primary">
+                        سجل دخول
+                      </Link>
+                    </p>
+                    <p className="mt-2">
+                      <Link to="/select-role" className="text-white-50">
+                        العودة للخيارات
+                      </Link>
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>
-            <p className="text-center text-white-50 small mt-3">
-              Already partnering with us?{' '}
-              <Link to="/login/company" className="text-decoration-none text-primary">
-                Log in
-              </Link>
-            </p>
           </div>
         </div>
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
 
 export default CompanyRegister;
-

@@ -1,110 +1,92 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import MainNavbar from '../navbars/MainNavbar';
+import MainNavbar from '../../components/layout/MainNavbar';
 
 function DeveloperLogin() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add login logic here
     navigate('/dashboard/developer');
   };
 
   return (
-    <div className="min-vh-100 d-flex flex-column bg-app-dark">
+    <div className="min-vh-100 d-flex flex-column bg-dark text-white">
       <MainNavbar />
-      <div className="flex-grow-1 d-flex align-items-center justify-content-center">
+      <main className="flex-grow-1 d-flex align-items-center justify-content-center">
         <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8 col-lg-5">
-            <div className="glass-card text-white">
-              <div className="p-4 p-md-5">
-                <Link
-                  to="/select-role"
-                  className="btn btn-link text-decoration-none p-0 mb-3 text-white-50"
-                >
-                  ← Back
-                </Link>
-                <h1 className="h3 mb-2">Developer login</h1>
-                <p className="text-white-50 mb-4">
-                  Sign in to manage your profile, applications, and matches.
-                </p>
+          <div className="row justify-content-center">
+            <div className="col-lg-5">
+              <div className="glass-card p-4 p-md-5">
+                <div className="text-center mb-4">
+                  <h2 className="h3 mb-3">تسجيل دخول المطور</h2>
+                  <p className="text-white-50">أهلاً بعودتك إلى منصة مهيب</p>
+                </div>
+
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label htmlFor="dev-email" className="form-label">
-                      Email
-                    </label>
+                    <label className="form-label">البريد الإلكتروني</label>
                     <input
                       type="email"
                       className="form-control"
-                      id="dev-email"
-                      placeholder="you@example.com"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="dev-password" className="form-label">
-                      Password
-                    </label>
+
+                  <div className="mb-4">
+                    <label className="form-label">كلمة المرور</label>
                     <input
                       type="password"
                       className="form-control"
-                      id="dev-password"
-                      placeholder="••••••••"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
                       required
                     />
                   </div>
-                  <div className="d-flex justify-content-between align-items-center mb-3">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="dev-remember"
-                      />
-                      <label
-                        className="form-check-label small text-white-50"
-                        htmlFor="dev-remember"
-                      >
-                        Remember me
-                      </label>
-                    </div>
-                    <button
-                      type="button"
-                      className="btn btn-link btn-sm p-0 text-white-50"
-                    >
-                      Forgot password?
+
+                  <div className="d-grid mb-3">
+                    <button type="submit" className="btn btn-primary btn-lg">
+                      تسجيل الدخول
                     </button>
                   </div>
-                  <button type="submit" className="btn btn-primary w-100 mb-3">
-                    Sign in
-                  </button>
-                  <p className="text-center text-white-50 small mb-0">
-                    This is a prototype login – no real authentication is connected yet.
-                  </p>
+
+                  <div className="text-center">
+                    <p className="mb-0">
+                      ليس لديك حساب؟{' '}
+                      <Link to="/register/developer" className="text-primary">
+                        سجل الآن
+                      </Link>
+                    </p>
+                    <p className="mt-2">
+                      <Link to="/select-role" className="text-white-50">
+                        العودة للخيارات
+                      </Link>
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>
-            <p className="text-center text-white-50 small mt-3">
-              New here?{' '}
-              <Link
-                to="/register/developer"
-                className="text-decoration-none text-primary"
-              >
-                Create a developer account
-              </Link>
-            </p>
-            <p className="text-center text-white-50 small">
-              Not a developer?{' '}
-              <Link to="/login/company" className="text-decoration-none text-primary">
-                Switch to company login
-              </Link>
-            </p>
           </div>
         </div>
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
 
 export default DeveloperLogin;
-

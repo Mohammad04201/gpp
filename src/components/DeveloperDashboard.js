@@ -1,194 +1,102 @@
 import { useState } from 'react';
-import MainNavbar from './navbars/MainNavbar';
+import MainNavbar from './layout/MainNavbar';
+import DeveloperProfilePage from '../pages/DeveloperProfilePage';
+import ProjectManagementPage from '../pages/ProjectManagementPage';
+import SkillsPage from '../pages/DeveloperSkillsPage';
 
 function DeveloperDashboard() {
-  const [profileCompletion] = useState(70);
+  const [activeTab, setActiveTab] = useState('profile');
 
-  const [skills, setSkills] = useState([
-    { id: 1, name: 'React', level: 'متقدم', years: 3 },
-    { id: 2, name: 'Bootstrap', level: 'متوسط', years: 2 },
-    { id: 3, name: 'Dart', level: 'مبتدئ', years: 1 },
-  ]);
+  const tabs = [
+    { id: 'profile', label: 'الملف الشخصي', component: DeveloperProfilePage },
+    { id: 'projects', label: 'المشاريع', component: ProjectManagementPage },
+    { id: 'skills', label: 'المهارات', component: SkillsPage }
+  ];
 
-  const [projects, setProjects] = useState([
-    {
-      id: 1,
-      title: 'Mawhiba Dev Portal',
-      description: 'Landing page للمنصة مع دعم عربي وداشبورد بسيط.',
-      label: 'Web / GitHub',
-    },
-    {
-      id: 2,
-      title: 'Job Matcher UI',
-      description: 'واجهة لتصفية الفرص وعرض نسبة المطابقة.',
-      label: 'Web / Prototype',
-    },
-    {
-      id: 3,
-      title: 'Skills Analyzer',
-      description: 'مكوّن يحلل المهارات ويعرض درجة تقديرية لكل مهارة.',
-      label: 'App / Front-end',
-    },
-  ]);
-
-  const handleAddProject = () => {
-    setProjects((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        title: 'New project',
-        description: 'وصف قصير لمشروع جديد (تستطيع تخصيصه لاحقاً).',
-        label: 'Draft',
-      },
-    ]);
-  };
-
-  const handleAddSkill = () => {
-    setSkills((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        name: 'New skill',
-        level: 'جديد',
-        years: 0,
-      },
-    ]);
-  };
-
-  const handleDeleteSkill = (id) => {
-    setSkills((prev) => prev.filter((s) => s.id !== id));
-  };
+  const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || DeveloperProfilePage;
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
       <MainNavbar />
       <main className="flex-grow-1 py-4">
         <div className="container">
-          {/* 1. Developer Profile Section */}
-          <section className="glass-card mb-4">
-            <div className="p-4">
-              <div className="d-flex justify-content-between align-items-start mb-3">
-                <div>
-                  <h2 className="h5 mb-1">Skills</h2>
-                  <p className="small text-white-50 mb-2">
-                    لمحة سريعة عن أهم مهاراتك وروابط ملفاتك الشخصية.
-                  </p>
-                  <div className="d-flex flex-wrap gap-2">
-                    <span className="badge-soft small">React</span>
-                    <span className="badge-soft small">Bootstrap</span>
-                    <span className="badge-soft small">Dart</span>
-                  </div>
-                </div>
-                <div
-                  className="rounded-circle border border-secondary d-flex align-items-center justify-content-center"
-                  style={{ width: 64, height: 64 }}
-                >
-                  <span className="fw-semibold">DV</span>
-                </div>
-              </div>
-              <div className="mb-3">
-                <div className="d-flex justify-content-between small mb-1">
-                  <span className="text-white-50">Profile completion</span>
-                  <span className="fw-semibold">{profileCompletion}%</span>
-                </div>
-                <div className="progress" style={{ height: '8px' }}>
-                  <div
-                    className="progress-bar bg-primary"
-                    role="progressbar"
-                    style={{ width: `${profileCompletion}%` }}
-                  />
-                </div>
-              </div>
-              <div className="d-flex gap-2">
-                <button type="button" className="btn btn-primary btn-sm">
-                  GitHub
-                </button>
-                <button type="button" className="btn btn-outline-light btn-sm">
-                  LinkedIn
-                </button>
-              </div>
-            </div>
-          </section>
-
-          {/* 2. Projects Section */}
-          <section className="glass-card mb-4">
-            <div className="p-4">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h3 className="h5 mb-0">Projects</h3>
+          {/* Dashboard Header */}
+          <div className="dashboard-header mb-4">
+            <h1 className="h3">لوحة تحكم المطور</h1>
+            <div className="dashboard-tabs">
+              {tabs.map(tab => (
                 <button
-                  type="button"
-                  className="btn btn-outline-light btn-sm"
-                  onClick={handleAddProject}
+                  key={tab.id}
+                  className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+                  onClick={() => setActiveTab(tab.id)}
                 >
-                  + Add project
+                  {tab.label}
                 </button>
-              </div>
-              <div className="row g-3">
-                {projects.map((project) => (
-                  <div key={project.id} className="col-md-4">
-                    <div className="card bg-dark border-0 h-100">
-                      <div className="card-body card-body-large">
-                        <h4 className="h6 mb-2">{project.title}</h4>
-                        <p className="small text-white-50 mb-3">
-                          {project.description}
-                        </p>
-                        <span className="badge-soft small">{project.label}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
-          </section>
+          </div>
 
-          {/* 3. Skills List Section */}
-          <section className="glass-card">
-            <div className="p-4">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h3 className="h5 mb-0">Skills</h3>
-                <button
-                  type="button"
-                  className="btn btn-outline-light btn-sm"
-                  onClick={handleAddSkill}
-                >
-                  + Add skill
-                </button>
-              </div>
-              <div className="row g-3">
-                {skills.map((skill) => (
-                  <div key={skill.id} className="col-md-4">
-                    <div className="card bg-dark border-0 h-100">
-                      <div className="card-body card-body-large">
-                        <div className="d-flex align-items-center mb-2">
-                          <div className="feature-card-icon me-2">
-                            {skill.name.charAt(0).toUpperCase()}
-                          </div>
-                          <div>
-                            <div className="small fw-semibold">{skill.name}</div>
-                            <div className="small text-white-50">
-                              {skill.level} · {skill.years} yrs
-                            </div>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-outline-light"
-                          onClick={() => handleDeleteSkill(skill.id)}
-                        >
-                          حذف المهارة
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          {/* Active Component */}
+          <div className="dashboard-content">
+            <ActiveComponent />
+          </div>
         </div>
       </main>
+
+      <style jsx>{`
+        .dashboard-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dashboard-tabs {
+          display: flex;
+          gap: 1rem;
+        }
+        
+        .tab-button {
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .tab-button.active {
+          background: #007bff;
+          border-color: #007bff;
+        }
+        
+        .dashboard-content {
+          min-height: 600px;
+        }
+        
+        @media (max-width: 768px) {
+          .dashboard-header {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+          }
+          
+          .dashboard-tabs {
+            width: 100%;
+            overflow-x: auto;
+          }
+        }
+      `}</style>
     </div>
   );
 }
 
 export default DeveloperDashboard;
-

@@ -1,113 +1,92 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import MainNavbar from '../navbars/MainNavbar';
+import MainNavbar from '../../components/layout/MainNavbar';
 
 function CompanyLogin() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add login logic here
     navigate('/dashboard/company');
   };
 
   return (
-    <div className="min-vh-100 d-flex flex-column bg-app-dark">
+    <div className="min-vh-100 d-flex flex-column bg-dark text-white">
       <MainNavbar />
-      <div className="flex-grow-1 d-flex align-items-center justify-content-center">
+      <main className="flex-grow-1 d-flex align-items-center justify-content-center">
         <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8 col-lg-5">
-            <div className="glass-card text-white">
-              <div className="p-4 p-md-5">
-                <Link
-                  to="/select-role"
-                  className="btn btn-link text-decoration-none p-0 mb-3 text-white-50"
-                >
-                  ← Back
-                </Link>
-                <h1 className="h3 mb-2">Company login</h1>
-                <p className="text-white-50 mb-4">
-                  Sign in to manage your hiring pipeline, roles, and team.
-                </p>
+          <div className="row justify-content-center">
+            <div className="col-lg-5">
+              <div className="glass-card p-4 p-md-5">
+                <div className="text-center mb-4">
+                  <h2 className="h3 mb-3">تسجيل دخول الشركة</h2>
+                  <p className="text-white-50">أهلاً بعودة شركتك إلى منصة مهيب</p>
+                </div>
+
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label htmlFor="company-email" className="form-label">
-                      Work email
-                    </label>
+                    <label className="form-label">البريد الإلكتروني للشركة</label>
                     <input
                       type="email"
                       className="form-control"
-                      id="company-email"
-                      placeholder="you@company.com"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="company-password" className="form-label">
-                      Password
-                    </label>
+
+                  <div className="mb-4">
+                    <label className="form-label">كلمة المرور</label>
                     <input
                       type="password"
                       className="form-control"
-                      id="company-password"
-                      placeholder="••••••••"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
                       required
                     />
                   </div>
-                  <div className="d-flex justify-content-between align-items-center mb-3">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="company-remember"
-                      />
-                      <label
-                        className="form-check-label small text-white-50"
-                        htmlFor="company-remember"
-                      >
-                        Remember me
-                      </label>
-                    </div>
-                    <button
-                      type="button"
-                      className="btn btn-link btn-sm p-0 text-white-50"
-                    >
-                      Forgot password?
+
+                  <div className="d-grid mb-3">
+                    <button type="submit" className="btn btn-primary btn-lg">
+                      تسجيل الدخول
                     </button>
                   </div>
-                  <button type="submit" className="btn btn-primary w-100 mb-3">
-                    Sign in
-                  </button>
-                  <p className="text-center text-white-50 small mb-0">
-                    This is a prototype login – no real authentication is connected yet.
-                  </p>
+
+                  <div className="text-center">
+                    <p className="mb-0">
+                      ليس لديك حساب؟{' '}
+                      <Link to="/register/company" className="text-primary">
+                        سجل الآن
+                      </Link>
+                    </p>
+                    <p className="mt-2">
+                      <Link to="/select-role" className="text-white-50">
+                        العودة للخيارات
+                      </Link>
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>
-            <p className="text-center text-white-50 small mt-3">
-              New to Mawhiba AI?{' '}
-              <Link
-                to="/register/company"
-                className="text-decoration-none text-primary"
-              >
-                Create a company account
-              </Link>
-            </p>
-            <p className="text-center text-white-50 small">
-              Not a company?{' '}
-              <Link
-                to="/login/developer"
-                className="text-decoration-none text-primary"
-              >
-                Switch to developer login
-              </Link>
-            </p>
           </div>
         </div>
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
 
 export default CompanyLogin;
-

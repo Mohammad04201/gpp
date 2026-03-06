@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MainNavbar from '../components/navbars/MainNavbar';
+import MainNavbar from '../components/layout/MainNavbar';
 
 /**
  * صفحة الفهرس - عرض جميع الصفحات المنظمة

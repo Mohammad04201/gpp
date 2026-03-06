@@ -1,20 +1,21 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import FeaturesPage from './components/FeaturesPage';
-import CompaniesPage from './components/CompaniesPage';
-import DevelopersPage from './components/DevelopersPage';
-import RoleSelection from './components/RoleSelection';
-import DeveloperLogin from './components/auth/DeveloperLogin';
-import CompanyLogin from './components/auth/CompanyLogin';
-import DeveloperRegister from './components/auth/DeveloperRegister';
-import CompanyRegister from './components/auth/CompanyRegister';
+import LandingPage from './pages/LandingPage';
+import FeaturesPage from './pages/FeaturesPage';
+import CompaniesPage from './pages/CompaniesPage';
+import DevelopersPage from './pages/DevelopersPage';
+import RoleSelection from './pages/RoleSelection';
+import DeveloperLogin from './pages/auth/DeveloperLogin';
+import CompanyLogin from './pages/auth/CompanyLogin';
+import DeveloperRegister from './pages/auth/DeveloperRegister';
+import CompanyRegister from './pages/auth/CompanyRegister';
 import DeveloperDashboard from './components/DeveloperDashboard';
 import CompanyDashboard from './components/CompanyDashboard';
-import DeveloperSkillsPage from './pages/developer/SkillsPage';
-import DeveloperProfilePage from './pages/developer/DeveloperProfilePage';
-import ProjectManagementPage from './pages/developer/ProjectManagementPage';
-import CompanyProfilePage from './pages/company/CompanyProfilePage';
+import DeveloperSkillsPage from './pages/DeveloperSkillsPage';
+import DeveloperProfilePage from './pages/DeveloperProfilePage';
+import ProjectManagementPage from './pages/ProjectManagementPage';
+import CompanyProfilePage from './pages/CompanyProfilePage';
+import CompanyProfileForm from './pages/CompanyProfileForm';
 import CompanyDashboardPage from './pages/CompanyDashboardPage';
 import DeveloperDashboardPage from './pages/DeveloperDashboardPage';
 import DashboardPage from './pages/DashboardPage';
@@ -41,6 +42,7 @@ function App() {
         <Route path="/dashboard/developer/profile" element={<DeveloperProfilePage />} />
         <Route path="/dashboard/developer/projects" element={<ProjectManagementPage />} />
         <Route path="/dashboard/company/profile" element={<CompanyProfilePage />} />
+        <Route path="/dashboard/company/edit" element={<CompanyProfileForm />} />
         <Route path="/pages" element={<IndexPage />} />
       </Routes>
     </Router>

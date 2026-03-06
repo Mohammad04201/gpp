@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import MainNavbar from '../components/navbars/MainNavbar';
+import MainNavbar from '../components/layout/MainNavbar';
 
 function DashboardPage() {
   const navigate = useNavigate();

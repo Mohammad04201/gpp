@@ -21,8 +21,8 @@ function CompanyOverviewSection() {
             <p className="h5 mb-0">12</p>
           </div>
           <div className="col-4">
-            <p className="text-white-50 mb-1">Offers</p>
-            <p className="h5 mb-0">3</p>
+            <p className="text-white-50 mb-1">Hired</p>
+            <p className="h5 mb-0">8</p>
           </div>
         </div>
       </div>
@@ -31,4 +31,3 @@ function CompanyOverviewSection() {
 }
 
 export default CompanyOverviewSection;
-
