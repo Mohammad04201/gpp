@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import MainNavbar from '../navbars/MainNavbar';
 
 function CompanyLogin() {
   const navigate = useNavigate();
@@ -11,7 +10,6 @@ function CompanyLogin() {
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-app-dark">
-      <MainNavbar />
       <div className="flex-grow-1 d-flex align-items-center justify-content-center">
         <div className="container">
         <div className="row justify-content-center">

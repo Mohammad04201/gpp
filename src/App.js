@@ -19,30 +19,31 @@ import CompanyDashboardPage from './pages/CompanyDashboardPage';
 import DeveloperDashboardPage from './pages/DeveloperDashboardPage';
 import DashboardPage from './pages/DashboardPage';
 import IndexPage from './pages/IndexPage';
-import AppLayout from './components/layout/AppLayout';
+import MainNavbar from './components/navbars/MainNavbar';
 
 function App() {
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/features" element={<AppLayout><FeaturesPage /></AppLayout>} />
-        <Route path="/companies" element={<AppLayout><CompaniesPage /></AppLayout>} />
-        <Route path="/developers" element={<AppLayout><DevelopersPage /></AppLayout>} />
-        <Route path="/select-role" element={<AppLayout><RoleSelection /></AppLayout>} />
-        <Route path="/login/developer" element={<AppLayout><DeveloperLogin /></AppLayout>} />
-        <Route path="/login/company" element={<AppLayout><CompanyLogin /></AppLayout>} />
-        <Route path="/register/developer" element={<AppLayout><DeveloperRegister /></AppLayout>} />
-        <Route path="/register/company" element={<AppLayout><CompanyRegister /></AppLayout>} />
-        <Route path="/dashboard/developer" element={<DeveloperDashboardPage />} />
-        <Route path="/dashboard/company" element={<CompanyDashboardPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/dashboard/main" element={<DashboardPage />} />
-        <Route path="/dashboard/developer/skills" element={<AppLayout><DeveloperSkillsPage /></AppLayout>} />
-        <Route path="/dashboard/developer/profile" element={<AppLayout><DeveloperProfilePage /></AppLayout>} />
-        <Route path="/dashboard/developer/projects" element={<AppLayout><ProjectManagementPage /></AppLayout>} />
-        <Route path="/dashboard/company/profile" element={<AppLayout><CompanyProfileView /></AppLayout>} />
-        <Route path="/pages" element={<AppLayout><IndexPage /></AppLayout>} />
+        <Route path="/" element={<><MainNavbar /><LandingPage /></>} />
+        <Route path="/features" element={<><MainNavbar /><FeaturesPage /></>} />
+        <Route path="/companies" element={<><MainNavbar /><CompaniesPage /></>} />
+        <Route path="/developers" element={<><MainNavbar /><DevelopersPage /></>} />
+        <Route path="/select-role" element={<><MainNavbar /><RoleSelection /></>} />
+        <Route path="/login/developer" element={<><MainNavbar /><DeveloperLogin /></>} />
+        <Route path="/login/company" element={<><MainNavbar /><CompanyLogin /></>} />
+        <Route path="/register/developer" element={<><MainNavbar /><DeveloperRegister /></>} />
+        <Route path="/register/company" element={<><MainNavbar /><CompanyRegister /></>} />
+        <Route path="/dashboard/developer" element={<><MainNavbar /><DeveloperDashboardPage /></>} />
+        <Route path="/dashboard/company" element={<><MainNavbar /><CompanyDashboardPage /></>} />
+        <Route path="/dashboard" element={<><MainNavbar /><DashboardPage /></>} />
+        <Route path="/dashboard/main" element={<><MainNavbar /><DashboardPage /></>} />
+        <Route path="/dashboard/developer/skills" element={<><MainNavbar /><DeveloperSkillsPage /></>} />
+        <Route path="/dashboard/developer/profile" element={<><MainNavbar /><DeveloperProfilePage /></>} />
+        <Route path="/dashboard/developer/projects" element={<><MainNavbar /><ProjectManagementPage /></>} />
+        <Route path="/dashboard/company/profile" element={<><MainNavbar /><CompanyProfileView /></>} />
+        <Route path="/pages" element={<><MainNavbar /><IndexPage /></>} />
       </Routes>
     </Router>
   );

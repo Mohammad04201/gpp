@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import MainNavbar from '../components/navbars/MainNavbar';
 import BasicCompanyInfo from '../components/company/BasicCompanyInfo';
 import AdditionalCompanyInfo from '../components/company/AdditionalCompanyInfo';
 import SocialMedia from '../components/company/SocialMedia';
@@ -190,7 +189,6 @@ function CompanyDashboardPage() {
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-      <MainNavbar />
       
       <main className="flex-grow-1 py-4">
         <div className="container">

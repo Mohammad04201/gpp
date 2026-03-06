@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom';
-import MainNavbar from './navbars/MainNavbar';
 
 function LandingPage() {
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-      <MainNavbar />
-
       <main className="flex-grow-1 bg-dark text-white" id="home">
         <section className="py-5 py-lg-6">
           <div className="container">

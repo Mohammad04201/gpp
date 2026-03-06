@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import MainNavbar from '../components/navbars/MainNavbar';
 import DeveloperProfilePage from '../components/Devloper/DeveloperProfilePage';
 import ProjectManagementPage from '../components/Devloper/ProjectManagementPage';
 import SkillsPage from '../components/Devloper/SkillsPage';
@@ -34,7 +33,6 @@ function DeveloperDashboardPage() {
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-dark text-white">
-      <MainNavbar />
       
       <main className="flex-grow-1 py-5">
         <div className="container">
