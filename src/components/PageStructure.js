@@ -91,9 +91,8 @@ import CompanyDashboard from './components/CompanyDashboard';
 
 // استيراد الصفحات من مجلد pages/
 import DashboardPage from './pages/DashboardPage';
-import DeveloperProfilePage from '../components/Devloper/DeveloperProfilePage';
-import SkillsPage from '../components/Devloper/SkillsPage';
-import ProjectManagementPage from '../components/Devloper/ProjectManagementPage';
+import DeveloperProfile from '../components/DevloperP/DeveloperProfile';
+import DeveloperSkills from '../components/DevloperP/DeveloperSkills';
 import CompanyProfilePage from './pages/company/CompanyProfilePage';
 
 function App() {
@@ -119,9 +118,8 @@ function App() {
         <Route path="/dashboard/company" element={<DashboardPage />} />
         
         {/* صفحات المطور */}
-        <Route path="/dashboard/developer/skills" element={<SkillsPage />} />
-        <Route path="/dashboard/developer/profile" element={<DeveloperProfilePage />} />
-        <Route path="/dashboard/developer/projects" element={<ProjectManagementPage />} />
+        <Route path="/dashboard/developer/skills" element={<DeveloperSkills />} />
+        <Route path="/dashboard/developer/profile" element={<DeveloperProfile />} />
         
         {/* صفحات الشركة */}
         <Route path="/dashboard/company/profile" element={<CompanyProfilePage />} />

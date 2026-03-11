@@ -10,13 +10,8 @@ import DeveloperLogin from './components/auth/DeveloperLogin';
 import CompanyLogin from './components/auth/CompanyLogin';
 import DeveloperRegister from './components/auth/DeveloperRegister';
 import CompanyRegister from './components/auth/CompanyRegister';
-import DeveloperDashboard from './components/Dashbords/DeveloperDashboard';
 import CompanyDashboard from './components/Dashbords/CompanyModernDashboard';
 import DeveloperSkills from './components/DevloperP/DeveloperSkills';
-import ProjectManagementPage from './components/Devloper/ProjectManagementPage';
-import CompanyProfileView from './components/company/CompanyProfileView';
-import CompanyDashboardPage from './pages/CompanyDashboardPage';
-import DeveloperDashboardPage from './pages/DeveloperDashboardPage';
 import DashboardPage from './pages/DashboardPage';
 import IndexPage from './pages/IndexPage';
 import Jops from './pages/Jops';
@@ -39,14 +34,12 @@ function App() {
         <Route path="/login/company" element={<><MainNavbar /><CompanyLogin /></>} />
         <Route path="/register/developer" element={<><MainNavbar /><DeveloperRegister /></>} />
         <Route path="/register/company" element={<><MainNavbar /><CompanyRegister /></>} />
-        <Route path="/dashboard/developer" element={<><MainNavbar /><DeveloperDashboardPage /></>} />
-        <Route path="/dashboard/company" element={<><MainNavbar /><CompanyDashboardPage /></>} />
+        <Route path="/dashboard/developer" element={<><MainNavbar /><DeveloperProfile /></>} />
+        <Route path="/dashboard/company" element={<><MainNavbar /><CompanyDashboard /></>} />
         <Route path="/dashboard" element={<><MainNavbar /><DashboardPage /></>} />
         <Route path="/dashboard/main" element={<><MainNavbar /><DashboardPage /></>} />
         <Route path="/dashboard/developer/skills" element={<><MainNavbar /><DeveloperSkills /></>} />
         <Route path="/dashboard/developer/profile" element={<><MainNavbar /><DeveloperProfile /></>} />
-        <Route path="/dashboard/developer/projects" element={<><MainNavbar /><ProjectManagementPage /></>} />
-        <Route path="/dashboard/company/profile" element={<><MainNavbar /><CompanyProfileView /></>} />
         <Route path="/pages" element={<><MainNavbar /><IndexPage /></>} />
       </Routes>
     </Router>
