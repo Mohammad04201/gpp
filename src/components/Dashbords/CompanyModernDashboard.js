@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/CompanyModernDashboard.css';
 
 function CompanyModernDashboard() {
   const [activeTab, setActiveTab] = useState('overview');

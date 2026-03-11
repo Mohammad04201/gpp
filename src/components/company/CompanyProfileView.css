@@ -126,7 +126,7 @@
 
 .company-title {
   font-size: 1.125rem;
-  color: #74b9ff;
+  color: #3a4750;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -341,8 +341,8 @@
 }
 
 .tab-btn.active {
-  color: #74b9ff;
-  border-bottom-color: #74b9ff;
+  color: #3a4750;
+  border-bottom-color: #3a4750;
 }
 
 .tab-btn:hover:not(.active) {
@@ -392,7 +392,7 @@
 .service-level {
   padding: 0.25rem 0.75rem;
   background: #3a4750;
-  color: #74b9ff;
+  color: #3a4750;
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -431,7 +431,7 @@
 }
 
 .dot.active {
-  background: #74b9ff;
+  background: #3a4750;
 }
 
 /* Projects List */
@@ -623,7 +623,7 @@
 .message-icon {
   width: 2.5rem;
   height: 2.5rem;
-  background: #4a69bd;
+  background: #3a4750;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;

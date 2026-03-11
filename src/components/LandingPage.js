@@ -30,7 +30,17 @@ function LandingPage() {
               <div className="col-lg-6">
                 <div className="card bg-transparent border-0">
                   <div className="card-body p-0">
-                    <div className="ratio ratio-16x9 bg-secondary rounded-4 shadow-lg" />
+                    <div className="position-relative rounded-4 shadow-lg overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+                      <img 
+                        src="https://freedesignfile.com/upload/2019/01/Job-Interview-people-Stock-Photo-01.jpg"
+                        alt="Job interview with people discussing career opportunities"
+                        className="position-absolute top-0 start-0 w-100 h-100 object-cover"
+                        style={{ objectFit: 'cover' }}
+                        onError={(e) => {
+                          e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgdmlld0JveD0iMCAwIDgwMCA0NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiBmaWxsPSIjMjAyMzJBIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iMjI1IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjMyIiBmb250LWZhbWlseT0iQXJpYWwiPkRpc2NvdmVyIFRhbGVudDwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSIyNjAiIGZpbGw9IiNiMmJlY2MiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCI+Q29ubmVjdCBXaXRoIFRvcCBDb21wYW5pZXM8L3RleHQ+Cjwvc3ZnPgo=';
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
