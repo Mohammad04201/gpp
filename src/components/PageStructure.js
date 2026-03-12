@@ -87,14 +87,11 @@ import DeveloperRegister from './components/auth/DeveloperRegister';
 import CompanyRegister from './components/auth/CompanyRegister';
 
 import DeveloperDashboard from './components/DeveloperDashboard';
-import CompanyDashboard from './components/CompanyDashboard';
 
-// استيراد الصفحات من مجلد pages/
-import DashboardPage from './pages/DashboardPage';
-import DeveloperProfilePage from '../components/Devloper/DeveloperProfilePage';
-import SkillsPage from '../components/Devloper/SkillsPage';
-import ProjectManagementPage from '../components/Devloper/ProjectManagementPage';
-import CompanyProfilePage from './pages/company/CompanyProfilePage';
+// استيراد الصفحات من مجلد pageFooter/
+import DashboardPage from './pageFooter/DashboardPage';
+import DeveloperProfile from '../components/DevloperP/DeveloperProfile';
+import DeveloperSkills from '../components/DevloperP/DeveloperSkills';
 
 function App() {
   return (
@@ -119,12 +116,8 @@ function App() {
         <Route path="/dashboard/company" element={<DashboardPage />} />
         
         {/* صفحات المطور */}
-        <Route path="/dashboard/developer/skills" element={<SkillsPage />} />
-        <Route path="/dashboard/developer/profile" element={<DeveloperProfilePage />} />
-        <Route path="/dashboard/developer/projects" element={<ProjectManagementPage />} />
-        
-        {/* صفحات الشركة */}
-        <Route path="/dashboard/company/profile" element={<CompanyProfilePage />} />
+        <Route path="/dashboard/developer/skills" element={<DeveloperSkills />} />
+        <Route path="/dashboard/developer/profile" element={<DeveloperProfile />} />
       </Routes>
     </Router>
   );

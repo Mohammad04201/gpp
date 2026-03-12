@@ -54,18 +54,29 @@ function DeveloperRegister() {
                   </div>
                   <div className="mb-3">
                     <label htmlFor="dev-role" className="form-label">
-                      Main role
+                      User Name
                     </label>
                     <input
                       type="text"
                       className="form-control"
                       id="dev-role"
-                      placeholder="مثال: Front-end React, UI/UX Designer..."
+                      placeholder="mohammad "
                     />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="dev-password" className="form-label">
                       Password
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="dev-password"
+                      required
+                    />
+                  </div>
+                     <div className="mb-3">
+                    <label htmlFor="dev-password" className="form-label">
+                      Password Confirm
                     </label>
                     <input
                       type="password"
