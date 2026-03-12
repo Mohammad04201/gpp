@@ -87,13 +87,11 @@ import DeveloperRegister from './components/auth/DeveloperRegister';
 import CompanyRegister from './components/auth/CompanyRegister';
 
 import DeveloperDashboard from './components/DeveloperDashboard';
-import CompanyDashboard from './components/CompanyDashboard';
 
-// استيراد الصفحات من مجلد pages/
-import DashboardPage from './pages/DashboardPage';
+// استيراد الصفحات من مجلد pageFooter/
+import DashboardPage from './pageFooter/DashboardPage';
 import DeveloperProfile from '../components/DevloperP/DeveloperProfile';
 import DeveloperSkills from '../components/DevloperP/DeveloperSkills';
-import CompanyProfilePage from './pages/company/CompanyProfilePage';
 
 function App() {
   return (
@@ -120,9 +118,6 @@ function App() {
         {/* صفحات المطور */}
         <Route path="/dashboard/developer/skills" element={<DeveloperSkills />} />
         <Route path="/dashboard/developer/profile" element={<DeveloperProfile />} />
-        
-        {/* صفحات الشركة */}
-        <Route path="/dashboard/company/profile" element={<CompanyProfilePage />} />
       </Routes>
     </Router>
   );
