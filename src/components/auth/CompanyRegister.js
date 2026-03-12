@@ -73,6 +73,17 @@ function CompanyRegister() {
                       required
                     />
                   </div>
+                  <div className="mb-3">
+                    <label htmlFor="company-password" className="form-label">
+                      Password Confirm
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="company-password"
+                      required
+                    />
+                  </div>
                   <button type="submit" className="btn btn-primary w-100 mb-3">
                     Create company account
                   </button>
