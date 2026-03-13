@@ -3,51 +3,51 @@ import { Link } from 'react-router-dom';
 import MainNavbar from '../components/navbars/MainNavbar';
 
 /**
- * صفحة الفهرس - عرض جميع الصفحات المنظمة
- * هذه الصفحة تعرض جميع الصفحات المتاحة في المشروع بشكل منظم
+ * Index Page - Display all organized pages
+ * This page displays all available pages in the project in an organized manner
  */
 
 function IndexPage() {
   const pageCategories = [
     {
-      title: '🏠 الصفحات الرئيسية',
+      title: '🏠 Main Pages',
       pages: [
-        { path: '/', name: 'الصفحة الرئيسية', description: 'Landing Page - الصفحة الأولى للموقع' },
-        { path: '/features', name: 'المميزات', description: 'Features Page - عرض مميزات المنصة' },
-        { path: '/companies', name: 'الشركات', description: 'Companies Page - صفحة للشركات' },
-        { path: '/developers', name: 'المطورون', description: 'Developers Page - صفحة للمطورين' },
-        { path: '/select-role', name: 'اختيار الدور', description: 'Role Selection - اختيار نوع المستخدم' }
+        { path: '/', name: 'Home Page', description: 'Landing Page - The first page of the site' },
+        { path: '/features', name: 'Features', description: 'Features Page - Display platform features' },
+        { path: '/companies', name: 'Companies', description: 'Companies Page - Page for companies' },
+        { path: '/developers', name: 'Developers', description: 'Developers Page - Page for developers' },
+        { path: '/select-role', name: 'Role Selection', description: 'Role Selection - Choose user type' }
       ]
     },
     {
-      title: '🔐 المصادقة',
+      title: '🔐 Authentication',
       pages: [
-        { path: '/login/developer', name: 'تسجيل دخول المطور', description: 'Developer Login' },
-        { path: '/login/company', name: 'تسجيل دخول الشركة', description: 'Company Login' },
-        { path: '/register/developer', name: 'تسجيل مطور جديد', description: 'Developer Registration' },
-        { path: '/register/company', name: 'تسجيل شركة جديدة', description: 'Company Registration' }
+        { path: '/login/developer', name: 'Developer Login', description: 'Developer Login' },
+        { path: '/login/company', name: 'Company Login', description: 'Company Login' },
+        { path: '/register/developer', name: 'Developer Registration', description: 'Developer Registration' },
+        { path: '/register/company', name: 'Company Registration', description: 'Company Registration' }
       ]
     },
     {
-      title: '📊 الداشبورد',
+      title: '📊 Dashboard',
       pages: [
-        { path: '/dashboard', name: 'الداشبورد الرئيسي', description: 'Main Dashboard - صفحة التنقل الرئيسية' },
-        { path: '/dashboard/developer', name: 'داشبورد المطور', description: 'Developer Dashboard' },
-        { path: '/dashboard/company', name: 'داشبورد الشركة', description: 'Company Dashboard' }
+        { path: '/dashboard', name: 'Main Dashboard', description: 'Main Dashboard - Main navigation page' },
+        { path: '/dashboard/developer', name: 'Developer Dashboard', description: 'Developer Dashboard' },
+        { path: '/dashboard/company', name: 'Company Dashboard', description: 'Company Dashboard' }
       ]
     },
     {
-      title: '👨‍💻 صفحات المطور',
+      title: '👨‍💻 Developer Pages',
       pages: [
-        { path: '/dashboard/developer/profile', name: 'الملف الشخصي', description: 'Developer Profile - معلومات المطور' },
-        { path: '/dashboard/developer/skills', name: 'المهارات', description: 'Skills Page - إدارة المهارات' },
-        { path: '/dashboard/developer/projects', name: 'المشاريع', description: 'Project Management - إدارة المشاريع' }
+        { path: '/dashboard/developer/profile', name: 'Profile', description: 'Developer Profile - Developer information' },
+        { path: '/dashboard/developer/skills', name: 'Skills', description: 'Skills Page - Skills management' },
+        { path: '/dashboard/developer/projects', name: 'Projects', description: 'Project Management - Project management' }
       ]
     },
     {
-      title: '🏢 صفحات الشركة',
+      title: '🏢 Company Pages',
       pages: [
-        { path: '/dashboard/company/profile', name: 'الملف الشخصي', description: 'Company Profile - معلومات الشركة' }
+        { path: '/dashboard/company/profile', name: 'Profile', description: 'Company Profile - Company information' }
       ]
     }
   ];
@@ -59,9 +59,9 @@ function IndexPage() {
       <main className="flex-grow-1 py-5">
         <div className="container">
           <div className="text-center mb-5">
-            <h1 className="display-5 fw-bold mb-3">📑 فهرس الصفحات</h1>
+            <h1 className="display-5 fw-bold mb-3">📑 Page Index</h1>
             <p className="lead text-white-50">
-              جميع صفحات المشروع المنظمة حسب الفئات
+              All project pages organized by categories
             </p>
           </div>
 
@@ -109,32 +109,32 @@ function IndexPage() {
             <div className="col-12">
               <div className="glass-card">
                 <div className="p-4">
-                  <h3 className="h5 mb-3">📈 إحصائيات المشروع</h3>
+                  <h3 className="h5 mb-3">📈 Project Statistics</h3>
                   <div className="row g-3">
                     <div className="col-md-3">
                       <div className="text-center">
                         <div className="stat-number">
                           {pageCategories.reduce((acc, cat) => acc + cat.pages.length, 0)}
                         </div>
-                        <div className="stat-label">إجمالي الصفحات</div>
+                        <div className="stat-label">Total Pages</div>
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="text-center">
                         <div className="stat-number">{pageCategories.length}</div>
-                        <div className="stat-label">الفئات</div>
+                        <div className="stat-label">Categories</div>
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="text-center">
                         <div className="stat-number">3</div>
-                        <div className="stat-label">صفحات مطور</div>
+                        <div className="stat-label">Developer Pages</div>
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="text-center">
                         <div className="stat-number">1</div>
-                        <div className="stat-label">صفحة شركة</div>
+                        <div className="stat-label">Company Page</div>
                       </div>
                     </div>
                   </div>

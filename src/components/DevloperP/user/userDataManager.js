@@ -1,8 +1,8 @@
-// إدارة بيانات المستخدم - تخزين واسترجاع من localStorage
+// User data management - storage and retrieval from localStorage
 
 const STORAGE_KEY = 'user_profile_data';
 
-// البيانات الافتراضية للمستخدم
+// Default user data
 export const defaultUserData = {
   name: '',
   title: '',
@@ -14,7 +14,7 @@ export const defaultUserData = {
   phone: '',
   linkedin: '',
   github: '',
-  cvFile: null, // معلومات ملف CV
+  cvFile: null, // CV file information
   skills: [],
   projects: [],
   stats: {
@@ -24,7 +24,7 @@ export const defaultUserData = {
   }
 };
 
-// حفظ بيانات المستخدم
+// Save user data
 export const saveUserData = (userId, data) => {
   try {
     const allData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
@@ -41,7 +41,7 @@ export const saveUserData = (userId, data) => {
   }
 };
 
-// استرجاع بيانات المستخدم
+// Load user data
 export const loadUserData = (userId) => {
   try {
     const allData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
@@ -52,7 +52,7 @@ export const loadUserData = (userId) => {
   }
 };
 
-// دمج بيانات المستخدم مع البيانات الافتراضية
+// Merge user data with default data
 export const mergeUserData = (userId, defaultData) => {
   const savedData = loadUserData(userId);
   if (savedData) {
@@ -61,7 +61,7 @@ export const mergeUserData = (userId, defaultData) => {
   return defaultData;
 };
 
-// حساب نسبة اكتمال الملف
+// Calculate profile completion percentage
 export const calculateCompletion = (data) => {
   let score = 0;
   if (data.name?.trim()) score += 15;
@@ -72,11 +72,11 @@ export const calculateCompletion = (data) => {
   if (data.experience > 0) score += 10;
   if (data.email?.trim()) score += 5;
   if (data.phone?.trim()) score += 5;
-  if (data.cvFile?.name) score += 15; // نقاط إضافية لرفع CV
+  if (data.cvFile?.name) score += 15; // Bonus points for CV upload
   return Math.min(score, 100);
 };
 
-// إنشاء بيانات جديدة للمستخدم
+// Create new user data
 export const createUserData = (userId, initialData = {}) => {
   const newData = {
     ...defaultUserData,

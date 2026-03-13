@@ -1,36 +1,36 @@
-// بيانات وهمية لمنشورات الشركات
+// Dummy data for company posts
 export const postsData = [
   {
     id: 1,
     companyId: 'tech-solutions',
     companyName: 'Tech Solutions Arabia',
     companyLogo: 'TS',
-    companyLocation: 'الرياض، السعودية',
-    companySize: '100-500 موظف',
-    companyIndustry: 'تقنية المعلومات',
+    companyLocation: 'Riyadh, Saudi Arabia',
+    companySize: '100-500 employees',
+    companyIndustry: 'Information Technology',
     publishedAt: '2024-03-15T10:30:00Z',
-    title: 'مطور React Senior مطلوب للعمل عن بعد',
+    title: 'Senior React Developer - Remote Position',
     type: 'job',
     urgency: 'high',
-    description: 'نبحث عن مطور React محترف للانضمام إلى فريقنا المبتكر. ستعمل على مشاريع رائدة في المنطقة.',
+    description: 'We are looking for an experienced React developer to join our innovative team. You will work on leading projects in the region.',
     requirements: [
-      'خبرة 5+ سنوات في React',
-      'إتقان JavaScript و TypeScript',
-      'خبرة في Redux و State Management',
-      'القدرة على العمل بفريق'
+      '5+ years experience in React',
+      'Proficient in JavaScript and TypeScript',
+      'Experience with Redux and State Management',
+      'Ability to work in a team'
     ],
     benefits: [
-      'راتب تنافسي يبدأ من 15,000 ريال',
-      'عمل عن بعد بالكامل',
-      'تأمين صحي شامل',
-      'إجازات سنوية مدفوعة',
-      'تدريب وتطوير مهني'
+      'Competitive salary starting from 15,000 SAR',
+      'Fully remote work',
+      'Comprehensive health insurance',
+      'Paid annual leave',
+      'Professional training and development'
     ],
     skills: ['React', 'TypeScript', 'Redux', 'Node.js', 'Git'],
     experienceLevel: 'Senior',
     employmentType: 'Full-time',
-    location: 'عن بعد',
-    salary: '15,000 - 25,000 ريال',
+    location: 'Remote',
+    salary: '15,000 - 25,000 SAR',
     applicants: 45,
     views: 1234,
     likes: 89,
@@ -42,31 +42,31 @@ export const postsData = [
     companyId: 'digital-agency',
     companyName: 'Digital Creative Agency',
     companyLogo: 'DC',
-    companyLocation: 'جدة، السعودية',
-    companySize: '50-100 موظف',
-    companyIndustry: 'التصميم والإعلان',
+    companyLocation: 'Jeddah, Saudi Arabia',
+    companySize: '50-100 employees',
+    companyIndustry: 'Design & Advertising',
     publishedAt: '2024-03-14T14:20:00Z',
-    title: 'مصمم UI/UX للعمل على مشاريع إبداعية',
+    title: 'UI/UX Designer for Creative Projects',
     type: 'job',
     urgency: 'medium',
-    description: 'نبحث عن مصمم مبدع لديه شغف بتجربة المستخدم والتصميم الجذاب. ستعمل مع علامات تجارية كبرى.',
+    description: 'We are looking for a creative designer with a passion for user experience and attractive design. You will work with major brands.',
     requirements: [
-      'خبرة 3+ سنوات في UI/UX',
-      'إتقان Figma و Adobe Creative Suite',
-      'فهم عميق لتجربة المستخدم',
-      'معرض أعمال قوي'
+      '3+ years experience in UI/UX',
+      'Proficient in Figma and Adobe Creative Suite',
+      'Deep understanding of user experience',
+      'Strong portfolio'
     ],
     benefits: [
-      'بيئة عمل إبداعية',
-      'مشاريع متنوعة مع كبرى الشركات',
-      'تطوير مهني مستمر',
-      'ساعات عمل مرنة'
+      'Creative work environment',
+      'Diverse projects with major companies',
+      'Continuous professional development',
+      'Flexible working hours'
     ],
     skills: ['UI/UX', 'Figma', 'Adobe XD', 'Prototyping', 'User Research'],
     experienceLevel: 'Mid-level',
     employmentType: 'Full-time',
-    location: 'جدة',
-    salary: '10,000 - 15,000 ريال',
+    location: 'Jeddah',
+    salary: '10,000 - 15,000 SAR',
     applicants: 28,
     views: 856,
     likes: 67,
@@ -78,31 +78,31 @@ export const postsData = [
     companyId: 'fintech-startup',
     companyName: 'FinTech Innovations',
     companyLogo: 'FI',
-    companyLocation: 'الدمام، السعودية',
-    companySize: '20-50 موظف',
-    companyIndustry: 'التقنية المالية',
+    companyLocation: 'Dammam, Saudi Arabia',
+    companySize: '20-50 employees',
+    companyIndustry: 'Financial Technology',
     publishedAt: '2024-03-13T09:15:00Z',
     title: 'Backend Engineer Python/Django',
     type: 'job',
     urgency: 'high',
-    description: 'شركة ناشئة في مجال FinTech تبحث عن مهندس Backend لبناء وتطوير أنظمة الدفع الآمنة.',
+    description: 'A FinTech startup is looking for a Backend engineer to build and develop secure payment systems.',
     requirements: [
-      'خبرة 4+ سنوات في Python/Django',
-      'خبرة في REST APIs و Microservices',
-      'معرفة بقواعد البيانات (PostgreSQL, Redis)',
-      'فهم لمبادئ الأمان السيبراني'
+      '4+ years experience in Python/Django',
+      'Experience with REST APIs and Microservices',
+      'Knowledge of databases (PostgreSQL, Redis)',
+      'Understanding of cybersecurity principles'
     ],
     benefits: [
-      'أسهم في الشركة',
-      'راتب تنافسي',
-      'عمل في بيئة startup ديناميكية',
-      'تأثير مباشر على المنتج'
+      'Company shares',
+      'Competitive salary',
+      'Work in dynamic startup environment',
+      'Direct impact on product'
     ],
     skills: ['Python', 'Django', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
     experienceLevel: 'Mid-level',
     employmentType: 'Full-time',
-    location: 'الدمام',
-    salary: '12,000 - 18,000 ريال',
+    location: 'Dammam',
+    salary: '12,000 - 18,000 SAR',
     applicants: 67,
     views: 1456,
     likes: 112,
@@ -114,31 +114,31 @@ export const postsData = [
     companyId: 'ecommerce-giant',
     companyName: 'Gulf E-Commerce',
     companyLogo: 'GE',
-    companyLocation: 'دبي، الإمارات',
-    companySize: '500+ موظف',
-    companyIndustry: 'التجارة الإلكترونية',
+    companyLocation: 'Dubai, UAE',
+    companySize: '500+ employees',
+    companyIndustry: 'E-commerce',
     publishedAt: '2024-03-12T16:45:00Z',
-    title: 'DevOps Engineer لتوسيع البنية التحتية',
+    title: 'DevOps Engineer for Infrastructure Expansion',
     type: 'job',
     urgency: 'medium',
-    description: 'نحن ننمو بسرعة ونحتاج إلى DevOps Engineer لإدارة وتحسين بنيتنا التحتية السحابية.',
+    description: 'We are growing rapidly and need a DevOps Engineer to manage and optimize our cloud infrastructure.',
     requirements: [
-      'خبرة 3+ سنوات في DevOps',
-      'إتقان Kubernetes و Docker',
-      'خبرة مع AWS أو Azure',
-      'أتمتة CI/CD pipelines'
+      '3+ years experience in DevOps',
+      'Proficient in Kubernetes and Docker',
+      'Experience with AWS or Azure',
+      'CI/CD pipeline automation'
     ],
     benefits: [
-      'عمل مع أحدث التقنيات',
-      'ميزات تكنولوجية ممتازة',
-      'تأمين صحي شامل',
-      'فرص نمو مهني'
+      'Work with latest technologies',
+      'Excellent tech benefits',
+      'Comprehensive health insurance',
+      'Professional growth opportunities'
     ],
     skills: ['DevOps', 'Kubernetes', 'Docker', 'AWS', 'CI/CD', 'Terraform'],
     experienceLevel: 'Mid-level',
     employmentType: 'Full-time',
-    location: 'دبي',
-    salary: '14,000 - 22,000 ريال',
+    location: 'Dubai',
+    salary: '14,000 - 22,000 SAR',
     applicants: 34,
     views: 987,
     likes: 78,
@@ -150,31 +150,31 @@ export const postsData = [
     companyId: 'mobile-apps-co',
     companyName: 'Mobile Apps Company',
     companyLogo: 'MA',
-    companyLocation: 'الرياض، السعودية',
-    companySize: '30-50 موظف',
-    companyIndustry: 'تطوير تطبيقات الجوال',
+    companyLocation: 'Riyadh, Saudi Arabia',
+    companySize: '30-50 employees',
+    companyIndustry: 'Mobile App Development',
     publishedAt: '2024-03-11T11:30:00Z',
-    title: 'مطور Flutter للعمل على تطبيقات iOS و Android',
+    title: 'Flutter Developer for iOS and Android Apps',
     type: 'job',
     urgency: 'high',
-    description: 'نبحث عن مطور Flutter محترف لتطوير تطبيقات جوال مبتكرة لعملائنا في المنطقة.',
+    description: 'We are looking for an experienced Flutter developer to develop innovative mobile apps for our clients in the region.',
     requirements: [
-      'خبرة 3+ سنوات في Flutter',
-      'فهم عميق لـ Dart',
-      'خبرة في تطوير iOS و Android',
-      'معرفة بـ REST APIs'
+      '3+ years experience in Flutter',
+      'Deep understanding of Dart',
+      'Experience in iOS and Android development',
+      'Knowledge of REST APIs'
     ],
     benefits: [
-      'عمل على مشاريع متنوعة',
-      'ساعات عمل مرنة',
-      'تدريب على أحدث التقنيات',
-      'راتب تنافسي'
+      'Work on diverse projects',
+      'Flexible working hours',
+      'Training on latest technologies',
+      'Competitive salary'
     ],
     skills: ['Flutter', 'Dart', 'iOS', 'Android', 'Firebase', 'REST APIs'],
     experienceLevel: 'Mid-level',
     employmentType: 'Full-time',
-    location: 'الرياض',
-    salary: '11,000 - 17,000 ريال',
+    location: 'Riyadh',
+    salary: '11,000 - 17,000 SAR',
     applicants: 52,
     views: 1123,
     likes: 94,
@@ -186,31 +186,31 @@ export const postsData = [
     companyId: 'data-analytics',
     companyName: 'Data Analytics Pro',
     companyLogo: 'DA',
-    companyLocation: 'الرياض، السعودية',
-    companySize: '40-80 موظف',
-    companyIndustry: 'تحليل البيانات',
+    companyLocation: 'Riyadh, Saudi Arabia',
+    companySize: '40-80 employees',
+    companyIndustry: 'Data Analytics',
     publishedAt: '2024-03-10T13:20:00Z',
-    title: 'Data Scientist للعمل على مشاريع الذكاء الاصطناعي',
+    title: 'Data Scientist for AI Projects',
     type: 'job',
     urgency: 'medium',
-    description: 'نبحث عن Data Scientist لمساعدتنا في بناء نماذج ذكاء اصطناعي مبتكرة للعملاء.',
+    description: 'We are looking for a Data Scientist to help us build innovative AI models for clients.',
     requirements: [
-      'خبرة 3+ سنوات في Data Science',
-      'إتقان Python و R',
-      'خبرة في Machine Learning',
-      'معرفة بالإحصاء والرياضيات'
+      '3+ years experience in Data Science',
+      'Proficient in Python and R',
+      'Experience in Machine Learning',
+      'Knowledge of statistics and mathematics'
     ],
     benefits: [
-      'عمل على مشاريع AI متقدمة',
-      'فرص التطوير المهني',
-      'بيئة عمل أكاديمية',
-      'مشاركة في المؤتمرات الدولية'
+      'Work on advanced AI projects',
+      'Professional development opportunities',
+      'Academic work environment',
+      'Participation in international conferences'
     ],
     skills: ['Python', 'Machine Learning', 'TensorFlow', 'Pandas', 'R', 'SQL'],
     experienceLevel: 'Mid-level',
     employmentType: 'Full-time',
-    location: 'الرياض',
-    salary: '13,000 - 20,000 ريال',
+    location: 'Riyadh',
+    salary: '13,000 - 20,000 SAR',
     applicants: 41,
     views: 789,
     likes: 71,
@@ -219,19 +219,19 @@ export const postsData = [
   }
 ];
 
-// دالة للحصول على منشورات شركة معينة
+// Function to get posts for a specific company
 export const getCompanyPosts = (companyId) => {
   return postsData.filter(post => post.companyId === companyId);
 };
 
-// دالة للحصول على المنشورات الأكثر تفاعلاً
+// Function to get most interactive posts
 export const getTrendingPosts = () => {
   return postsData
     .sort((a, b) => (b.likes + b.applicants) - (a.likes + a.applicants))
     .slice(0, 5);
 };
 
-// دالة للبحث في المنشورات
+// Function to search in posts
 export const searchPosts = (query) => {
   const lowercaseQuery = query.toLowerCase();
   return postsData.filter(post => 
@@ -242,21 +242,21 @@ export const searchPosts = (query) => {
   );
 };
 
-// دالة للتصفية حسب المهارات
+// Function to filter by skills
 export const filterPostsBySkills = (skills) => {
   return postsData.filter(post =>
     skills.some(skill => post.skills.includes(skill))
   );
 };
 
-// دالة للتصفية حسب الموقع
+// Function to filter by location
 export const filterPostsByLocation = (location) => {
   return postsData.filter(post =>
     post.location.toLowerCase().includes(location.toLowerCase())
   );
 };
 
-// دالة للتصفية حسب مستوى الخبرة
+// Function to filter by experience level
 export const filterPostsByExperience = (level) => {
   return postsData.filter(post => post.experienceLevel === level);
 };

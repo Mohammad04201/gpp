@@ -2,28 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CompanyCard({ company }) {
-  // الحصول على الأحرف الأولى من اسم الشركة
+  // Get company initials
   const initials = company.companyName?.split(' ').map(word => word[0]).join('').substring(0, 2) || 'CO';
   
-  // حساب عدد الأقسام التي تتوظف
+  // Calculate number of hiring departments
   const hiringDepartments = company.departments?.filter(dept => dept.isHiring).length || 0;
 
   return (
-    <div className="bg-[#282C34] rounded-xl border border-[#3a4750] overflow-hidden hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group">
+    <div className="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden hover:border-teal-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20 group">
       {/* Header with Avatar */}
-      <div className="relative h-24 bg-gradient-to-r from-[#3a4750] to-[#4a5760]">
+      <div className="relative h-24 bg-gradient-to-r from-teal-600/20 to-cyan-600/20">
         <div className="absolute -bottom-10 left-6">
-          <div className="w-20 h-20 bg-[#282C34] rounded-xl flex items-center justify-center border-4 border-[#282C34] group-hover:border-blue-500 transition-colors">
-            <span className="text-2xl font-bold text-blue-400">{initials}</span>
+          <div className="w-20 h-20 bg-gray-800/50 rounded-xl flex items-center justify-center border-4 border-gray-800/50 group-hover:border-teal-500/50 transition-colors backdrop-blur-sm">
+            <span className="text-2xl font-bold text-teal-400">{initials}</span>
           </div>
         </div>
         
         {/* Badge for hiring */}
         {hiringDepartments > 0 && (
           <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full flex items-center gap-1">
+            <span className="px-3 py-1 bg-teal-500 text-white text-xs font-bold rounded-full flex items-center gap-1">
               <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-              نتوظف
+              Hiring
             </span>
           </div>
         )}
@@ -33,11 +33,11 @@ function CompanyCard({ company }) {
       <div className="pt-12 px-6 pb-6">
         {/* Company Name */}
         <h3 className="text-xl font-bold text-white mb-1 truncate">{company.companyName}</h3>
-        <p className="text-blue-400 text-sm mb-3 truncate">{company.title || company.industry}</p>
+        <p className="text-teal-400 text-sm mb-3 truncate">{company.title || company.industry}</p>
 
         {/* Description */}
         <p className="text-gray-400 text-sm mb-4 line-clamp-2 h-10">
-          {company.description || 'لا يوجد وصف'}
+          {company.description || 'No description available'}
         </p>
 
         {/* Stats Row */}
@@ -52,7 +52,7 @@ function CompanyCard({ company }) {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
             </svg>
-            <span className="truncate">{company.location || 'غير محدد'}</span>
+            <span className="truncate">{company.location || 'Not specified'}</span>
           </div>
           <div className="flex items-center gap-1 text-gray-400">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -65,22 +65,22 @@ function CompanyCard({ company }) {
         {/* Departments Preview */}
         {(company.departments?.length || 0) > 0 && (
           <div className="mb-4">
-            <p className="text-xs text-gray-500 mb-2">الأقسام:</p>
+            <p className="text-xs text-gray-500 mb-2">Departments:</p>
             <div className="flex flex-wrap gap-1">
               {company.departments.slice(0, 3).map((dept, index) => (
                 <span 
                   key={index} 
                   className={`px-2 py-1 rounded text-xs ${
                     dept.isHiring 
-                      ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                      : 'bg-[#3a4750] text-gray-300'
+                      ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' 
+                      : 'bg-gray-700 text-gray-300'
                   }`}
                 >
                   {dept.name}
                 </span>
               ))}
               {(company.departments?.length || 0) > 3 && (
-                <span className="px-2 py-1 bg-[#3a4750] text-gray-300 rounded text-xs">
+                <span className="px-2 py-1 bg-gray-700 text-gray-300 rounded text-xs">
                   +{(company.departments?.length || 0) - 3}
                 </span>
               )}
@@ -91,9 +91,9 @@ function CompanyCard({ company }) {
         {/* Action Button */}
         <Link 
           to={`/company/profile/${company.id || '1'}`}
-          className="w-full block text-center py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors"
+          className="w-full block text-center py-2 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
         >
-          عرض الملف الشخصي →
+          View Profile 
         </Link>
       </div>
     </div>

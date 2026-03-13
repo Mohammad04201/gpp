@@ -2,7 +2,7 @@
 // Helper Functions for Developer Components
 // ============================================
 
-// أنواع مستويات المهارات
+// Skill level types
 export const SKILL_LEVELS = {
   EXPERT: 'Expert',
   ADVANCED: 'Advanced',
@@ -10,7 +10,7 @@ export const SKILL_LEVELS = {
   BEGINNER: 'Beginner'
 };
 
-// ألوان المستويات
+// Level colors
 export const LEVEL_COLORS = {
   [SKILL_LEVELS.EXPERT]: 'bg-green-500',
   [SKILL_LEVELS.ADVANCED]: 'bg-blue-500',
@@ -18,7 +18,7 @@ export const LEVEL_COLORS = {
   [SKILL_LEVELS.BEGINNER]: 'bg-gray-500'
 };
 
-// نسب التقدم للمستويات
+// Level progress percentages
 export const LEVEL_PROGRESS = {
   [SKILL_LEVELS.EXPERT]: 'w-full',
   [SKILL_LEVELS.ADVANCED]: 'w-4/5',
@@ -26,16 +26,16 @@ export const LEVEL_PROGRESS = {
   [SKILL_LEVELS.BEGINNER]: 'w-2/5'
 };
 
-// ترجمات المستويات للعربية
+// Level translations to English
 export const LEVEL_TRANSLATIONS = {
-  [SKILL_LEVELS.EXPERT]: 'خبير',
-  [SKILL_LEVELS.ADVANCED]: 'متقدم',
-  [SKILL_LEVELS.INTERMEDIATE]: 'متوسط',
-  [SKILL_LEVELS.BEGINNER]: 'مبتدئ'
+  [SKILL_LEVELS.EXPERT]: 'Expert',
+  [SKILL_LEVELS.ADVANCED]: 'Advanced',
+  [SKILL_LEVELS.INTERMEDIATE]: 'Intermediate',
+  [SKILL_LEVELS.BEGINNER]: 'Beginner'
 };
 
 // ============================================
-// دوال المساعدة للمهارات
+// Helper functions for skills
 // ============================================
 
 export const getSkillLevelColor = (level) => LEVEL_COLORS[level] || LEVEL_COLORS[SKILL_LEVELS.BEGINNER];
@@ -44,7 +44,7 @@ export const getSkillLevelText = (level) => LEVEL_TRANSLATIONS[level] || LEVEL_T
 
 export const getSkillProgress = (level) => LEVEL_PROGRESS[level] || LEVEL_PROGRESS[SKILL_LEVELS.BEGINNER];
 
-// دالة حساب إحصائيات المهارات
+// Skill statistics calculation function
 export const getSkillsStats = (skills) => {
   return {
     total: skills.length,
@@ -55,7 +55,7 @@ export const getSkillsStats = (skills) => {
 };
 
 // ============================================
-// دوال المساعدة للمطورين
+// Helper functions for developers
 // ============================================
 
 export const getDeveloperInitials = (name) => {
@@ -64,14 +64,14 @@ export const getDeveloperInitials = (name) => {
 };
 
 export const formatExperience = (years) => {
-  if (years === 1) return 'سنة واحدة';
-  if (years === 2) return 'سنتين';
-  if (years <= 10) return `${years} سنوات`;
-  return `${years} سنة`;
+  if (years === 1) return '1 year';
+  if (years === 2) return '2 years';
+  if (years <= 10) return `${years} years`;
+  return `${years} years`;
 };
 
 export const getAvailabilityStatus = (available) => ({
-  text: available ? 'متاح للعمل' : 'مشغول',
+  text: available ? 'Available for work' : 'Busy',
   className: available ? 'bg-green-500' : 'bg-yellow-500'
 });
 
@@ -124,11 +124,11 @@ export const validateSkill = (skill) => {
   const errors = [];
   
   if (!skill.name?.trim()) {
-    errors.push('اسم المهارة مطلوب');
+    errors.push('Skill name is required');
   }
   
   if (!Object.values(SKILL_LEVELS).includes(skill.level)) {
-    errors.push('مستوى المهارة غير صالح');
+    errors.push('Invalid skill level');
   }
   
   return {

@@ -3,20 +3,20 @@ import { useParams, Link } from 'react-router-dom';
 import EditCompanyOverlay from './EditCompanyOverlay';
 import { mergeCompanyData, calculateCompletion, getCompanyLevel } from './user/companyDataManager';
 
-// بيانات افتراضية للشركة
+// Default company data
 const defaultCompanyData = {
   companyName: 'Mawhiba AI Technologies',
-  title: 'شركة تقنية رائدة في التوظيف الذكي',
-  description: 'نقوم بتوصيل أفضل المواهب التقنية في العالم العربي بالشركات الرائدة من خلال الذكاء الاصطناعي وتحليل المهارات الحقيقية.',
+  title: 'Leading Tech Company in Smart Recruitment',
+  description: 'We connect the best tech talent in the Arab world with leading companies through AI and real skill analysis.',
   email: 'info@mawhiba.ai',
   phone: '+966 50 123 4567',
-  location: 'الرياض، السعودية',
+  location: 'Riyadh, Saudi Arabia',
   website: 'https://mawhiba.ai',
   established: '2020',
   employees: '150',
   rating: 4.8,
-  industry: 'تقنية المعلومات',
-  companyType: 'شركة ناشئة',
+  industry: 'Information Technology',
+  companyType: 'Startup',
   social: {
     github: 'https://github.com/mawhiba',
     linkedin: 'https://linkedin.com/company/mawhiba',
@@ -40,14 +40,14 @@ function CompanyProfileView() {
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // تحميل البيانات عند بدء الصفحة
+  // Load data when page starts
   useEffect(() => {
     const merged = mergeCompanyData(companyId, defaultCompanyData);
     setCompanyData(merged);
     setIsLoaded(true);
   }, [companyId]);
 
-  // تحديث البيانات بعد التعديل
+  // Update data after editing
   const handleSave = (newData) => {
     setCompanyData(newData);
     setIsEditing(false);
@@ -58,7 +58,7 @@ function CompanyProfileView() {
       <div className="min-vh-100 bg-[#20232A] text-white flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p>جاري التحميل...</p>
+          <p>Loading...</p>
         </div>
       </div>
     );
@@ -68,7 +68,7 @@ function CompanyProfileView() {
   const profileCompletion = calculateCompletion(companyData);
   const companyLevel = getCompanyLevel(profileCompletion);
 
-  // بيانات التواصل
+  // Social media data
   const socialAccounts = [
     { 
       name: 'LinkedIn', 
@@ -115,21 +115,21 @@ function CompanyProfileView() {
 
   return (
     <div className="min-vh-100 bg-[#20232A] text-white relative">
-      {/* زر التعديل العائم */}
+      {/* Floating edit button */}
       <button
         onClick={() => setIsEditing(true)}
         className="fixed bottom-8 left-8 z-40 w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:rotate-90 group"
-        title="تعديل ملف الشركة"
+        title="Edit Company Profile"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
         </svg>
         <span className="absolute left-full ml-3 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          تعديل الملف
+          Edit Profile
         </span>
       </button>
 
-      {/* نافذة التعديل المنبثقة */}
+      {/* Edit modal popup */}
       {isEditing && (
         <EditCompanyOverlay 
           companyData={companyData} 
@@ -167,20 +167,20 @@ function CompanyProfileView() {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
                   </svg>
-                  تأسست {companyData.established}
+                  Founded {companyData.established}
                 </span>
                 <span className="flex items-center gap-1">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
                   </svg>
-                  {companyData.employees} موظف
+                  {companyData.employees} employees
                 </span>
               </div>
 
               {/* Progress Bar */}
               <div className="w-full max-w-md mx-auto md:mx-0">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm text-gray-400">اكتمال الملف</span>
+                  <span className="text-sm text-gray-400">Profile Completion</span>
                   <span className={`text-sm font-bold ${companyLevel.color}`}>{companyLevel.level}</span>
                 </div>
                 <div className="w-full bg-[#3a4750] rounded-full h-2">
@@ -201,7 +201,7 @@ function CompanyProfileView() {
           <div className="space-y-6">
             {/* Contact Info */}
             <div className="bg-[#282C34] rounded-xl border border-[#3a4750] p-6">
-              <h3 className="text-lg font-semibold mb-4">معلومات التواصل</h3>
+              <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
               <div className="space-y-3">
                 {socialAccounts.map((account, index) => (
                   <a 
@@ -226,7 +226,7 @@ function CompanyProfileView() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-400">الهاتف</p>
+                    <p className="text-sm text-gray-400">Phone</p>
                     <p className="text-sm text-white">{companyData.phone}</p>
                   </div>
                 </div>
@@ -237,7 +237,7 @@ function CompanyProfileView() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-400">الموقع</p>
+                    <p className="text-sm text-gray-400">Website</p>
                     <a href={companyData.website} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:underline">
                       {companyData.website?.replace('https://', '')}
                     </a>
@@ -248,49 +248,49 @@ function CompanyProfileView() {
 
             {/* Quick Stats */}
             <div className="bg-[#282C34] rounded-xl border border-[#3a4750] p-6">
-              <h3 className="text-lg font-semibold mb-4">إحصائيات سريعة</h3>
+              <h3 className="text-lg font-semibold mb-4">Quick Stats</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center p-3 bg-[#1a1d23] rounded-lg">
                   <div className="text-2xl font-bold text-blue-400">{companyData.stats?.views || 0}</div>
-                  <div className="text-xs text-gray-400">مشاهدة</div>
+                  <div className="text-xs text-gray-400">Views</div>
                 </div>
                 <div className="text-center p-3 bg-[#1a1d23] rounded-lg">
                   <div className="text-2xl font-bold text-green-400">{companyData.stats?.likes || 0}</div>
-                  <div className="text-xs text-gray-400">إعجاب</div>
+                  <div className="text-xs text-gray-400">Likes</div>
                 </div>
                 <div className="text-center p-3 bg-[#1a1d23] rounded-lg">
                   <div className="text-2xl font-bold text-purple-400">{companyData.stats?.followers || 0}</div>
-                  <div className="text-xs text-gray-400">متابع</div>
+                  <div className="text-xs text-gray-400">Followers</div>
                 </div>
                 <div className="text-center p-3 bg-[#1a1d23] rounded-lg">
                   <div className="text-2xl font-bold text-yellow-400">{companyData.projects?.length || 0}</div>
-                  <div className="text-xs text-gray-400">مشاريع</div>
+                  <div className="text-xs text-gray-400">Projects</div>
                 </div>
               </div>
             </div>
 
             {/* Company Info Card */}
             <div className="bg-[#282C34] rounded-xl border border-[#3a4750] p-6">
-              <h3 className="text-lg font-semibold mb-4">معلومات الشركة</h3>
+              <h3 className="text-lg font-semibold mb-4">Company Information</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-400 text-sm">المجال</span>
-                  <span className="text-white text-sm">{companyData.industry || 'غير محدد'}</span>
+                  <span className="text-gray-400 text-sm">Industry</span>
+                  <span className="text-white text-sm">{companyData.industry || 'Not specified'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400 text-sm">النوع</span>
-                  <span className="text-white text-sm">{companyData.companyType || 'غير محدد'}</span>
+                  <span className="text-gray-400 text-sm">Type</span>
+                  <span className="text-white text-sm">{companyData.companyType || 'Not specified'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400 text-sm">التقييم</span>
+                  <span className="text-gray-400 text-sm">Rating</span>
                   <span className="text-yellow-400 text-sm flex items-center gap-1">
                     ⭐ {companyData.rating || 0}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400 text-sm">الحالة</span>
+                  <span className="text-gray-400 text-sm">Status</span>
                   <span className="px-2 py-1 bg-green-500 text-white text-xs rounded-full">
-                    نشطة
+                    Active
                   </span>
                 </div>
               </div>
@@ -310,7 +310,7 @@ function CompanyProfileView() {
                       : 'text-gray-400 hover:text-white'
                   }`}
                 >
-                  نظرة عامة
+                  Overview
                 </button>
                 <button
                   onClick={() => setActiveTab('services')}
@@ -320,7 +320,7 @@ function CompanyProfileView() {
                       : 'text-gray-400 hover:text-white'
                   }`}
                 >
-                  الأقسام ({companyData.departments?.length || 0})
+                  Departments ({companyData.departments?.length || 0})
                 </button>
               </div>
 
@@ -329,14 +329,14 @@ function CompanyProfileView() {
                   <div>
                     {/* Description Section */}
                     <div className="mb-8">
-                      <h2 className="text-2xl font-bold mb-4">عن الشركة</h2>
-                      <p className="text-gray-300 leading-relaxed">{companyData.description || 'لا يوجد وصف للشركة'}</p>
+                      <h2 className="text-2xl font-bold mb-4">About Company</h2>
+                      <p className="text-gray-300 leading-relaxed">{companyData.description || 'No company description available'}</p>
                     </div>
 
                     {/* Departments Preview */}
                     {(companyData.departments?.length || 0) > 0 && (
                       <div className="mb-8">
-                        <h3 className="text-xl font-semibold mb-4">الأقسام الوظيفية</h3>
+                        <h3 className="text-xl font-semibold mb-4">Functional Departments</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {companyData.departments.slice(0, 4).map((dept, index) => (
                             <div key={index} className="bg-[#1a1d23] rounded-lg p-4">
@@ -344,7 +344,7 @@ function CompanyProfileView() {
                                 <h4 className="text-white font-medium">{dept.name}</h4>
                                 {dept.isHiring && (
                                   <span className="px-2 py-1 bg-green-500 text-white rounded text-xs">
-                                    نتوظف
+                                    Hiring
                                   </span>
                                 )}
                               </div>
@@ -353,7 +353,7 @@ function CompanyProfileView() {
                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
                                 </svg>
-                                {dept.employees} موظف
+                                {dept.employees} employees
                               </div>
                             </div>
                           ))}
@@ -363,7 +363,7 @@ function CompanyProfileView() {
                             onClick={() => setActiveTab('services')}
                             className="mt-4 text-blue-400 hover:text-blue-300 text-sm"
                           >
-                            عرض جميع الأقسام →
+                            View All Departments →
                           </button>
                         )}
                       </div>
@@ -373,11 +373,11 @@ function CompanyProfileView() {
 
                 {activeTab === 'services' && (
                   <div>
-                    <h2 className="text-2xl font-bold mb-6">الأقسام الوظيفية</h2>
+                    <h2 className="text-2xl font-bold mb-6">Functional Departments</h2>
                     {(companyData.departments?.length || 0) === 0 ? (
                       <div className="text-center py-12 text-gray-500">
-                        <p>لا توجد أقسام مضافة بعد</p>
-                        <p className="text-sm mt-2">اضغط على زر التعديل لإضافة أقسام</p>
+                        <p>No departments added yet</p>
+                        <p className="text-sm mt-2">Click the edit button to add departments</p>
                       </div>
                     ) : (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -387,11 +387,11 @@ function CompanyProfileView() {
                               <h4 className="text-white font-medium text-lg">{dept.name}</h4>
                               {dept.isHiring ? (
                                 <span className="px-3 py-1 bg-green-500 text-white rounded-full text-xs font-medium">
-                                  نتوظف
+                                  Hiring
                                 </span>
                               ) : (
                                 <span className="px-3 py-1 bg-gray-600 text-white rounded-full text-xs font-medium">
-                                  مكتمل
+                                  Complete
                                 </span>
                               )}
                             </div>
@@ -400,7 +400,7 @@ function CompanyProfileView() {
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
                               </svg>
-                              {dept.employees} موظف
+                              {dept.employees} employees
                             </div>
                           </div>
                         ))}
@@ -419,7 +419,7 @@ function CompanyProfileView() {
             to="/companies"
             className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
           >
-            العودة للشركات
+            Back to Companies
           </Link>
         </div>
       </div>

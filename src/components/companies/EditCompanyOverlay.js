@@ -24,9 +24,9 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
   const completion = calculateCompletion(formData);
 
   const sections = [
-    { id: 'basic', label: 'معلومات أساسية', icon: '🏢' },
-    { id: 'contact', label: 'تواصل', icon: '📧' },
-    { id: 'services', label: 'الأقسام الوظيفية', icon: '🏗️' }
+    { id: 'basic', label: 'Basic Information', icon: '🏢' },
+    { id: 'contact', label: 'Contact', icon: '📧' },
+    { id: 'services', label: 'Departments', icon: '🏗️' }
   ];
 
   return (
@@ -36,9 +36,9 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
         {/* Header */}
         <div className="p-6 border-b border-[#3a4750] flex items-center justify-between bg-[#1a1d23]">
           <div>
-            <h2 className="text-2xl font-bold text-white">تعديل ملف الشركة</h2>
+            <h2 className="text-2xl font-bold text-white">Edit Company Profile</h2>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-sm text-gray-400">نسبة الاكتمال:</span>
+              <span className="text-sm text-gray-400">Completion Rate:</span>
               <div className="w-24 bg-[#3a4750] rounded-full h-2">
                 <div 
                   className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-green-500"
@@ -53,13 +53,13 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
               onClick={handleSave}
               className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
             >
-              حفظ ✓
+              Save ✓
             </button>
             <button 
               onClick={onCancel}
               className="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
             >
-              إلغاء ✕
+              Cancel ✕
             </button>
           </div>
         </div>
@@ -90,62 +90,62 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
             {/* Basic Info Section */}
             {activeSection === 'basic' && (
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-white mb-4">المعلومات الأساسية</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">Basic Information</h3>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">اسم الشركة</label>
+                    <label className="block text-sm text-gray-400 mb-2">Company Name</label>
                     <input
                       type="text"
                       value={formData.companyName || ''}
                       onChange={(e) => handleChange('companyName', e.target.value)}
                       className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
-                      placeholder="اسم الشركة"
+                      placeholder="Company Name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">المسمى الوظيفي</label>
+                    <label className="block text-sm text-gray-400 mb-2">Title</label>
                     <input
                       type="text"
                       value={formData.title || ''}
                       onChange={(e) => handleChange('title', e.target.value)}
                       className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
-                      placeholder="شركة تقنية رائدة..."
+                      placeholder="Leading tech company..."
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">المجال</label>
+                    <label className="block text-sm text-gray-400 mb-2">Industry</label>
                     <input
                       type="text"
                       value={formData.industry || ''}
                       onChange={(e) => handleChange('industry', e.target.value)}
                       className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
-                      placeholder="تقنية المعلومات، AI..."
+                      placeholder="Information Technology, AI..."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">نوع الشركة</label>
+                    <label className="block text-sm text-gray-400 mb-2">Company Type</label>
                     <select
                       value={formData.companyType || ''}
                       onChange={(e) => handleChange('companyType', e.target.value)}
                       className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
                     >
-                      <option value="">اختر النوع</option>
-                      <option value="startup">شركة ناشئة</option>
-                      <option value="small">شركة صغيرة</option>
-                      <option value="medium">شركة متوسطة</option>
-                      <option value="large">شركة كبيرة</option>
-                      <option value="enterprise">مؤسسة</option>
+                      <option value="">Select Type</option>
+                      <option value="startup">Startup</option>
+                      <option value="small">Small Company</option>
+                      <option value="medium">Medium Company</option>
+                      <option value="large">Large Company</option>
+                      <option value="enterprise">Enterprise</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">سنة التأسيس</label>
+                    <label className="block text-sm text-gray-400 mb-2">Founded Year</label>
                     <input
                       type="text"
                       value={formData.established || ''}
@@ -155,7 +155,7 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">عدد الموظفين</label>
+                    <label className="block text-sm text-gray-400 mb-2">Number of Employees</label>
                     <input
                       type="text"
                       value={formData.employees || ''}
@@ -167,13 +167,13 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">وصف الشركة</label>
+                  <label className="block text-sm text-gray-400 mb-2">Company Description</label>
                   <textarea
                     value={formData.description || ''}
                     onChange={(e) => handleChange('description', e.target.value)}
                     rows="4"
                     className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500 resize-none"
-                    placeholder="اكتب وصفاً مختصراً عن الشركة ونشاطاتها..."
+                    placeholder="Write a brief description of the company and its activities..."
                   />
                 </div>
               </div>
@@ -182,11 +182,11 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
             {/* Contact Section */}
             {activeSection === 'contact' && (
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-white mb-4">معلومات التواصل</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">Contact Information</h3>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">البريد الإلكتروني</label>
+                    <label className="block text-sm text-gray-400 mb-2">Email</label>
                     <input
                       type="email"
                       value={formData.email || ''}
@@ -196,7 +196,7 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">رقم الهاتف</label>
+                    <label className="block text-sm text-gray-400 mb-2">Phone Number</label>
                     <input
                       type="tel"
                       value={formData.phone || ''}
@@ -209,17 +209,17 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">الموقع</label>
+                    <label className="block text-sm text-gray-400 mb-2">Location</label>
                     <input
                       type="text"
                       value={formData.location || ''}
                       onChange={(e) => handleChange('location', e.target.value)}
                       className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
-                      placeholder="الرياض، السعودية"
+                      placeholder="Riyadh, Saudi Arabia"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">الموقع الإلكتروني</label>
+                    <label className="block text-sm text-gray-400 mb-2">Website</label>
                     <input
                       type="text"
                       value={formData.website || ''}
@@ -281,7 +281,7 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
             {/* Departments Section */}
             {activeSection === 'services' && (
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-white mb-4">الأقسام الوظيفية</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">Departments</h3>
                 <DepartmentsEditor 
                   departments={formData.departments || []} 
                   onChange={(departments) => handleChange('departments', departments)} 
@@ -295,7 +295,7 @@ function EditCompanyOverlay({ companyData, onSave, onCancel }) {
   );
 }
 
-// محرر الأقسام الوظيفية
+// Departments editor
 function DepartmentsEditor({ departments, onChange }) {
   const [newDepartment, setNewDepartment] = useState({ 
     name: '', 
@@ -330,14 +330,14 @@ function DepartmentsEditor({ departments, onChange }) {
         type="text"
         value={newDepartment.name}
         onChange={(e) => setNewDepartment({ ...newDepartment, name: e.target.value })}
-        placeholder="اسم القسم (مثال: تطوير البرمجيات)..."
+        placeholder="Department name (e.g., Software Development)..."
         className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
         onKeyPress={(e) => e.key === 'Enter' && addDepartment()}
       />
       <textarea
         value={newDepartment.description}
         onChange={(e) => setNewDepartment({ ...newDepartment, description: e.target.value })}
-        placeholder="وصف القسم والمهام الرئيسية..."
+        placeholder="Department description and main tasks..."
         rows="2"
         className="w-full px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500 resize-none"
       />
@@ -346,7 +346,7 @@ function DepartmentsEditor({ departments, onChange }) {
           type="text"
           value={newDepartment.employees}
           onChange={(e) => setNewDepartment({ ...newDepartment, employees: e.target.value })}
-          placeholder="عدد الموظفين (مثال: 25)..."
+          placeholder="Number of employees (e.g., 25)..."
           className="px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500"
         />
         <label className="flex items-center gap-3 px-4 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg cursor-pointer">
@@ -356,14 +356,14 @@ function DepartmentsEditor({ departments, onChange }) {
             onChange={(e) => setNewDepartment({ ...newDepartment, isHiring: e.target.checked })}
             className="w-5 h-5 text-blue-500 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span className="text-white">نقبل التوظيف</span>
+          <span className="text-white">Accepting Applications</span>
         </label>
       </div>
       <button
         onClick={addDepartment}
         className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors w-full"
       >
-        إضافة قسم +
+        Add Department +
       </button>
 
       <div className="space-y-2 mt-4">
@@ -374,7 +374,7 @@ function DepartmentsEditor({ departments, onChange }) {
                 <span className="text-white font-medium text-lg">{dept.name}</span>
                 {dept.isHiring && (
                   <span className="px-2 py-1 bg-green-500 text-white rounded text-xs">
-                    نتوظف
+                    Hiring
                   </span>
                 )}
               </div>
@@ -385,13 +385,13 @@ function DepartmentsEditor({ departments, onChange }) {
                     dept.isHiring ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700'
                   } text-white`}
                 >
-                  {dept.isHiring ? 'نعمل' : 'نوظف'}
+                  {dept.isHiring ? 'Stop' : 'Hire'}
                 </button>
                 <button
                   onClick={() => removeDepartment(index)}
                   className="text-red-400 hover:text-red-300 px-2 py-1"
                 >
-                  حذف
+                  Delete
                 </button>
               </div>
             </div>
@@ -400,12 +400,12 @@ function DepartmentsEditor({ departments, onChange }) {
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
               </svg>
-              {dept.employees} موظف
+              {dept.employees} employees
             </div>
           </div>
         ))}
         {departments.length === 0 && (
-          <p className="text-gray-500 text-center py-4">لا توجد أقسام مضافة بعد</p>
+          <p className="text-gray-500 text-center py-4">No departments added yet</p>
         )}
       </div>
     </div>

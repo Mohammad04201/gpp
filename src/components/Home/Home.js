@@ -19,12 +19,12 @@ function Home() {
             {/* Left Content */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <div className="inline-flex items-center px-4 py-2 bg-gray-700/10 border border-gray-600/20 rounded-full">
+                <div className="inline-flex items-center px-4 py-2 bg-[#11a3a3]/10 border border-[#11a3a3]/20 rounded-full">
                   <span className="text-gray-300 text-sm font-medium">🚀 Future of Tech Recruitment</span>
                 </div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-gray-400 via-gray-300 to-gray-200 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-[#11a3a3] via-[#0d8383] to-[#11a3a3] bg-clip-text text-transparent">
                     Connecting Best Tech Talent
                   </span>
                   <br />
@@ -39,7 +39,7 @@ function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   to="/login/company" 
-                  className="px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gray-700/25 text-center"
+                  className="px-8 py-4 bg-gradient-to-r from-[#11a3a3] to-[#0d8383] hover:from-[#0d8383] hover:to-[#11a3a3] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#11a3a3]/25 text-center"
                 >
                   <span className="flex items-center justify-center gap-2">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -66,12 +66,12 @@ function Home() {
             {/* Right Content - Illustration */}
             <div className="relative">
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-gray-700/20 to-gray-600/20 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
+                <div className="bg-gradient-to-br from-[#11a3a3]/20 to-[#0d8383]/20 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-4">
-                      <div className="bg-gray-800 rounded-xl p-4 border border-gray-700/20">
+                      <div className="bg-gray-800 rounded-xl p-4 border border-[#11a3a3]/20">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                          <div className="w-8 h-8 bg-[#11a3a3] rounded-lg flex items-center justify-center">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                               <path fillRule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-1a1 1 0 100-2h1A4 4 0 014 4V6a4 4 0 01-4 4H6a4 4 0 01-4 4V7z" clipRule="evenodd"/>
@@ -82,9 +82,9 @@ function Home() {
                         <p className="text-xs text-gray-400">Trusted Companies</p>
                       </div>
                       
-                      <div className="bg-gray-800 rounded-xl p-4 border border-gray-700/20">
+                      <div className="bg-gray-800 rounded-xl p-4 border border-[#0d8383]/20">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
+                          <div className="w-8 h-8 bg-[#0d8383] rounded-lg flex items-center justify-center">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 011.89 1.37l-1.83 5.18A2 2 0 0116.06 16H3.94a2 2 0 01-2-1.63L.11 9.37A2 2 0 012 8h16z"/>
                             </svg>
@@ -96,9 +96,9 @@ function Home() {
                     </div>
                     
                     <div className="space-y-4">
-                      <div className="bg-gray-800 rounded-xl p-4 border border-gray-700/20">
+                      <div className="bg-gray-800 rounded-xl p-4 border border-[#11a3a3]/20">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-gray-500 rounded-lg flex items-center justify-center">
+                          <div className="w-8 h-8 bg-[#11a3a3]/80 rounded-lg flex items-center justify-center">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0V1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
                             </svg>
@@ -108,9 +108,9 @@ function Home() {
                         <p className="text-xs text-gray-400">Hiring Success Rate</p>
                       </div>
                       
-                      <div className="bg-gray-800 rounded-xl p-4 border border-gray-700/20">
+                      <div className="bg-gray-800 rounded-xl p-4 border border-[#0d8383]/20">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-gray-400 rounded-lg flex items-center justify-center">
+                          <div className="w-8 h-8 bg-[#0d8383]/80 rounded-lg flex items-center justify-center">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1V.667A4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
                             </svg>
@@ -125,8 +125,8 @@ function Home() {
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-600 rounded-2xl opacity-20 blur-xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-gray-600 to-gray-500 rounded-full opacity-20 blur-2xl"></div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-[#11a3a3] to-[#0d8383] rounded-2xl opacity-20 blur-xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-[#0d8383] to-[#11a3a3] rounded-full opacity-20 blur-2xl"></div>
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#11a3a3] to-[#0d8383] bg-clip-text text-transparent">
                 Why Choose Our Platform?
               </span>
             </h2>
@@ -147,8 +147,8 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700/20 hover:border-gray-600/50 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-gray-900 rounded-2xl p-8 border border-[#11a3a3]/20 hover:border-[#11a3a3]/50 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#11a3a3] to-[#0d8383] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/>
                 </svg>
@@ -159,8 +159,8 @@ function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700/20 hover:border-gray-600/50 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-gray-900 rounded-2xl p-8 border border-[#0d8383]/20 hover:border-[#0d8383]/50 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#0d8383] to-[#11a3a3] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
                   <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
@@ -172,8 +172,8 @@ function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700/20 hover:border-gray-500/50 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-gray-500 to-gray-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-gray-900 rounded-2xl p-8 border border-[#11a3a3]/20 hover:border-[#11a3a3]/50 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#11a3a3]/80 to-[#0d8383]/80 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                 </svg>
@@ -216,7 +216,7 @@ function Home() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#11a3a3] to-[#0d8383] bg-clip-text text-transparent">
                 Ready to Join Our Community?
               </span>
             </h2>
@@ -226,7 +226,7 @@ function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 to="/register/company" 
-                className="px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gray-700/25"
+                className="px-8 py-4 bg-gradient-to-r from-[#11a3a3] to-[#0d8383] hover:from-[#0d8383] hover:to-[#11a3a3] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#11a3a3]/25"
               >
                 Start as Company
               </Link>

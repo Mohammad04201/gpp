@@ -13,22 +13,22 @@ function SearchFilters({
   setMinExperience, 
   clearFilters
 }) {
-  // حساب القيم داخل المكون
+  // Calculate values inside component
   const allSkills = [...new Set(developersData.flatMap(dev => dev.skills.map(skill => skill.name)))];
   const allLocations = [...new Set(developersData.map(dev => dev.location))];
   const experienceLevels = [1, 2, 3, 4, 5, 6, 7];
 
   return (
-    <div className="bg-[#282C34] rounded-xl border border-[#3a4750] p-6 mb-8">
+    <div className="bg-gray-800/50 rounded-xl p-6 mb-8 border border-gray-700 hover:border-teal-500/50 transition-all duration-300">
       {/* Search Bar */}
       <div className="mb-6">
         <div className="relative">
           <input
             type="text"
-            placeholder="ابحث عن مطور، مهارة، أو موقع..."
+            placeholder="Search for a developer, skill, or location..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-3 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
           />
           <svg className="absolute right-3 top-3.5 w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"/>
@@ -40,13 +40,13 @@ function SearchFilters({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         {/* Location Filter */}
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">الموقع</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Location</label>
           <select
             value={selectedLocation}
             onChange={(e) => setSelectedLocation(e.target.value)}
-            className="w-full px-3 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-3 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
           >
-            <option value="">جميع المواقع</option>
+            <option value="">All Locations</option>
             {allLocations.map(location => (
               <option key={location} value={location}>{location}</option>
             ))}
@@ -55,15 +55,15 @@ function SearchFilters({
 
         {/* Experience Filter */}
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">الخبرة (سنوات)</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Experience (years)</label>
           <select
             value={minExperience}
             onChange={(e) => setMinExperience(e.target.value)}
-            className="w-full px-3 py-2 bg-[#1a1d23] border border-[#3a4750] rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-3 py-2 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
           >
-            <option value="">جميع المستويات</option>
+            <option value="">All Levels</option>
             {experienceLevels.map(level => (
-              <option key={level} value={level}>{level}+ سنوات</option>
+              <option key={level} value={level}>{level}+ years</option>
             ))}
           </select>
         </div>
@@ -72,16 +72,16 @@ function SearchFilters({
         <div className="flex items-end">
           <button
             onClick={clearFilters}
-            className="w-full px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+            className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all duration-300"
           >
-            مسح الفلاتر
+            Clear Filters
           </button>
         </div>
       </div>
 
       {/* Skills Filter */}
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">المهارات</label>
+        <label className="block text-sm font-medium text-gray-300 mb-2">Skills</label>
         <div className="flex flex-wrap gap-2">
           {allSkills.slice(0, 12).map(skill => (
             <button
@@ -91,10 +91,10 @@ function SearchFilters({
                   ? prev.filter(s => s !== skill)
                   : [...prev, skill]
               )}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
+              className={`px-3 py-1 rounded-full text-sm transition-all duration-300 transform hover:scale-105 ${
                 selectedSkills.includes(skill)
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-[#3a4750] text-gray-300 hover:bg-[#4a5568]'
+                  ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg shadow-teal-500/25'
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600 border border-gray-600'
               }`}
             >
               {skill}
@@ -118,7 +118,7 @@ function DeveloperTabs({ activeTab, setActiveTab, filteredCount }) {
             : 'text-gray-400 hover:text-white'
         }`}
       >
-        جميع المطورين ({filteredCount})
+        All Developers ({filteredCount})
       </button>
       <button
         onClick={() => setActiveTab('available')}
@@ -128,7 +128,7 @@ function DeveloperTabs({ activeTab, setActiveTab, filteredCount }) {
             : 'text-gray-400 hover:text-white'
         }`}
       >
-        متاحون للعمل
+        Available for Work
       </button>
       <button
         onClick={() => setActiveTab('trending')}
@@ -138,7 +138,7 @@ function DeveloperTabs({ activeTab, setActiveTab, filteredCount }) {
             : 'text-gray-400 hover:text-white'
         }`}
       >
-        الأكثر مشاهدة
+        Most Viewed
       </button>
       <button
         onClick={() => setActiveTab('senior')}
@@ -148,7 +148,7 @@ function DeveloperTabs({ activeTab, setActiveTab, filteredCount }) {
             : 'text-gray-400 hover:text-white'
         }`}
       >
-        كبار المطورين (5+ سنوات)
+        Senior Developers (5+ years)
       </button>
       <button
         onClick={() => setActiveTab('junior')}
@@ -158,7 +158,7 @@ function DeveloperTabs({ activeTab, setActiveTab, filteredCount }) {
             : 'text-gray-400 hover:text-white'
         }`}
       >
-        مطورين شباب (1-3 سنوات)
+        Junior Developers (1-3 years)
       </button>
     </div>
   );
@@ -169,9 +169,9 @@ function ResultsCount({ searchQuery, selectedSkills, selectedLocation, minExperi
   return (
     <div className="mb-6 text-gray-400">
       {searchQuery || selectedSkills.length > 0 || selectedLocation || minExperience ? (
-        <span>تم العثور على {activeCount} مطور</span>
+        <span>Found {activeCount} developers</span>
       ) : (
-        <span>جميع المطورين ({activeCount})</span>
+        <span>All Developers ({activeCount})</span>
       )}
     </div>
   );
@@ -186,13 +186,13 @@ function EmptyState({ onClearFilters }) {
           <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"/>
         </svg>
       </div>
-      <h3 className="text-2xl font-bold text-white mb-3">لا يوجد مطورون متاحون</h3>
-      <p className="text-gray-400 mb-6 text-lg">جرب تعديل الفلاتر أو كلمات البحث</p>
+      <h3 className="text-2xl font-bold text-white mb-3">No developers available</h3>
+      <p className="text-gray-400 mb-6 text-lg">Try adjusting filters or search terms</p>
       <button
         onClick={onClearFilters}
         className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 font-medium"
       >
-        مسح جميع الفلاتر
+        Clear All Filters
       </button>
     </div>
   );

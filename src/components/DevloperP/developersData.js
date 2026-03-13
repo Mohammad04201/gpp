@@ -1,11 +1,11 @@
-// بيانات وهمية للمطورين
+// Mock data for developers
 export const developersData = [
   {
     id: 1,
-    name: 'أحمد محمد',
+    name: 'Ahmed Mohammed',
     title: 'Full Stack Developer',
-    location: 'الرياض، السعودية',
-    bio: 'مطور متكامل بخبرة 5 سنوات في بناء تطبيقات ويب حديثة باستخدام React و Node.js. شغوف بحل المشاكل المعقدة وتطوير حلول مبتكرة.',
+    location: 'Riyadh, Saudi Arabia',
+    bio: 'Full stack developer with 5 years of experience in building modern web applications using React and Node.js. Passionate about solving complex problems and developing innovative solutions.',
     experience: 5,
     available: true,
     skills: [
@@ -17,9 +17,9 @@ export const developersData = [
       { name: 'AWS', level: 'Beginner' }
     ],
     projects: [
-      { id: 1, name: 'تطبيق إدارة المشاريع', tech: ['React', 'Node.js'] },
-      { id: 2, name: 'منصة التجارة الإلكترونية', tech: ['Vue.js', 'Laravel'] },
-      { id: 3, name: 'نظام إدارة المحتوى', tech: ['Next.js', 'PostgreSQL'] }
+      { id: 1, name: 'Project Management App', tech: ['React', 'Node.js'] },
+      { id: 2, name: 'E-commerce Platform', tech: ['Vue.js', 'Laravel'] },
+      { id: 3, name: 'Content Management System', tech: ['Next.js', 'PostgreSQL'] }
     ],
     stats: {
       views: 1250,
@@ -29,10 +29,10 @@ export const developersData = [
   },
   {
     id: 2,
-    name: 'فاطمة العلي',
+    name: 'Fatima Al Ali',
     title: 'Frontend Developer',
-    location: 'جدة، السعودية',
-    bio: 'متخصصة في تطوير واجهات المستخدم الحديثة وتجربة المستخدم. خبرة في تحويل التصاميم إلى واجهات تفاعلية وجذابة باستخدام أحدث التقنيات.',
+    location: 'Jeddah, Saudi Arabia',
+    bio: 'Specialized in modern frontend development and user experience. Expert in transforming designs into interactive and attractive interfaces using latest technologies.',
     experience: 3,
     available: true,
     skills: [
@@ -44,8 +44,8 @@ export const developersData = [
       { name: 'Tailwind CSS', level: 'Advanced' }
     ],
     projects: [
-      { id: 1, name: 'تطبيق التسوق الذكي', tech: ['React', 'Tailwind CSS'] },
-      { id: 2, name: 'منصة التعليم الإلكتروني', tech: ['Vue.js', 'Bootstrap'] }
+      { id: 1, name: 'Smart Shopping App', tech: ['React', 'Tailwind CSS'] },
+      { id: 2, name: 'E-learning Platform', tech: ['Vue.js', 'Bootstrap'] }
     ],
     stats: {
       views: 980,
@@ -55,10 +55,10 @@ export const developersData = [
   },
   {
     id: 3,
-    name: 'محمد عبدالله',
+    name: 'Mohammed Abdullah',
     title: 'Backend Developer',
-    location: 'الدمام، السعودية',
-    bio: 'مهندس برمجيات متخصص في تطوير الأنظمة الخلفية قابلة للتوسع. خبرة في بناء REST APIs والتعامل مع قواعد البيانات الكبيرة.',
+    location: 'Dammam, Saudi Arabia',
+    bio: 'Software engineer specialized in developing scalable backend systems. Expert in building REST APIs and handling large databases.',
     experience: 7,
     available: false,
     skills: [
@@ -70,9 +70,9 @@ export const developersData = [
       { name: 'GraphQL', level: 'Advanced' }
     ],
     projects: [
-      { id: 1, name: 'نظام الدفع الآمن', tech: ['Python', 'Django'] },
-      { id: 2, name: 'منصة التحليلات', tech: ['Node.js', 'MongoDB'] },
-      { id: 3, name: 'خدمة المصادقة', tech: ['Go', 'PostgreSQL'] }
+      { id: 1, name: 'Secure Payment System', tech: ['Python', 'Django'] },
+      { id: 2, name: 'Analytics Platform', tech: ['Node.js', 'MongoDB'] },
+      { id: 3, name: 'Authentication Service', tech: ['Go', 'PostgreSQL'] }
     ],
     stats: {
       views: 1450,
@@ -82,10 +82,10 @@ export const developersData = [
   },
   {
     id: 4,
-    name: 'نورة السعيد',
+    name: 'Nora Al Said',
     title: 'Mobile Developer',
-    location: 'الرياض، السعودية',
-    bio: 'مطورة تطبيقات جوال محترفة بخبرة في بناء تطبيقات iOS و Android أصلية وتطبيقات هجينة. شغوف بتجربة المستخدم والأداء.',
+    location: 'Riyadh, Saudi Arabia',
+    bio: 'Professional mobile app developer with experience in building native iOS and Android apps and hybrid applications. Passionate about user experience and performance.',
     experience: 4,
     available: true,
     skills: [
@@ -97,8 +97,8 @@ export const developersData = [
       { name: 'GraphQL', level: 'Beginner' }
     ],
     projects: [
-      { id: 1, name: 'تطبيق اللياقة البدنية', tech: ['React Native'] },
-      { id: 2, name: 'تطبيق توصيل الطعام', tech: ['Flutter'] }
+      { id: 1, name: 'Fitness App', tech: ['React Native'] },
+      { id: 2, name: 'Food Delivery App', tech: ['Flutter'] }
     ],
     stats: {
       views: 780,
@@ -108,10 +108,10 @@ export const developersData = [
   },
   {
     id: 5,
-    name: 'خالد الحربي',
+    name: 'Khaled Al Harbi',
     title: 'DevOps Engineer',
-    location: 'جدة، السعودية',
-    bio: 'مهندس DevOps متخصص في أتمتة العمليات وتحسين البنية التحتية السحابية. خبرة في CI/CD والتحكم في الإصدارات والمراقبة.',
+    location: 'Jeddah, Saudi Arabia',
+    bio: 'DevOps engineer specialized in process automation and cloud infrastructure optimization. Expert in CI/CD, version control, and monitoring.',
     experience: 6,
     available: true,
     skills: [
@@ -123,8 +123,8 @@ export const developersData = [
       { name: 'Linux', level: 'Expert' }
     ],
     projects: [
-      { id: 1, name: 'بنية تحتية سحابية', tech: ['AWS', 'Kubernetes'] },
-      { id: 2, name: 'نظام CI/CD', tech: ['Jenkins', 'Docker'] }
+      { id: 1, name: 'Cloud Infrastructure', tech: ['AWS', 'Kubernetes'] },
+      { id: 2, name: 'CI/CD System', tech: ['Jenkins', 'Docker'] }
     ],
     stats: {
       views: 1100,
@@ -134,10 +134,10 @@ export const developersData = [
   },
   {
     id: 6,
-    name: 'مريم أحمد',
+    name: 'Mariam Ahmed',
     title: 'UI/UX Designer',
-    location: 'الرياض، السعودية',
-    bio: 'مصممة واجهة وتجربة مستخدم مبدعة. خبرة في تصميم واجهات جميلة وسهلة الاستخدام مع التركيز على احتياجات المستخدم.',
+    location: 'Riyadh, Saudi Arabia',
+    bio: 'Creative UI/UX designer with expertise in designing beautiful and user-friendly interfaces with focus on user needs.',
     experience: 4,
     available: true,
     skills: [
@@ -149,8 +149,8 @@ export const developersData = [
       { name: 'HTML/CSS', level: 'Intermediate' }
     ],
     projects: [
-      { id: 1, name: 'تصميم تطبيق البنك', tech: ['Figma', 'Adobe XD'] },
-      { id: 2, name: 'واجهة منصة التعلم', tech: ['Sketch', 'Figma'] }
+      { id: 1, name: 'Bank App Design', tech: ['Figma', 'Adobe XD'] },
+      { id: 2, name: 'Learning Platform Interface', tech: ['Sketch', 'Figma'] }
     ],
     stats: {
       views: 650,
@@ -160,17 +160,17 @@ export const developersData = [
   }
 ];
 
-// دالة للحصول على مطور معين
+// Function to get a specific developer
 export const getDeveloperById = (id) => {
   return developersData.find(dev => dev.id === parseInt(id));
 };
 
-// دالة للحصول على المطورين المتاحين للعمل
+// Function to get available developers for work
 export const getAvailableDevelopers = () => {
   return developersData.filter(dev => dev.available);
 };
 
-// دالة للبحث في المطورين
+// Function to search developers
 export const searchDevelopers = (query) => {
   const lowercaseQuery = query.toLowerCase();
   return developersData.filter(dev => 
@@ -182,26 +182,26 @@ export const searchDevelopers = (query) => {
   );
 };
 
-// دالة للتصفية حسب المهارات
+// Function to filter by skills
 export const filterDevelopersBySkills = (skills) => {
   return developersData.filter(dev =>
     skills.some(skill => dev.skills.some(devSkill => devSkill.name.toLowerCase() === skill.toLowerCase()))
   );
 };
 
-// دالة للتصفية حسب الموقع
+// Function to filter by location
 export const filterDevelopersByLocation = (location) => {
   return developersData.filter(dev =>
     dev.location.toLowerCase().includes(location.toLowerCase())
   );
 };
 
-// دالة للتصفية حسب مستوى الخبرة
+// Function to filter by experience level
 export const filterDevelopersByExperience = (minExperience) => {
   return developersData.filter(dev => dev.experience >= minExperience);
 };
 
-// دالة للمطورين الأكثر مشاهدة
+// Function for most viewed developers
 export const getTrendingDevelopers = () => {
   return developersData
     .sort((a, b) => (b.stats.views + b.stats.likes) - (a.stats.views + a.stats.likes))

@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 export const useCompanyData = () => {
   const [companyData, setCompanyData] = useState({
     companyName: 'Mawhiba AI Technologies',
-    title: 'شركة تقنية رائدة في التوظيف الذكي',
-    description: 'نقوم بتوصيل أفضل المواهب التقنية في العالم العربي بالشركات الرائدة من خلال الذكاء الاصطناعي وتحليل المهارات الحقيقية.',
+    title: 'Leading technology company in smart recruitment',
+    description: 'We connect the best tech talents in the Arab world with leading companies through artificial intelligence and real skill analysis.',
     email: 'info@mawhiba.ai',
     phone: '+966 50 123 4567',
-    location: 'الرياض، السعودية',
+    location: 'Riyadh, Saudi Arabia',
     website: 'https://mawhiba.ai',
     established: '2020',
     employees: '150',
@@ -18,48 +18,48 @@ export const useCompanyData = () => {
     },
     skills: [
       {
-        name: 'تطوير المنصات',
-        description: 'منصات توظيف ذكية متكاملة مع تحليل البيانات والذكاء الاصطناعي',
-        level: 'متقدم',
-        experience: '5 سنوات',
+        name: 'Platform Development',
+        description: 'Integrated smart recruitment platforms with data analytics and artificial intelligence',
+        level: 'Advanced',
+        experience: '5 years',
         dots: 5
       },
       {
-        name: 'تحليل المهارات',
-        description: 'تحليل عميق للمهارات التقنية من خلال GitHub والمشاريع السابقة',
-        level: 'متقدم',
-        experience: '4 سنوات',
+        name: 'Skill Analysis',
+        description: 'Deep analysis of technical skills through GitHub and previous projects',
+        level: 'Advanced',
+        experience: '4 years',
         dots: 5
       },
       {
-        name: 'الذكاء الاصطناعي',
-        description: 'خوارزميات مطابقة ذكية بين المواهب والوظائف',
-        level: 'متقدم',
-        experience: '3 سنوات',
+        name: 'Artificial Intelligence',
+        description: 'Smart matching algorithms between talents and jobs',
+        level: 'Advanced',
+        experience: '3 years',
         dots: 4
       }
     ],
     projects: [
       {
-        name: 'منصة Mawhiba AI',
-        description: 'منصة توظيف ذكية تربط المطورين بالشركات باستخدام الذكاء الاصطناعي',
-        level: 'مكتمل',
+        name: 'Mawhiba AI Platform',
+        description: 'Smart recruitment platform connecting developers with companies using artificial intelligence',
+        level: 'Completed',
         experience: '2024',
         dots: 5,
         tech: ['React', 'Node.js', 'AI/ML', 'PostgreSQL']
       },
       {
-        name: 'نظام تحليل المهارات',
-        description: 'نظام متطور لتحليل مهارات المطورين من GitHub والمشاريع المفتوحة',
-        level: 'مكتمل',
+        name: 'Skill Analysis System',
+        description: 'Advanced system for analyzing developer skills from GitHub and open source projects',
+        level: 'Completed',
         experience: '2023',
         dots: 5,
         tech: ['Python', 'TensorFlow', 'API', 'Data Analysis']
       },
       {
-        name: 'تطبيق المواهب',
-        description: 'تطبيق موبايل للمطورين لإدارة ملفهم الشخصي والمشاريع',
-        level: 'قيد التطوير',
+        name: 'Talent App',
+        description: 'Mobile app for developers to manage their profile and projects',
+        level: 'In Development',
         experience: '2024',
         dots: 3,
         tech: ['React Native', 'Firebase', 'Redux', 'UI/UX']
