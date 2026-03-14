@@ -15,7 +15,7 @@ import SkillsTab from './profile/SkillsTab';
 import ProjectsTab from './profile/ProjectsTab';
 import EditButton from './profile/EditButton';
 
-function DeveloperProfile() {
+function DeveloperProfile({ hideEditButton = false }) {
   const { id } = useParams();
   const developerId = id || '1';
   const baseDeveloper = getDeveloperById(developerId);
@@ -77,7 +77,7 @@ function DeveloperProfile() {
   return (
     <div className="developer-container">
       {/* Floating edit button */}
-      <EditButton setIsEditing={setIsEditing} />
+      {!hideEditButton && <EditButton setIsEditing={setIsEditing} />}
 
       {/* Edit modal overlay */}
       {isEditing && (

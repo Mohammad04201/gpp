@@ -16,7 +16,7 @@ import DashboardPage from './components/pageFooter/DashboardPage';
 import CompanyDashboardNew from './pages/CompanyDashboard';
 import DeveloperDashboard from './pages/DeveloperDashboard';
 import Jops from './pages/Jops';
-import Favorites from './pages/Favorites';
+import Favorites from './components/companies/Favorites';
 import FovertDevloper from './components/DevloperP/fovertDevloper';
 
 import MainNavbar from './components/navbars/MainNavbar';

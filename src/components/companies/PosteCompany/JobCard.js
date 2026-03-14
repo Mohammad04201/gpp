@@ -8,10 +8,10 @@ import JobFilters from './JobFilters';
 import EmptyState from './EmptyState';
 import { postsData } from './postsData';
 
-function JobCard({ post }) {
+function JobCard({ post, initialLiked = false, onLikeChange }) {
   const [showContactForm, setShowContactForm] = useState(false);
   const [showCompanyInfo, setShowCompanyInfo] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(initialLiked);
   const [likesCount, setLikesCount] = useState(post.likes || Math.floor(Math.random() * 50) + 10);
   const [contactData, setContactData] = useState({
     name: '',
@@ -21,9 +21,41 @@ function JobCard({ post }) {
     cv: null
   });
 
+  // Check if job is initially liked from localStorage
+  React.useEffect(() => {
+    const savedLikedJobs = localStorage.getItem('likedJobs');
+    if (savedLikedJobs) {
+      const likedJobIds = JSON.parse(savedLikedJobs);
+      const currentlyLiked = likedJobIds.includes(post.id);
+      setIsLiked(currentlyLiked);
+    }
+  }, [post.id]);
+
   const handleLike = () => {
-    setIsLiked(!isLiked);
-    setLikesCount(prev => isLiked ? prev - 1 : prev + 1);
+    const newLikedState = !isLiked;
+    setIsLiked(newLikedState);
+    setLikesCount(prev => newLikedState ? prev + 1 : prev - 1);
+    
+    // Always update localStorage
+    const savedLikedJobs = localStorage.getItem('likedJobs');
+    const likedJobIds = savedLikedJobs ? JSON.parse(savedLikedJobs) : [];
+    
+    if (newLikedState) {
+      // Add to liked jobs
+      if (!likedJobIds.includes(post.id)) {
+        likedJobIds.push(post.id);
+        localStorage.setItem('likedJobs', JSON.stringify(likedJobIds));
+      }
+    } else {
+      // Remove from liked jobs
+      const updatedLikedJobIds = likedJobIds.filter(id => id !== post.id);
+      localStorage.setItem('likedJobs', JSON.stringify(updatedLikedJobIds));
+    }
+    
+    // Call parent callback if provided
+    if (onLikeChange) {
+      onLikeChange(post.id, newLikedState);
+    }
   };
 
   const handleContactSubmit = (e) => {
