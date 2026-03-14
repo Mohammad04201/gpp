@@ -6,6 +6,7 @@ import DashboardApplications from '../components/companies/Dashboard/DashboardAp
 import DashboardCandidates from '../components/companies/Dashboard/DashboardCandidates';
 import DashboardAnalytics from '../components/companies/Dashboard/DashboardAnalytics';
 import DashboardSettings from '../components/companies/Dashboard/DashboardSettings';
+import CreatePost from '../components/companies/Dashboard/CreatePost';
 import DashboardSidebar from '../components/companies/Dashboard/DashboardSidebar';
 import '../components/companies/Dashboard/CompanyDashboard.css';
 
@@ -15,6 +16,7 @@ const CompanyDashboard = () => {
   const menuItems = [
     { id: 'overview', name: 'Overview', icon: '📊' },
     { id: 'jobs', name: 'My Jobs', icon: '💼' },
+    { id: 'create-post', name: 'Create Post', icon: '📝' },
     { id: 'applications', name: 'Applications', icon: '📋' },
     { id: 'candidates', name: 'Candidates', icon: '👥' },
     { id: 'analytics', name: 'Analytics', icon: '📈' },
@@ -28,6 +30,9 @@ const CompanyDashboard = () => {
       
       case 'jobs':
         return <MyJob />;
+      
+      case 'create-post':
+        return <CreatePost />;
       
       case 'applications':
         return <DashboardApplications />;
@@ -63,7 +68,12 @@ const CompanyDashboard = () => {
           <div className="dashboard-header">
             <h1>Company Dashboard</h1>
             <div className="header-actions">
-              <button className="btn-post-job">Post New Job</button>
+              <button 
+                className="btn-post-job"
+                onClick={() => setActiveTab('create-post')}
+              >
+                Post New Job
+              </button>
             </div>
           </div>
           
