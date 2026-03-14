@@ -5,13 +5,11 @@ import LandingPage from './components/Home/Home';
 import CompaniesPage from './pages/CompaniesPage';
 import DevelopersPage from './pages/DevelopersPage';
 import DeveloperProfile from './components/DevloperP/DeveloperProfile';
-import DeveloperEdit from './components/DevloperP/DeveloperEdit';
 import RoleSelection from './pages/AuthSelect';
 import DeveloperLogin from './components/auth/DeveloperLogin';
 import CompanyLogin from './components/auth/CompanyLogin';
 import DeveloperRegister from './components/auth/DeveloperRegister';
 import CompanyRegister from './components/auth/CompanyRegister';
-import DeveloperSkills from './components/DevloperP/DeveloperSkills';
 import CompanyProfileView from './components/companies/CompanyProfileView';
 import DashboardPage from './components/pageFooter/DashboardPage';
 
@@ -19,6 +17,7 @@ import CompanyDashboardNew from './pages/CompanyDashboard';
 import DeveloperDashboard from './pages/DeveloperDashboard';
 import Jops from './pages/Jops';
 import Favorites from './pages/Favorites';
+import FovertDevloper from './components/DevloperP/fovertDevloper';
 
 import MainNavbar from './components/navbars/MainNavbar';
 import Footer from './components/Footer/Footer';
@@ -27,7 +26,6 @@ import AboutPage from './components/pageFooter/AboutPage';
 import ContactPage from './components/pageFooter/ContactPage';
 import HelpPage from './components/pageFooter/HelpPage';
 import PrivacyPage from './components/pageFooter/PrivacyPage';
-import TermsPage from './components/pageFooter/TermsPage';
 
 function App() {
   return (
@@ -77,7 +75,7 @@ function App() {
         <Route path="/terms" element={
           <>
             <MainNavbar />
-            <TermsPage />
+            <FovertDevloper />
             <Footer />
           </>
         } />
@@ -106,23 +104,6 @@ function App() {
           </>
         } />
 
-      
-
-        <Route path="/developer/edit/:id" element={
-          <>
-            <MainNavbar />
-            <DeveloperEdit />
-            <Footer />
-          </>
-        } />
-
-        <Route path="/developer/skills/:id" element={
-          <>
-            <MainNavbar />
-            <DeveloperSkills />
-            <Footer />
-          </>
-        } />
 
         <Route path="/jobs" element={
           <>
@@ -136,6 +117,14 @@ function App() {
           <>
             <MainNavbar />
             <Favorites />
+            <Footer />
+          </>
+        } />
+
+        <Route path="/FovertDevloper" element={
+          <>
+            <MainNavbar />
+            <FovertDevloper />
             <Footer />
           </>
         } />
@@ -196,14 +185,6 @@ function App() {
           <>
             <MainNavbar />
             <DashboardPage />
-            <Footer />
-          </>
-        } />
-
-        <Route path="/dashboard/developer/skills" element={
-          <>
-            <MainNavbar />
-            <DeveloperSkills />
             <Footer />
           </>
         } />

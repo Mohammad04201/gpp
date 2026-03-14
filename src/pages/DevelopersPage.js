@@ -10,7 +10,7 @@ import {
   getAvailableDevelopers,
   getTrendingDevelopers
 } from '../components/DevloperP/developersData';
-import { SearchFilters, DeveloperTabs, ResultsCount, EmptyState } from '../components/DevloperP/DevelopersComponents';
+import { SearchFilters, DeveloperTabs, ResultsCount, EmptyState } from '../components/DevloperP/filters/filters';
 
 function DevelopersPage() {
   const [developers, setDevelopers] = useState(developersData);

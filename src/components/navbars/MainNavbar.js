@@ -91,6 +91,12 @@ function MainNavbar() {
               Favorites
             </Link>
             <Link 
+              to="/FovertDevloper" 
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              FovertDevloper
+            </Link>
+            <Link 
               to="/dashboard/developer" 
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
@@ -472,6 +478,13 @@ function MainNavbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Favorites
+              </Link>
+              <Link 
+                to="/FovertDevloper" 
+                className="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-md transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                FovertDevloper
               </Link>
               <Link 
                 to="/dashboard/developer" 

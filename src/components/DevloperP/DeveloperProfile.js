@@ -10,10 +10,7 @@ import './DeveloperStyles.css';
 // Import profile components
 import ProfileHeader from './profile/ProfileHeader';
 import QuickStats from './profile/QuickStats';
-import CVDownload from './profile/CVDownload';
 import ResumeLevel from './profile/ResumeLevel';
-import ProfileTabs from './profile/ProfileTabs';
-import OverviewTab from './profile/OverviewTab';
 import SkillsTab from './profile/SkillsTab';
 import ProjectsTab from './profile/ProjectsTab';
 import EditButton from './profile/EditButton';

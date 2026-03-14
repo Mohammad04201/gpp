@@ -1,5 +1,5 @@
 import React from 'react';
-import { developersData } from './developersData';
+import { developersData } from '../developersData';
 
 // Component for search and filters
 function SearchFilters({ 
@@ -63,7 +63,7 @@ function SearchFilters({
           >
             <option value="">All Levels</option>
             {experienceLevels.map(level => (
-              <option key={level} value={level}>{level}+ years</option>
+              <option key={level} value={level}>{level} years</option>
             ))}
           </select>
         </div>
