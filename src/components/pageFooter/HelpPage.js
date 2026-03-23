@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useThemeContext } from '../contexts/ThemeContext';
 
 function HelpPage() {
+  const { isDarkMode } = useThemeContext();
   const [expandedFaq, setExpandedFaq] = useState(null);
 
   const faqs = [
@@ -40,28 +42,31 @@ function HelpPage() {
   ];
 
   return (
-    <div className="min-h-screen text-white" style={{ background: 'linear-gradient(135deg, #1a1d26 0%, #20232A 100%)' }}>
-      {/* Header */}
-      <nav className="border-b border-gray-700" style={{ backgroundColor: '#20232A' }}>
-        <div className="container mx-auto px-4 py-4">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">
-            TechConnect AI
-          </Link>
-        </div>
-      </nav>
+    <div className={`min-h-screen transition-all duration-300 ${
+      isDarkMode ? 'text-white' : 'text-gray-800'
+    }`} style={{
+      background: isDarkMode 
+        ? 'linear-gradient(135deg, #1a1d26 0%, #20232A 100%)'
+        : 'linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%)'
+    }}>
+
 
       {/* Help Content */}
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-4xl">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">Help Center</h1>
-          <p className="text-gray-300 mb-12">Find answers to common questions about TechConnect AI</p>
+          <p className={`mb-12 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Find answers to common questions about Graduction</p>
 
           {/* Search Bar */}
           <div className="mb-12">
             <input 
               type="text" 
               placeholder="Search for help..." 
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-gray-600"
+              className={`w-full rounded-lg px-6 py-4 focus:outline-none transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'bg-gray-800 border border-gray-700 text-white focus:border-gray-600' 
+                  : 'bg-white border border-gray-300 text-gray-800 focus:border-blue-500'
+              }`}
             />
           </div>
 
@@ -70,10 +75,16 @@ function HelpPage() {
             <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
             
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+              <div key={index} className={`rounded-lg overflow-hidden transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'bg-gray-800 border border-gray-700' 
+                  : 'bg-white border border-gray-200 shadow-sm'
+              }`}>
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-700/50 transition-colors duration-300"
+                  className={`w-full px-6 py-4 flex items-center justify-between transition-colors duration-300 ${
+                    isDarkMode ? 'hover:bg-gray-700/50' : 'hover:bg-gray-50'
+                  }`}
                 >
                   <h3 className="font-semibold text-left">{faq.question}</h3>
                   <svg 
@@ -86,8 +97,12 @@ function HelpPage() {
                 </button>
                 
                 {expandedFaq === index && (
-                  <div className="px-6 py-4 border-t border-gray-700 bg-gray-700/20">
-                    <p className="text-gray-300">{faq.answer}</p>
+                  <div className={`px-6 py-4 border-t transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'border-gray-700 bg-gray-700/20' 
+                      : 'border-gray-200 bg-gray-50'
+                  }`}>
+                    <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -95,14 +110,22 @@ function HelpPage() {
           </div>
 
           {/* Contact Support */}
-          <div className="mt-16 bg-gray-800 rounded-xl p-8 border border-gray-700">
+          <div className={`mt-16 rounded-xl p-8 transition-colors duration-300 ${
+            isDarkMode 
+              ? 'bg-gray-800 border border-gray-700' 
+              : 'bg-white border border-gray-200 shadow-sm'
+          }`}>
             <h3 className="text-2xl font-semibold mb-4">Still need help?</h3>
-            <p className="text-gray-300 mb-6">
+            <p className={`mb-6 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Our support team is ready to assist you. Contact us directly for more help.
             </p>
             <Link 
               to="/contact" 
-              className="inline-block px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className={`inline-block px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
+                isDarkMode 
+                  ? 'bg-teal-600 hover:bg-teal-500 text-white shadow-lg' 
+                  : 'bg-teal-500 hover:bg-teal-600 text-white shadow-lg'
+              }`}
             >
               Contact Support
             </Link>
@@ -111,7 +134,11 @@ function HelpPage() {
           <div className="mt-12">
             <Link 
               to="/" 
-              className="inline-block px-8 py-3 bg-gray-700 hover:bg-gray-600 rounded-xl font-semibold transition-all duration-300"
+              className={`inline-block px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-teal-600 hover:bg-teal-500 text-white shadow-md' 
+                  : 'bg-teal-500 hover:bg-teal-600 text-white shadow-md'
+              }`}
             >
               Back to Home
             </Link>

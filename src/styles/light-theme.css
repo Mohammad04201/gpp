@@ -1,0 +1,254 @@
+/* Light Theme Styles */
+.light-mode {
+  /* Background Colors */
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-hover: #f0f0f0;
+  --bg-border: #e5e5e5;
+  
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --text-inverse: #ffffff;
+  
+  /* Accent Colors */
+  --accent-primary: #14b8a6;
+  --accent-hover: #06b6d4;
+  --accent-light: #e0f2fe;
+  
+  /* Navbar */
+  --navbar-bg: #ffffff;
+  --navbar-border: #e5e5e5;
+  --navbar-text: #333333;
+  --navbar-hover: #f8f9fa;
+}
+
+/* Apply light theme styles */
+.light-mode body {
+  background-color: #f9f9f9;
+  color: var(--text-primary);
+}
+
+.light-mode .sticky.top-0 {
+  background-color: var(--navbar-bg) !important;
+  border-bottom-color: var(--navbar-border) !important;
+}
+
+.light-mode .text-gray-300 {
+  color: var(--text-secondary) !important;
+      background-color: snow !important;
+
+  
+.light-mode .text-gray-300 {
+    color: var(--text-secondary) !important;
+}
+}
+
+.light-mode .text-gray-400 {
+  color: var(--text-tertiary) !important;
+      background-color: white !important;
+
+}
+
+.light-mode .text-white {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .bg-gray-800,
+.light-mode .bg-\[20232A\] {
+  background-color: var(--bg-secondary) !important;
+}
+
+.light-mode .bg-gray-900 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.light-mode .bg-\[282C34\] {
+  background-color: var(--bg-border) !important;
+}
+
+.light-mode .border-\[282C34\],
+.light-mode .border-\[3a4750\] {
+  border-color: var(--bg-border) !important;
+}
+
+.light-mode .hover\:bg-gray-800\/50:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+.light-mode .hover\:text-white:hover {
+  color: var(--accent-primary) !important;
+}
+
+.light-mode .hover\:text-teal-300:hover {
+  color: var(--accent-hover) !important;
+}
+
+.light-mode .text-teal-400 {
+  color: var(--accent-primary) !important;
+}
+
+.light-mode .from-teal-500 {
+  --tw-gradient-from: var(--accent-primary) !important;
+}
+
+.light-mode .to-cyan-500 {
+  --tw-gradient-to: var(--accent-hover) !important;
+}
+
+.light-mode .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Card styles for light theme */
+.light-mode .bg-\[1a1a1a\] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+.light-mode .bg-\[2a2a2a\] {
+  background-color: var(--bg-hover) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+/* Form styles */
+.light-mode input,
+.light-mode select,
+.light-mode textarea {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--bg-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.light-mode input:focus,
+.light-mode select:focus,
+.light-mode textarea:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2) !important;
+}
+
+/* Button styles */
+.light-mode .btn-submit {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover)) !important;
+}
+
+.light-mode .btn-cancel {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--bg-border) !important;
+}
+
+.light-mode .btn-cancel:hover {
+  background-color: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Tag styles */
+.light-mode .tag {
+  background-color: var(--bg-hover) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Status badges */
+.light-mode .status-badge {
+  color: var(--text-inverse) !important;
+}
+
+.light-mode .bg-green-500 {
+  background-color: #10b981 !important;
+}
+
+.light-mode .bg-blue-500 {
+  background-color: #3b82f6 !important;
+}
+
+.light-mode .bg-yellow-500 {
+  background-color: #f59e0b !important;
+  color: var(--text-primary) !important;
+}
+
+.light-mode .bg-red-500 {
+  background-color: #ef4444 !important;
+}
+
+/* Dashboard specific styles */
+.light-mode .dashboard-main {
+  background-color: var(--bg-primary) !important;
+}
+
+.light-mode .dashboard-header {
+  background-color: var(--bg-secondary) !important;
+  border-bottom-color: var(--bg-border) !important;
+}
+
+.light-mode .dashboard-content {
+  background-color: var(--bg-primary) !important;
+}
+
+.light-mode .application-card,
+.light-mode .job-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+.light-mode .application-card:hover,
+.light-mode .job-card:hover {
+  background-color: var(--bg-hover) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+/* Company card hover effect */
+.light-mode .company-card:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 10px 25px rgba(20, 184, 166, 0.1) !important;
+}
+
+/* Form sections */
+.light-mode .form-section {
+  background-color: var(--bg-card) !important;
+  border-color: var(--bg-border) !important;
+}
+
+.light-mode .form-section h3 {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .form-group label {
+  color: var(--text-secondary) !important;
+}
+
+/* Add button */
+.light-mode .add-btn {
+  background-color: var(--accent-primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+.light-mode .add-btn:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+/* Remove button in tags */
+.light-mode .tag .remove-btn {
+  color: #ef4444 !important;
+}
+
+.light-mode .tag .remove-btn:hover {
+  color: #dc2626 !important;
+}
+
+/* Responsive adjustments for light theme */
+@media (max-width: 768px) {
+  .light-mode .mobile-menu {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--bg-border) !important;
+  }
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}

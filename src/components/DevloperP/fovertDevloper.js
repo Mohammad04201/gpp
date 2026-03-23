@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { developersData } from './developersData';
 import DevloperCard, { DevelopersList } from './DevloperCard';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../hooks/useThemeContext';
 import { getDeveloperInitials } from './helpers';
 import './DeveloperStyles.css';
 
 // Custom card for favorites page with unlike functionality
 function FavoriteCard({ developer, onUnlike }) {
+  const { isDarkMode } = useTheme();
   const [currentLikes, setCurrentLikes] = useState(developer.stats.likes);
 
   const handleUnlike = (e) => {
@@ -24,17 +26,27 @@ function FavoriteCard({ developer, onUnlike }) {
   const initials = getDeveloperInitials(developer.name);
 
   return (
-    <div className="developer-card">
-      <div className="developer-header">
+    <div className={`developer-card transition-all duration-300 hover:scale-105 ${
+      isDarkMode ? '' : 'light-mode'
+    }`}>
+      <div className={`developer-header ${isDarkMode ? '' : 'light-mode'}`}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
-            <div className="developer-avatar-small group-hover:scale-105 transition-transform duration-300">
+            <div className={`developer-avatar-small group-hover:scale-105 transition-transform duration-300 ${
+              isDarkMode ? '' : 'light-mode'
+            }`}>
               <span className="text-xl font-bold text-white">{initials}</span>
             </div>
             <div>
-              <h3 className="font-bold text-lg text-white">{developer.name}</h3>
-              <p className="text-sm text-secondary">{developer.title}</p>
-              <p className="text-sm text-secondary flex items-center gap-1">
+              <h3 className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+                {developer.name}
+              </h3>
+              <p className={`text-sm ${isDarkMode ? 'text-secondary' : 'text-gray-600'}`}>
+                {developer.title}
+              </p>
+              <p className={`text-sm flex items-center gap-1 ${
+                isDarkMode ? 'text-secondary' : 'text-gray-600'
+              }`}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                 </svg>
@@ -44,7 +56,9 @@ function FavoriteCard({ developer, onUnlike }) {
           </div>
         </div>
         
-        <div className="flex items-center gap-4 text-sm text-secondary">
+        <div className={`flex items-center gap-4 text-sm ${
+          isDarkMode ? 'text-secondary' : 'text-gray-600'
+        }`}>
           <span className="flex items-center gap-1">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
@@ -99,6 +113,7 @@ function FavoriteCard({ developer, onUnlike }) {
 }
 
 function FovertDevloper() {
+  const { isDarkMode } = useTheme();
   const [developers, setDevelopers] = useState(developersData);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -152,11 +167,11 @@ function FovertDevloper() {
   }
 
   return (
-    <div className="developer-container bg-gray-900">
+    <div className={`developer-container ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="developer-content">
         <div className="mb-8">
-          <h1 className="developer-title text-white">Favorites</h1>
-          <p className="developer-subtitle text-teal-400">Your favorite developers</p>
+          <h1 className={`developer-title ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Favorites</h1>
+          <p className={`developer-subtitle ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`}>Your favorite developers</p>
         </div>
 
         {/* Search Bar */}
@@ -166,8 +181,12 @@ function FovertDevloper() {
             placeholder="Search favorite developers..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
-            style={{ placeholderColor: '#9ca3af' }}
+            className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 ${
+              isDarkMode 
+                ? 'bg-gray-800 border border-gray-600 text-white focus:border-teal-500 focus:ring-teal-500/20' 
+                : 'bg-white border border-gray-300 text-gray-800 focus:border-teal-500 focus:ring-teal-500/20'
+            }`}
+            style={{ placeholderColor: isDarkMode ? '#9ca3af' : '#6b7280' }}
           />
         </div>
 

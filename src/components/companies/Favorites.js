@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../hooks/useThemeContext';
 import { JobCard } from './PosteCompany/JobCard';
 import { postsData } from './PosteCompany/postsData';
 
@@ -7,6 +8,7 @@ function Favorites() {
   const [likedJobs, setLikedJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('recent'); // recent, likes, salary
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     // Load liked jobs from localStorage
@@ -102,41 +104,65 @@ function Favorites() {
     });
 
   return (
-    <div className="min-h-screen bg- p-8">
+    <div className={`min-h-screen p-8 transition-all duration-300 ${
+      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+    }`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-red-500/20 p-3 rounded-xl">
-              <svg className="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+            <div className={`p-3 rounded-xl transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-red-500/20' 
+                : 'bg-red-100 shadow-md'
+            }`}>
+              <svg className={`w-6 h-6 transition-all duration-300 ${
+                isDarkMode ? 'text-red-400' : 'text-red-500'
+              }`} fill="currentColor" viewBox="0 0 24 24">
                 <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
               </svg>
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white">My Favorites</h1>
-              <p className="text-gray-400 text-lg">Jobs you've liked and saved</p>
+              <h1 className={`text-4xl font-bold transition-all duration-300 ${
+                isDarkMode ? 'text-white' : 'text-gray-800'
+              }`}>My Favorites</h1>
+              <p className={`text-lg transition-all duration-300 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-600'
+              }`}>Jobs you've liked and saved</p>
             </div>
           </div>
           
           {/* Stats */}
-          <div className="flex items-center gap-6 text-sm text-gray-400">
+          <div className={`flex items-center gap-6 text-sm transition-all duration-300 ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
+              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                isDarkMode ? 'bg-teal-400' : 'bg-teal-500'
+              }`}></div>
               {likedJobs.length} saved jobs
             </span>
             <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                isDarkMode ? 'bg-blue-400' : 'bg-blue-500'
+              }`}></div>
               {likedJobs.reduce((sum, job) => sum + job.likes, 0)} total likes
             </span>
             <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                isDarkMode ? 'bg-purple-400' : 'bg-purple-500'
+              }`}></div>
               {likedJobs.reduce((sum, job) => sum + job.applicants, 0)} total applicants
             </span>
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-gray-800/50 rounded-xl border border-gray-700 p-6 mb-8">
+        <div className={`rounded-xl border p-6 mb-8 transition-all duration-300 ${
+          isDarkMode 
+            ? 'bg-gray-800/50 border-gray-700' 
+            : 'bg-white border-gray-200 shadow-lg'
+        }`}>
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">
               <input
@@ -144,7 +170,11 @@ function Favorites() {
                 placeholder="Search your favorite jobs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-teal-500 focus:outline-none transition-colors"
+                className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-colors ${
+                  isDarkMode 
+                    ? 'bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-teal-500' 
+                    : 'bg-white border-gray-300 text-gray-800 placeholder-gray-500 focus:border-teal-500 shadow-sm'
+                }`}
               />
             </div>
             
@@ -152,7 +182,11 @@ function Favorites() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
+                className={`px-4 py-3 rounded-lg focus:outline-none transition-colors ${
+                  isDarkMode 
+                    ? 'bg-gray-900/50 border-gray-600 text-white focus:border-teal-500' 
+                    : 'bg-white border-gray-300 text-gray-800 focus:border-teal-500 shadow-sm'
+                }`}
               >
                 <option value="recent">Most Recent</option>
                 <option value="likes">Most Liked</option>
@@ -164,7 +198,11 @@ function Favorites() {
                   setSearchTerm('');
                   setSortBy('recent');
                 }}
-                className="px-4 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors"
+                className={`px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+                  isDarkMode 
+                    ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-800 hover:shadow-md'
+                }`}
               >
                 Clear Filters
               </button>
@@ -186,16 +224,28 @@ function Favorites() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="w-24 h-24 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 ${
+              isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200 shadow-md'
+            }`}>
+              <svg className={`w-12 h-12 transition-all duration-300 ${
+                isDarkMode ? 'text-gray-500' : 'text-gray-400'
+              }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-400 mb-3">No favorite jobs yet</h3>
-            <p className="text-gray-500 mb-6">Start liking jobs to see them here</p>
+            <h3 className={`text-2xl font-bold mb-3 transition-all duration-300 ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>No favorite jobs yet</h3>
+            <p className={`mb-6 transition-all duration-300 ${
+              isDarkMode ? 'text-gray-500' : 'text-gray-600'
+            }`}>Start liking jobs to see them here</p>
             <Link
               to="/jobs"
-              className="inline-block px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
+              className={`inline-block px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+                isDarkMode 
+                  ? 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white' 
+                  : 'bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white shadow-lg hover:shadow-xl'
+              }`}
             >
               Browse Jobs
             </Link>

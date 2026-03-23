@@ -1,0 +1,257 @@
+/* Dark Theme Styles */
+.dark-mode {
+  /* Background Colors */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1e293b;
+  --bg-hover: #334155;
+  --bg-border: #475569;
+  
+  /* Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0f172a;
+  
+  /* Accent Colors */
+  --accent-primary: #14b8a6;
+  --accent-hover: #06b6d4;
+  --accent-light: #164e63;
+  
+  /* Navbar */
+  --navbar-bg: #1e293b;
+  --navbar-border: #475569;
+  --navbar-text: #f8fafc;
+  --navbar-hover: #334155;
+}
+
+/* Apply dark theme styles */
+.dark-mode body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark-mode .sticky.top-0 {
+  background-color: var(--navbar-bg) !important;
+  border-bottom-color: var(--navbar-border) !important;
+}
+
+.dark-mode .text-gray-300 {
+  color: var(--text-secondary) !important;
+}
+
+.dark-mode .text-gray-400 {
+  color: var(--text-tertiary) !important;
+}
+
+.dark-mode .text-white {
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .bg-gray-50,
+.dark-mode .bg-gray-100 {
+  background-color: var(--bg-primary) !important;
+}
+
+.dark-mode .bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+.dark-mode .bg-gray-800 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark-mode .bg-gray-900 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.dark-mode .border-gray-200,
+.dark-mode .border-gray-300 {
+  border-color: var(--bg-border) !important;
+}
+
+.dark-mode .hover\:bg-gray-800\/50:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+.dark-mode .hover\:text-white:hover {
+  color: var(--accent-primary) !important;
+}
+
+.dark-mode .hover\:text-gray-900:hover {
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .text-teal-400 {
+  color: var(--accent-primary) !important;
+}
+
+.dark-mode .text-teal-300 {
+  color: var(--accent-hover) !important;
+}
+
+.dark-mode .text-teal-700 {
+  color: var(--accent-primary) !important;
+}
+
+.dark-mode .from-teal-500 {
+  --tw-gradient-from: var(--accent-primary) !important;
+}
+
+.dark-mode .to-cyan-500 {
+  --tw-gradient-to: var(--accent-hover) !important;
+}
+
+.dark-mode .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Card styles for dark theme */
+.dark-mode .bg-\[1a1a1a\] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+.dark-mode .bg-\[2a2a2a\] {
+  background-color: var(--bg-hover) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+/* Form styles */
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: var(--bg-card) !important;
+  border-color: var(--bg-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark-mode input:focus,
+.dark-mode select:focus,
+.dark-mode textarea:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.3) !important;
+}
+
+/* Button styles */
+.dark-mode .btn-submit {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover)) !important;
+}
+
+.dark-mode .btn-cancel {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--bg-border) !important;
+}
+
+.dark-mode .btn-cancel:hover {
+  background-color: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Tag styles */
+.dark-mode .tag {
+  background-color: var(--bg-hover) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Status badges */
+.dark-mode .status-badge {
+  color: var(--text-inverse) !important;
+}
+
+/* Dashboard specific styles */
+.dark-mode .dashboard-main {
+  background-color: var(--bg-primary) !important;
+}
+
+.dark-mode .dashboard-header {
+  background-color: var(--bg-card) !important;
+  border-bottom-color: var(--bg-border) !important;
+}
+
+.dark-mode .dashboard-content {
+  background-color: var(--bg-primary) !important;
+}
+
+.dark-mode .application-card,
+.dark-mode .job-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+.dark-mode .application-card:hover,
+.dark-mode .job-card:hover {
+  background-color: var(--bg-hover) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+/* Company card hover effect */
+.dark-mode .company-card:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 10px 25px rgba(20, 184, 166, 0.2) !important;
+}
+
+/* Form sections */
+.dark-mode .form-section {
+  background-color: var(--bg-card) !important;
+  border-color: var(--bg-border) !important;
+}
+
+.dark-mode .form-section h3 {
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .form-group label {
+  color: var(--text-secondary) !important;
+}
+
+/* Add button */
+.dark-mode .add-btn {
+  background-color: var(--accent-primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+.dark-mode .add-btn:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+/* Remove button in tags */
+.dark-mode .tag .remove-btn {
+  color: #ef4444 !important;
+}
+
+.dark-mode .tag .remove-btn:hover {
+  color: #dc2626 !important;
+}
+
+/* Responsive adjustments for dark theme */
+@media (max-width: 768px) {
+  .dark-mode .mobile-menu {
+    background-color: var(--bg-card) !important;
+    border-color: var(--bg-border) !important;
+  }
+}
+
+/* Badge backgrounds for dark theme */
+.dark-mode .bg-teal-50 {
+  background-color: var(--accent-light) !important;
+}
+
+/* Auth specific styles */
+.dark-mode .auth-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+.dark-mode .auth-option-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--bg-border) !important;
+}
+
+.dark-mode .auth-option-card:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 10px 25px rgba(20, 184, 166, 0.15) !important;
+}

@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTheme } from '../hooks/useThemeContext';
 import { getDeveloperInitials } from './helpers';
 import './DeveloperStyles.css';
 
 // Sub-component for displaying card header
 function DeveloperHeader({ developer }) {
+  const { isDarkMode } = useTheme();
   const initials = getDeveloperInitials(developer.name);
   const statusClass = developer.available ? 'status-available' : 'status-busy';
   const statusText = developer.available ? 'Available for work' : 'Busy';
   
   return (
-    <div className="developer-header">
+    <div className={`developer-header transition-all duration-300 ${
+      isDarkMode ? '' : 'light-mode'
+    }`}>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-4">
-          <div className="developer-avatar-small group-hover:scale-105 transition-transform duration-300">
+          <div className={`developer-avatar-small group-hover:scale-105 transition-transform duration-300 ${
+            isDarkMode ? '' : 'light-mode'
+          }`}>
             <span className="text-xl font-bold text-white">{initials}</span>
           </div>
           <div>
-            <h3 className="font-bold  text-lg">{developer.name}</h3>
-            <p className="text-sm text-secondary">{developer.title}</p>
-            <p className="text-sm text-secondary flex items-center gap-1">
+            <h3 className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+              {developer.name}
+            </h3>
+            <p className={`text-sm ${isDarkMode ? 'text-secondary' : 'text-gray-600'}`}>
+              {developer.title}
+            </p>
+            <p className={`text-sm flex items-center gap-1 ${
+              isDarkMode ? 'text-secondary' : 'text-gray-600'
+            }`}>
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
               </svg>
@@ -30,7 +42,9 @@ function DeveloperHeader({ developer }) {
       
       </div>
       
-      <div className="flex items-center gap-4 text-sm text-secondary">
+      <div className={`flex items-center gap-4 text-sm ${
+        isDarkMode ? 'text-secondary' : 'text-gray-600'
+      }`}>
         <span className="flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
@@ -52,6 +66,7 @@ function DeveloperHeader({ developer }) {
 // Main component - Developer card
 function DevloperCard({ developer, onLike, onFavorite }) {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
   const [currentLikes, setCurrentLikes] = useState(developer.stats.likes);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -96,14 +111,20 @@ function DevloperCard({ developer, onLike, onFavorite }) {
   };
 
   return (
-    <div className="developer-card">
+    <div className={`developer-card transition-all duration-300 hover:scale-105 ${
+      isDarkMode ? '' : 'light-mode'
+    }`}>
       <DeveloperHeader developer={developer} />
       
       <div className="p-6">
         {/* Action Buttons */}
         <div className="pt-4">
           <div className="flex items-center justify-between gap-3 mb-3">
-            <button className="btn-primary">
+            <button className={`btn-primary transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-blue-600 hover:bg-blue-700' 
+                : 'bg-teal-500 hover:bg-teal-600 shadow-lg hover:shadow-xl'
+            }`}>
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -113,7 +134,12 @@ function DevloperCard({ developer, onLike, onFavorite }) {
             
             <button 
               onClick={handleLike}
-              className={`btn-primary ${isLiked ? 'text-red-500' : ''}`}
+              className={`btn-primary transition-all duration-300 ${
+                isLiked ? 'text-red-500' : ''
+              } ${isDarkMode 
+                ? 'bg-blue-600 hover:bg-blue-700' 
+                : 'bg-teal-500 hover:bg-teal-600 shadow-lg hover:shadow-xl'
+              }`}
             >
               <svg 
                 className="w-4 h-4" 
@@ -129,7 +155,11 @@ function DevloperCard({ developer, onLike, onFavorite }) {
           
           <Link 
             to={`/developer/profile/${developer.id}`}
-            className="btn-primary w-full text-center"
+            className={`btn-primary w-full text-center transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-blue-600 hover:bg-blue-700' 
+                : 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 shadow-lg hover:shadow-xl'
+            }`}
           >
             View Profile
           </Link>

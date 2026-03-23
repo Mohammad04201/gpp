@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import CompanyCard from '../components/companies/CompanyCard';
+import { useThemeContext } from '../components/contexts/ThemeContext';
 
 // Sample company data
 const sampleCompanies = [
@@ -127,19 +129,32 @@ const sampleCompanies = [
 ];
 
 function CompaniesPage() {
+  const { isDarkMode } = useThemeContext();
+  const [companies, setCompanies] = useState(sampleCompanies);
+
   return (
-    <div className="min-h-screen bg-[#20232A] text-white">
+    <div className={`min-h-screen transition-all duration-300 ${
+      isDarkMode ? 'bg-[#20232A] text-white' : 'bg-[#f9f9f9] text-gray-800'
+    }`}>
       {/* Header */}
-      <div className="bg-[#282C34] border-b border-[#3a4750]">
+      <div className={`border-b transition-all duration-300 ${
+        isDarkMode ? 'bg-[#282C34] border-[#3a4750]' : 'bg-white border-gray-200'
+      }`}>
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Companies</h1>
-              <p className="text-gray-400">Discover the best tech companies and connect with them</p>
+              <h1 className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Companies</h1>
+              <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
+                Discover the best tech companies and connect with them
+              </p>
             </div>
             <Link 
               to="/" 
-              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                isDarkMode 
+                  ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
+              }`}
             >
               ← Back to Home
             </Link>
@@ -158,13 +173,19 @@ function CompaniesPage() {
         {/* Empty State (if no companies) */}
         {sampleCompanies.length === 0 && (
           <div className="text-center py-20">
-            <div className="w-20 h-20 bg-[#282C34] rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+            <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 ${
+              isDarkMode ? 'bg-[#282C34]' : 'bg-gray-100'
+            }`}>
+              <svg className={`w-10 h-10 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd"/>
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">No Companies Available</h3>
-            <p className="text-gray-500">Companies will be added soon</p>
+            <h3 className={`text-xl font-semibold mb-2 ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>No Companies Available</h3>
+            <p className={isDarkMode ? 'text-gray-500' : 'text-gray-500'}>
+              Companies will be added soon
+            </p>
           </div>
         )}
       </div>

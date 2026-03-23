@@ -2,6 +2,11 @@
   min-height: 100vh;
   background-color: #20232A;
   direction: ltr;
+  transition: background-color 0.3s ease;
+}
+
+.light-mode .developer-dashboard {
+  background-color: #f9f9f9;
 }
 
 .dashboard-layout {
@@ -22,12 +27,24 @@
   height: calc(100vh - 64px);
   overflow-y: auto;
   z-index: 40;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.light-mode .dashboard-sidebar {
+  background: #ffffff;
+  border-left: 1px solid #e5e5e5;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .developer-info {
   padding: 30px 20px;
   text-align: center;
   border-bottom: 1px solid #3a4750;
+  transition: border-color 0.3s ease;
+}
+
+.light-mode .developer-info {
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .developer-avatar {
@@ -48,12 +65,22 @@
   margin: 0 0 5px 0;
   color: white;
   font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .developer-info h3 {
+  color: #1a1a1a;
 }
 
 .developer-info p {
   margin: 0;
   color: #d1d5db;
   font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .developer-info p {
+  color: #666666;
 }
 
 .sidebar-nav {

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../hooks/useThemeContext';
 import { getDeveloperById } from '../../DevloperP/developersData';
 
 const DashboardApplications = () => {
+  const { isDarkMode } = useTheme();
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
@@ -123,15 +125,15 @@ const DashboardApplications = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'new':
-        return 'bg-blue-500 text-white';
+        return isDarkMode ? 'bg-blue-500 text-white' : 'bg-[#11a3a3] text-white';
       case 'under_review':
-        return 'bg-yellow-500 text-black';
+        return isDarkMode ? 'bg-yellow-500 text-black' : 'bg-yellow-400 text-black';
       case 'accepted':
-        return 'bg-green-500 text-white';
+        return isDarkMode ? 'bg-green-500 text-white' : 'bg-green-600 text-white';
       case 'rejected':
-        return 'bg-red-500 text-white';
+        return isDarkMode ? 'bg-red-500 text-white' : 'bg-red-600 text-white';
       default:
-        return 'bg-gray-500 text-white';
+        return isDarkMode ? 'bg-gray-500 text-white' : 'bg-gray-400 text-white';
     }
   };
 
@@ -155,33 +157,43 @@ const DashboardApplications = () => {
   };
 
   return (
-    <div className="dashboard-applications">
+    <div className={`dashboard-applications ${isDarkMode ? '' : 'light-mode'}`}>
       <h2>Received Applications</h2>
       <div className="applications-filters">
-        <button className="filter-btn active">All Applications ({applications.length})</button>
-        <button className="filter-btn">New ({getStatusCount('new')})</button>
-        <button className="filter-btn">Under Review ({getStatusCount('under_review')})</button>
-        <button className="filter-btn">Accepted ({getStatusCount('accepted')})</button>
-        <button className="filter-btn">Rejected ({getStatusCount('rejected')})</button>
+        <button className={`filter-btn ${isDarkMode ? '' : 'light-mode'} active`}>
+          All Applications ({applications.length})
+        </button>
+        <button className={`filter-btn ${isDarkMode ? '' : 'light-mode'}`}>
+          New ({getStatusCount('new')})
+        </button>
+        <button className={`filter-btn ${isDarkMode ? '' : 'light-mode'}`}>
+          Under Review ({getStatusCount('under_review')})
+        </button>
+        <button className={`filter-btn ${isDarkMode ? '' : 'light-mode'}`}>
+          Accepted ({getStatusCount('accepted')})
+        </button>
+        <button className={`filter-btn ${isDarkMode ? '' : 'light-mode'}`}>
+          Rejected ({getStatusCount('rejected')})
+        </button>
       </div>
       
       <div className="applications-list">
         {applications.map((application) => (
-          <div key={application.id} className="application-card">
+          <div key={application.id} className={`application-card ${isDarkMode ? '' : 'light-mode'}`}>
             <div className="applicant-info">
-              <div className="applicant-avatar">{application.avatar}</div>
+              <div className={`applicant-avatar ${isDarkMode ? '' : 'light-mode'}`}>{application.avatar}</div>
               <div className="applicant-details">
                 <h4>{application.applicantName}</h4>
                 <p>{application.position} • {application.experience}</p>
                 <div className="applicant-skills">
                   {application.skills.map((skill, index) => (
-                    <span key={index}>{skill}</span>
+                    <span key={index} className={isDarkMode ? '' : 'light-mode'}>{skill}</span>
                   ))}
                 </div>
               </div>
             </div>
             <div className="application-details">
-              <div className="job-applied">Applied: {application.appliedDate}</div>
+              <div className={`job-applied ${isDarkMode ? '' : 'light-mode'}`}>Applied: {application.appliedDate}</div>
               <div className="contact-info">
                 <p>📧 {application.email}</p>
                 <p>📱 {application.phone}</p>
@@ -190,14 +202,20 @@ const DashboardApplications = () => {
               <div className="application-actions">
                 <Link 
                   to={`/developer/profile/${application.applicantId}`}
-                  className="btn-view"
+                  className={`btn-view ${isDarkMode ? '' : 'light-mode'}`}
                 >
                   View Profile
                 </Link>
-                <button className="btn-accept" onClick={() => handleApplicationAction(application.id, 'accepted')}>
+                <button 
+                  className={`btn-accept ${isDarkMode ? '' : 'light-mode'}`} 
+                  onClick={() => handleApplicationAction(application.id, 'accepted')}
+                >
                   Accept
                 </button>
-                <button className="btn-reject" onClick={() => handleApplicationAction(application.id, 'rejected')}>
+                <button 
+                  className={`btn-reject ${isDarkMode ? '' : 'light-mode'}`} 
+                  onClick={() => handleApplicationAction(application.id, 'rejected')}
+                >
                   Reject
                 </button>
               </div>

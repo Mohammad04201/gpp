@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTheme } from '../hooks/useThemeContext';
 import EditCompanyOverlay from './EditCompany/EditCompanyOverlay';
 import { mergeCompanyData, calculateCompletion, getCompanyLevel } from './user/companyDataManager';
 import ProfileHeader from './profileCompany/ProfileHeader';
@@ -35,7 +36,7 @@ const defaultCompanyData = {
   }
 };
 
-function CompanyProfileView() {
+function CompanyProfileView({ hideEditButton = false }) {
   const { id } = useParams();
   const companyId = id || '1';
   
@@ -43,6 +44,7 @@ function CompanyProfileView() {
   const [isEditing, setIsEditing] = useState(false);
   const [activeTab, setActiveTab] = useState('departments');
   const [isLoaded, setIsLoaded] = useState(false);
+  const { isDarkMode } = useTheme();
 
   // Load data when page starts
   useEffect(() => {
@@ -59,10 +61,14 @@ function CompanyProfileView() {
 
   if (!isLoaded || !companyData) {
     return (
-      <div className="min-vh-100 bg-[#20232A] text-white flex items-center justify-center">
+      <div className={`min-vh-100 flex items-center justify-center transition-all duration-300 ${
+        isDarkMode ? 'bg-[#20232A] text-white' : 'bg-[#f9f9f9] text-gray-800'
+      }`}>
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p>Loading...</p>
+          <div className={`w-12 h-12 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4 ${
+            isDarkMode ? 'border-blue-500' : 'border-teal-500'
+          }`}></div>
+          <p className={isDarkMode ? 'text-white' : 'text-gray-800'}>Loading...</p>
         </div>
       </div>
     );
@@ -72,9 +78,11 @@ function CompanyProfileView() {
   const companyLevel = getCompanyLevel(profileCompletion);
 
   return (
-    <div className="min-vh-100 bg-[#20232A] text-white relative">
-      {/* Floating edit button */}
-      <EditButton onClick={() => setIsEditing(true)} />
+    <div className={`min-vh-100 relative transition-all duration-300 ${
+      isDarkMode ? 'bg-[#20232A] text-white' : 'bg-[#f9f9f9] text-gray-800'
+    }`}>
+      {/* Floating edit button - only show if not hidden */}
+      {!hideEditButton && <EditButton onClick={() => setIsEditing(true)} />}
 
       {/* Edit modal popup */}
       {isEditing && (
@@ -97,19 +105,17 @@ function CompanyProfileView() {
         
         <JobProfile />
         
-      
-
-     
-     
-
-        <div className="text-center mt-8">
-          <Link 
-            to="/companies"
-            className="px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-lg hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            Back to Companies
-          </Link>
-        </div>
+        {/* Only show Back to Companies button when not in dashboard */}
+        {!hideEditButton && (
+          <div className="text-center mt-8">
+            <Link 
+              to="/companies"
+              className="px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-lg hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              Back to Companies
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

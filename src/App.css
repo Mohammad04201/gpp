@@ -2,10 +2,22 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #20232A;
   color: #e5e7eb;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme overrides */
+.light-mode body {
+  background-color: #f9f9f9;
+  color: #1a1a1a;
 }
 
 .bg-app-dark {
   background: radial-gradient(circle at top, #3a4750 0%, #20232A 40%, #1a1d23 100%);
+  transition: background 0.3s ease;
+}
+
+.light-mode .bg-app-dark {
+  background: radial-gradient(circle at top, #f0f0f0 0%, #f9f9f9 40%, #ffffff 100%);
 }
 
 .glass-card {
@@ -14,7 +26,13 @@ body {
   border: 1px solid rgba(58, 71, 80, 0.35);
   box-shadow: 0 18px 40px rgba(32, 35, 42, 0.7);
   backdrop-filter: blur(18px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.3s ease;
+}
+
+.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(229, 229, 229, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
 }
 
 .card {
@@ -23,7 +41,13 @@ body {
   background: linear-gradient(135deg, #282C34 0%, #20232A 100%);
   box-shadow: 0 10px 30px rgba(32, 35, 42, 0.6);
   overflow: hidden;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.3s ease;
+}
+
+.light-mode .card {
+  border: 1px solid rgba(229, 229, 229, 0.9);
+  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
@@ -32,10 +56,20 @@ body {
   border-color: rgba(58, 71, 80, 0.25);
 }
 
+.light-mode .card:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(20, 184, 166, 0.25);
+}
+
 .glass-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 22px 55px rgba(32, 35, 42, 0.9);
   border-color: rgba(58, 71, 80, 0.35);
+}
+
+.light-mode .glass-card:hover {
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.15);
+  border-color: rgba(20, 184, 166, 0.35);
 }
 
 .navbar-brand {
@@ -48,17 +82,35 @@ body {
   padding-block: 0.25rem;
   background-color: rgba(58, 71, 80, 0.1);
   color: #e5e7eb;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-mode .badge-soft {
+  background-color: rgba(20, 184, 166, 0.1);
+  color: #1a1a1a;
 }
 
 .btn-primary {
   background-color: #3a4750;
   border-color: #3a4750;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: #4a5568;
   border-color: #4a5568;
+}
+
+.light-mode .btn-primary {
+  background-color: #14b8a6;
+  border-color: #14b8a6;
+}
+
+.light-mode .btn-primary:hover,
+.light-mode .btn-primary:focus {
+  background-color: #06b6d4;
+  border-color: #06b6d4;
 }
 
 .card-body-large {
@@ -78,6 +130,13 @@ body {
   font-weight: 600;
   color: #e0f2fe;
   margin-bottom: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.light-mode .feature-card-icon {
+  background-color: rgba(20, 184, 166, 0.95);
+  border: 1px solid rgba(20, 184, 166, 0.6);
+  color: #ffffff;
 }
 
 .navbar .nav-link {
@@ -88,6 +147,14 @@ body {
   color: #ffffff !important;
 }
 
+.light-mode .navbar .nav-link:hover {
+  color: #14b8a6 !important;
+}
+
 .navbar .nav-link.text-white-50:hover {
   color: #ffffff !important;
+}
+
+.light-mode .navbar .nav-link.text-white-50:hover {
+  color: #14b8a6 !important;
 }

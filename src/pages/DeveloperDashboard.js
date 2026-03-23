@@ -5,13 +5,16 @@ import { getDeveloperInitials, formatExperience, formatNumber } from '../compone
 import DashboardSidebar from '../components/DevloperP/DahsbordDevloper/DashboardSidebar';
 import DashboardHeader from '../components/DevloperP/DahsbordDevloper/DashboardHeader';
 import ProfileTab from '../components/DevloperP/DahsbordDevloper/ProfileTab';
+import EditProfileOverlay from '../components/DevloperP/user/EditProfileOverlay';
 import ApplicationsTab from '../components/DevloperP/DahsbordDevloper/ApplicationsTab';
 import SavedJobsTab from '../components/DevloperP/DahsbordDevloper/SavedJobsTab';
 import SkillsTab from '../components/DevloperP/DahsbordDevloper/SkillsTab';
 import SettingsTab from '../components/DevloperP/DahsbordDevloper/SettingsTab';
 import './DeveloperDashboard.css';
+import { useThemeContext } from '../components/contexts/ThemeContext';
 
 const DeveloperDashboard = () => {
+  const { isDarkMode } = useThemeContext();
   const [activeTab, setActiveTab] = useState('profile');
   const [currentDeveloper, setCurrentDeveloper] = useState(null);
   const [applications, setApplications] = useState([]);
@@ -72,8 +75,10 @@ const DeveloperDashboard = () => {
       }
     ]);
   }, []);
+
   const menuItems = [
     { id: 'profile', name: 'My Profile', icon: '👤' },
+    { id: 'edit-profile', name: 'Edit Profile', icon: '✏️' },
     { id: 'applications', name: 'My Applications', icon: '📋' },
     { id: 'saved-jobs', name: 'Saved Jobs', icon: '💾' },
     { id: 'skills', name: 'Skills & Portfolio', icon: '🎯' },
@@ -83,32 +88,48 @@ const DeveloperDashboard = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'profile':
-        return <ProfileTab currentDeveloper={currentDeveloper} />;
+        return <ProfileTab currentDeveloper={currentDeveloper} isDarkMode={isDarkMode} />;
+      
+      case 'edit-profile':
+        return (
+          <EditProfileOverlay 
+            userData={currentDeveloper} 
+            isDarkMode={isDarkMode}
+            onSave={(updatedData) => {
+              setCurrentDeveloper(updatedData);
+              setActiveTab('profile');
+            }}
+            onCancel={() => setActiveTab('profile')}
+          />
+        );
       
       case 'applications':
-        return <ApplicationsTab currentDeveloper={currentDeveloper} />;
+        return <ApplicationsTab currentDeveloper={currentDeveloper} isDarkMode={isDarkMode} />;
       
       case 'saved-jobs':
-        return <SavedJobsTab savedJobs={savedJobs} />;
+        return <SavedJobsTab savedJobs={savedJobs} isDarkMode={isDarkMode} />;
       
       case 'skills':
-        return <SkillsTab currentDeveloper={currentDeveloper} />;
+        return <SkillsTab currentDeveloper={currentDeveloper} isDarkMode={isDarkMode} />;
       
       case 'settings':
-        return <SettingsTab currentDeveloper={currentDeveloper} />;
+        return <SettingsTab currentDeveloper={currentDeveloper} isDarkMode={isDarkMode} />;
       
       default:
-        return <ProfileTab currentDeveloper={currentDeveloper} />;
+        return <ProfileTab currentDeveloper={currentDeveloper} isDarkMode={isDarkMode} />;
     }
   };
 
   return (
-    <div className="developer-dashboard">
-      <MainNavbar />
+    <div className={`developer-dashboard transition-all duration-300 ${
+      isDarkMode ? 'bg-[#20232A] text-white' : 'bg-[#f9f9f9] text-gray-800'
+    }`}>
+      <MainNavbar isDarkMode={isDarkMode} />
       
       <div className="dashboard-layout">
         {/* Sidebar */}
         <DashboardSidebar 
+          isDarkMode={isDarkMode}
           currentDeveloper={currentDeveloper}
           menuItems={menuItems}
           activeTab={activeTab}
@@ -117,7 +138,7 @@ const DeveloperDashboard = () => {
         
         {/* Main Content */}
         <div className="dashboard-main">
-          <DashboardHeader currentDeveloper={currentDeveloper} />
+          <DashboardHeader currentDeveloper={currentDeveloper} isDarkMode={isDarkMode} />
           
           <div className="dashboard-content">
             {renderContent()}

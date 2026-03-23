@@ -1,0 +1,130 @@
+/* Theme Management for Auth Pages */
+
+/* Import theme files */
+@import './light-theme.css';
+@import './dark-theme.css';
+
+/* Default to light mode */
+:root {
+  /* Light theme variables as default */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-hover: #f8fafc;
+  --bg-border: #e2e8f0;
+  
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #ffffff;
+  
+  --accent-primary: #14b8a6;
+  --accent-hover: #06b6d4;
+  --accent-light: #e0f2fe;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-card: #1e293b;
+    --bg-hover: #334155;
+    --bg-border: #475569;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-inverse: #0f172a;
+    
+    --accent-primary: #14b8a6;
+    --accent-hover: #06b6d4;
+    --accent-light: #164e63;
+  }
+}
+
+/* Manual theme switching classes */
+.light-mode {
+  /* Light theme variables */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-hover: #f8fafc;
+  --bg-border: #e2e8f0;
+  
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #ffffff;
+}
+
+.dark-mode {
+  /* Dark theme variables */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1e293b;
+  --bg-hover: #334155;
+  --bg-border: #475569;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0f172a;
+}
+
+/* Apply theme classes to body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Auth specific styles */
+.auth-container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+.auth-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--bg-border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-option-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--bg-border);
+  transition: all 0.3s ease;
+}
+
+.auth-option-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 25px rgba(20, 184, 166, 0.15);
+}
+
+/* Badge styles */
+.auth-badge {
+  background-color: var(--accent-light);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+}
+
+/* Button styles */
+.auth-button {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+  color: var(--text-inverse);
+  transition: transform 0.2s ease;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

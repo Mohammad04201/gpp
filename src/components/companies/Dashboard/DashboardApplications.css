@@ -1,0 +1,310 @@
+.dashboard-applications {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.light-mode .dashboard-applications {
+  background-color: #f9f9f9;
+}
+
+.dashboard-applications h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .dashboard-applications h2 {
+  color: #1a1a1a;
+}
+
+.applications-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #3a4750;
+  color: #b0b0b0;
+}
+
+.filter-btn:hover {
+  background: #4a5568;
+  color: white;
+}
+
+.filter-btn.active {
+  background: #11a3a3;
+  color: white;
+}
+
+.light-mode .filter-btn {
+  background: #e9ecef;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.light-mode .filter-btn:hover {
+  background: #dee2e6;
+  color: #212529;
+}
+
+.light-mode .filter-btn.active {
+  background: #11a3a3;
+  color: white;
+  border-color: #11a3a3;
+}
+
+.applications-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.application-card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  border: 1px solid #333;
+  padding: 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.light-mode .application-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.applicant-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.applicant-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #11a3a3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.light-mode .applicant-avatar {
+  background: #11a3a3;
+  box-shadow: 0 4px 8px rgba(17, 163, 163, 0.2);
+}
+
+.applicant-details h4 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .applicant-details h4 {
+  color: #1a1a1a;
+}
+
+.applicant-details p {
+  color: #b0b0b0;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .applicant-details p {
+  color: #6c757d;
+}
+
+.applicant-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.applicant-skills span {
+  padding: 0.25rem 0.75rem;
+  background: #3a4750;
+  color: #b0b0b0;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.applicant-skills span:hover {
+  background: #4a5568;
+  color: white;
+}
+
+.light-mode .applicant-skills span {
+  background: #e9ecef;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.light-mode .applicant-skills span:hover {
+  background: #dee2e6;
+  color: #212529;
+}
+
+.application-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.job-applied {
+  color: #b0b0b0;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .job-applied {
+  color: #6c757d;
+}
+
+.contact-info p {
+  color: #b0b0b0;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .contact-info p {
+  color: #6c757d;
+}
+
+.application-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-view {
+  padding: 0.5rem 1rem;
+  background: #3a4750;
+  color: #b0b0b0;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-view:hover {
+  background: #4a5568;
+  color: white;
+}
+
+.light-mode .btn-view {
+  background: #e9ecef;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.light-mode .btn-view:hover {
+  background: #dee2e6;
+  color: #212529;
+}
+
+.btn-accept {
+  padding: 0.5rem 1rem;
+  background: #11a3a3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-accept:hover {
+  background: #0d8b8b;
+  transform: translateY(-1px);
+}
+
+.light-mode .btn-accept {
+  background: #11a3a3;
+  box-shadow: 0 2px 8px rgba(17, 163, 163, 0.2);
+}
+
+.light-mode .btn-accept:hover {
+  background: #0d8b8b;
+  box-shadow: 0 4px 12px rgba(17, 163, 163, 0.3);
+}
+
+.btn-reject {
+  padding: 0.5rem 1rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-reject:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.light-mode .btn-reject {
+  background: #dc3545;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+.light-mode .btn-reject:hover {
+  background: #c82333;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-applications {
+    padding: 1rem;
+  }
+  
+  .applications-filters {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .application-card {
+    padding: 1rem;
+  }
+  
+  .applicant-info {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .application-details {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .application-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+}

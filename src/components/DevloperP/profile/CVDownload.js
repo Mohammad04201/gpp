@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTheme } from '../../hooks/useThemeContext';
 
 const CVDownload = ({ userData }) => {
+  const { isDarkMode } = useTheme();
+  
   if (!userData.cvFile?.name) {
     return null;
   }

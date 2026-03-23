@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useThemeContext } from '../contexts/ThemeContext';
 import { getDeveloperById } from './developersData';
 import { getDeveloperInitials } from './helpers';
 import { calculateCompletion } from './user/userDataManager';
@@ -19,10 +20,10 @@ function DeveloperProfile({ hideEditButton = false }) {
   const { id } = useParams();
   const developerId = id || '1';
   const baseDeveloper = getDeveloperById(developerId);
+  const { isDarkMode } = useThemeContext();
   
   const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
   const [isLoaded, setIsLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -45,11 +46,13 @@ function DeveloperProfile({ hideEditButton = false }) {
 
   if (!isLoaded || !userData) {
     return (
-      <div className="developer-container">
+      <div className={`developer-container transition-all duration-300 ${
+        isDarkMode ? '' : 'light-mode'
+      }`}>
         <div className="developer-content">
           <div className="text-center">
             <div className="loading-spinner"></div>
-            <p className="mt-4">Loading...</p>
+            <p className={`mt-4 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Loading...</p>
           </div>
         </div>
       </div>
@@ -58,11 +61,22 @@ function DeveloperProfile({ hideEditButton = false }) {
 
   if (!baseDeveloper) {
     return (
-      <div className="developer-container">
+      <div className={`developer-container transition-all duration-300 ${
+        isDarkMode ? '' : 'light-mode'
+      }`}>
         <div className="developer-content">
           <div className="text-center">
-            <h1 className="developer-title">Developer not found</h1>
-            <Link to="/developers" className="btn-primary mt-4">
+            <h1 className={`developer-title ${isDarkMode ? 'text-white' : ''}`}>
+              Developer not found
+            </h1>
+            <Link 
+              to="/developers" 
+              className={`btn-primary mt-4 transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white' 
+                  : 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white shadow-lg'
+              }`}
+            >
               Back to Developers
             </Link>
           </div>
@@ -75,9 +89,11 @@ function DeveloperProfile({ hideEditButton = false }) {
   const profileCompletion = calculateCompletion(userData);
 
   return (
-    <div className="developer-container">
+    <div className={`developer-container transition-all duration-300 ${
+      isDarkMode ? '' : 'light-mode'
+    }`}>
       {/* Floating edit button */}
-      {!hideEditButton && <EditButton setIsEditing={setIsEditing} />}
+      {!hideEditButton && <EditButton setIsEditing={setIsEditing} isDarkMode={isDarkMode} />}
 
       {/* Edit modal overlay */}
       {isEditing && (
@@ -85,37 +101,42 @@ function DeveloperProfile({ hideEditButton = false }) {
           userData={userData} 
           onSave={handleSave} 
           onCancel={() => setIsEditing(false)} 
+          isDarkMode={isDarkMode}
         />
       )}
 
       <div className="developer-content">
         {/* Profile Header with Completion */}
-        <ProfileHeader userData={userData} />
+        <ProfileHeader userData={userData} isDarkMode={isDarkMode} />
 
         {/* Skills Tab */}
         <div className="mb-8">
-          <SkillsTab userData={userData} />
+          <SkillsTab userData={userData} isDarkMode={isDarkMode} />
         </div>
 
         {/* Projects Tab */}
         <div className="mb-8">
-          <ProjectsTab userData={userData} />
+          <ProjectsTab userData={userData} isDarkMode={isDarkMode} />
         </div>
 
         {/* Quick Stats and Resume Level Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Quick Stats */}
-          <QuickStats userData={userData} />
+          <QuickStats userData={userData} isDarkMode={isDarkMode} />
           
           {/* Resume Level */}
-          <ResumeLevel userData={userData} />
+          <ResumeLevel userData={userData} isDarkMode={isDarkMode} />
         </div>
 
         {/* Back Button */}
         <div className="text-center">
           <Link 
             to="/developers"
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg border border-gray-600"
+            className={`inline-flex items-center px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${
+              isDarkMode 
+                ? 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white border border-gray-600'
+                : 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white shadow-xl hover:shadow-2xl'
+            }`}
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

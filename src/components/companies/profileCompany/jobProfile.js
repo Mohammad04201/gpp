@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTheme } from '../../hooks/useThemeContext';
 
 const JobProfile = () => {
+
+  const { isDarkMode } = useTheme();
 
   const dummyJobs = [
     {
@@ -47,16 +50,20 @@ const JobProfile = () => {
   return (
     <div className="lg:col-span-2">
 
-      <div className="rounded-xl p-8">
+      <div className={`rounded-xl p-8 transition-all duration-300 ${
+        isDarkMode ? 'bg-gray-800/50' : ''
+      }`}>
  
-           <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+           <h2 className={`text-2xl font-bold mb-6 flex items-center ${
+             isDarkMode ? 'text-white' : 'text-gray-800'
+           }`}>
                      <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="w-6 h-6 text-teal-400 mr-2"
+            className={`w-6 h-6 mr-2 ${isDarkMode ? 'text-teal-400' : 'text-teal-500'}`}
           >
             <path
               strokeLinecap="round"
@@ -72,39 +79,67 @@ const JobProfile = () => {
           {dummyJobs.map((post) => (
             <div
               key={post.id}
-              className="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-lg"
+              className={`rounded-xl p-6 transition-all duration-300 hover:scale-105 ${
+                isDarkMode 
+                  ? 'bg-gray-800 border border-gray-700 shadow-lg hover:shadow-xl hover:shadow-teal-500/20 hover:border-teal-500'
+                  : 'bg-white border border-gray-200 shadow-lg hover:shadow-2xl hover:shadow-teal-400/30 hover:border-teal-400'
+              }`}
             >
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className={`text-xl font-bold mb-2 ${
+                isDarkMode ? 'text-white' : 'text-gray-800'
+              }`}>
                 {post.title}
               </h3>
 
-              <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+              <p className={`text-sm mb-4 line-clamp-3 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-600'
+              }`}>
                 {post.description}
               </p>
 
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  isDarkMode 
+                    ? 'bg-blue-500/20 text-blue-400' 
+                    : 'bg-blue-100 text-blue-700'
+                }`}>
                   {post.experience}
                 </span>
-                <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  isDarkMode 
+                    ? 'bg-green-500/20 text-green-400' 
+                    : 'bg-green-100 text-green-700'
+                }`}>
                   {post.type}
                 </span>
-                <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  isDarkMode 
+                    ? 'bg-purple-500/20 text-purple-400' 
+                    : 'bg-purple-100 text-purple-700'
+                }`}>
                   {post.location}
                 </span>
               </div>
 
               <div className="mb-4">
-                <span className="text-teal-400 font-bold text-sm">
+                <span className={`font-bold text-sm ${
+                  isDarkMode ? 'text-teal-400' : 'text-teal-600'
+                }`}>
                   {post.salary}
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-700">
+              <div className={`flex flex-wrap gap-2 mt-4 pt-4 border-t ${
+                isDarkMode ? 'border-gray-700' : 'border-gray-200'
+              }`}>
                 {post.skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 bg-gray-700 text-gray-300 rounded text-xs"
+                    className={`px-2 py-1 rounded text-xs transition-all duration-300 ${
+                      isDarkMode 
+                        ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                   >
                     {skill}
                   </span>
