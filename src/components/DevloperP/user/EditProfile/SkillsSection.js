@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTheme } from '../../../hooks/useThemeContext';
 
 function SkillsSection({ formData, onChange }) {
+  const { isDarkMode } = useTheme();
   const [newSkillName, setNewSkillName] = useState('');
   const [newSkillLevel, setNewSkillLevel] = useState('Intermediate');
 
@@ -23,59 +25,88 @@ function SkillsSection({ formData, onChange }) {
   const skillLevels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
 
   return (
-    <div className="text-white">
-      <h3 className="text-xl font-bold mb-4">Skills</h3>
+    <div className={isDarkMode ? 'text-white' : 'text-gray-800'}>
+      <h3 className={`text-lg lg:text-xl font-bold mb-4 ${
+        isDarkMode ? 'text-white' : 'text-gray-800'
+      }`}>
+        Skills
+      </h3>
       <div className="space-y-4">
         {/* Add new skill section */}
         <div className="flex flex-col sm:flex-row gap-2">
           <input
             type="text"
+            placeholder="Skill name"
             value={newSkillName}
             onChange={(e) => setNewSkillName(e.target.value)}
-            placeholder="Enter skill name"
-            className="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
             onKeyPress={(e) => e.key === 'Enter' && handleAddSkill()}
+            className={`flex-1 px-3 lg:px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              isDarkMode 
+                ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
+                : 'bg-white border-gray-300 text-gray-800 placeholder-gray-500'
+            }`}
           />
           <select
             value={newSkillLevel}
             onChange={(e) => setNewSkillLevel(e.target.value)}
-            className="px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
+            className={`px-3 lg:px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              isDarkMode 
+                ? 'bg-gray-700 border-gray-600 text-white' 
+                : 'bg-white border-gray-300 text-gray-800'
+            }`}
           >
-            {skillLevels.map((level) => (
+            {skillLevels.map(level => (
               <option key={level} value={level}>{level}</option>
             ))}
           </select>
           <button
             onClick={handleAddSkill}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition-colors"
+            className={`px-4 lg:px-6 py-2 rounded-lg font-medium transition-colors ${
+              isDarkMode 
+                ? 'bg-blue-500 hover:bg-blue-600 text-white' 
+                : 'bg-blue-600 hover:bg-blue-700 text-white'
+            }`}
           >
-            Add Skill
+            Add
           </button>
         </div>
 
-        {/* Display existing skills */}
-        {(formData.skills || []).length > 0 && (
-          <div className="space-y-2">
-            {(formData.skills || []).map((skill, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <span className="font-medium">{skill.name || skill}</span>
-                  <span className="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">
-                    {skill.level || 'Intermediate'}
-                  </span>
-                </div>
-                <button
-                  onClick={() => handleRemoveSkill(index)}
-                  className="text-red-400 hover:text-red-300 transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+        {/* Skills list */}
+        <div className="space-y-2">
+          {(formData.skills || []).map((skill, index) => (
+            <div 
+              key={index}
+              className={`flex items-center justify-between p-3 rounded-lg border ${
+                isDarkMode 
+                  ? 'bg-gray-700 border-gray-600' 
+                  : 'bg-gray-50 border-gray-200'
+              }`}
+            >
+              <div>
+                <span className={`font-medium ${
+                  isDarkMode ? 'text-white' : 'text-gray-800'
+                }`}>
+                  {skill.name}
+                </span>
+                <span className={`ml-2 text-xs px-2 py-1 rounded ${
+                  isDarkMode ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-800'
+                }`}>
+                  {skill.level}
+                </span>
               </div>
-            ))}
-          </div>
-        )}
+              <button
+                onClick={() => handleRemoveSkill(index)}
+                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                  isDarkMode 
+                    ? 'bg-red-500 hover:bg-red-600 text-white' 
+                    : 'bg-red-500 hover:bg-red-600 text-white'
+                }`}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

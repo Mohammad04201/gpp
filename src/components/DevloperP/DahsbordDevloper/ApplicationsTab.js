@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function ApplicationsTab({ currentDeveloper }) {
+  const { isDarkMode } = useThemeContext();
   const [sentApplications, setSentApplications] = useState([]);
   const [companyResponses, setCompanyResponses] = useState([]);
 
@@ -115,14 +117,28 @@ function ApplicationsTab({ currentDeveloper }) {
   };
 
   return (
-    <div className="dashboard-applications">
-      <h2>My Applications</h2>
+    <div className={`dashboard-applications transition-all duration-300 ${
+      isDarkMode ? 'text-white' : 'text-gray-800'
+    }`}>
+      <h2 className={`mb-6 transition-all duration-300 ${
+        isDarkMode ? 'text-white' : 'text-gray-800'
+      }`}>My Applications</h2>
       <div className="applications-filters">
-        <button className="filter-btn active">All Applications ({sentApplications.length})</button>
-        <button className="filter-btn">New ({sentApplications.filter(app => getApplicationStatus(app) === 'New').length})</button>
-        <button className="filter-btn">Under Review ({sentApplications.filter(app => getApplicationStatus(app) === 'Under Review').length})</button>
-        <button className="filter-btn">Interview ({sentApplications.filter(app => getApplicationStatus(app) === 'Interview').length})</button>
-        <button className="filter-btn">Rejected ({sentApplications.filter(app => getApplicationStatus(app) === 'Rejected').length})</button>
+        <button className={`filter-btn transition-all duration-300 ${
+          isDarkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+        }`}>All Applications ({sentApplications.length})</button>
+        <button className={`filter-btn transition-all duration-300 ${
+          isDarkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+        }`}>New ({sentApplications.filter(app => getApplicationStatus(app) === 'New').length})</button>
+        <button className={`filter-btn transition-all duration-300 ${
+          isDarkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+        }`}>Under Review ({sentApplications.filter(app => getApplicationStatus(app) === 'Under Review').length})</button>
+        <button className={`filter-btn transition-all duration-300 ${
+          isDarkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+        }`}>Interview ({sentApplications.filter(app => getApplicationStatus(app) === 'Interview').length})</button>
+        <button className={`filter-btn transition-all duration-300 ${
+          isDarkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+        }`}>Rejected ({sentApplications.filter(app => getApplicationStatus(app) === 'Rejected').length})</button>
       </div>
       
       <div className="applications-list">
@@ -131,12 +147,22 @@ function ApplicationsTab({ currentDeveloper }) {
           const appWithResponse = getApplicationWithResponse(application);
           
           return (
-            <div key={`${application.company}-${application.position}`} className="application-card">
+            <div key={`${application.company}-${application.position}`} className={`application-card transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-gray-800/50 border-gray-700 hover:border-teal-500/50' 
+                : 'bg-white border-gray-200 shadow-lg hover:shadow-xl hover:border-teal-400'
+            }`}>
               <div className="company-info">
-                <div className="company-logo">{application.logo}</div>
+                <div className={`company-logo transition-all duration-300 ${
+                  isDarkMode ? 'bg-gray-700' : 'bg-gray-100'
+                }`}>{application.logo}</div>
                 <div className="company-details">
-                  <h4>{application.company}</h4>
-                  <p>{application.position} • {application.type} • {application.location}</p>
+                  <h4 className={`transition-all duration-300 ${
+                    isDarkMode ? 'text-white' : 'text-gray-800'
+                  }`}>{application.company}</h4>
+                  <p className={`transition-all duration-300 ${
+                    isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                  }`}>{application.position} • {application.type} • {application.location}</p>
                   <div className="application-status">
                     <span className={`status-badge ${getStatusColor(status)}`}>
                       {status}
@@ -144,7 +170,9 @@ function ApplicationsTab({ currentDeveloper }) {
                   </div>
                   {application.salary && (
                     <div className="salary-info">
-                      <span className="text-green-400 font-medium">{application.salary}</span>
+                      <span className={`font-medium transition-all duration-300 ${
+                        isDarkMode ? 'text-green-400' : 'text-green-600'
+                      }`}>{application.salary}</span>
                     </div>
                   )}
                 </div>
@@ -152,9 +180,13 @@ function ApplicationsTab({ currentDeveloper }) {
               <div className="application-details">
                 {appWithResponse.responseMessage && (
                   <div className="response-message">
-                    <p className="text-gray-300 mb-2">{appWithResponse.responseMessage}</p>
+                    <p className={`mb-2 transition-all duration-300 ${
+                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                    }`}>{appWithResponse.responseMessage}</p>
                     {appWithResponse.contactPerson && (
-                      <div className="contact-info text-sm text-gray-400">
+                      <div className={`contact-info text-sm transition-all duration-300 ${
+                        isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                      }`}>
                         <p>Contact: {appWithResponse.contactPerson}</p>
                         <p>Email: {appWithResponse.contactEmail}</p>
                       </div>
@@ -168,14 +200,30 @@ function ApplicationsTab({ currentDeveloper }) {
                   )}
                 </div>
                 <div className="application-actions">
-                  <button className="btn-view">View Job</button>
+                  <button className={`btn-view transition-all duration-300 ${
+                    isDarkMode 
+                      ? 'bg-gray-700 text-white hover:bg-gray-600' 
+                      : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                  }`}>View Job</button>
                   {status === 'Interview' && (
-                    <button className="btn-interview">Schedule Interview</button>
+                    <button className={`btn-interview transition-all duration-300 ${
+                      isDarkMode 
+                        ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                        : 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg hover:shadow-xl'
+                    }`}>Schedule Interview</button>
                   )}
                   {status === 'Accepted' && (
-                    <button className="btn-accept-offer">Accept Offer</button>
+                    <button className={`btn-accept-offer transition-all duration-300 ${
+                      isDarkMode 
+                        ? 'bg-green-600 text-white hover:bg-green-700' 
+                        : 'bg-green-500 text-white hover:bg-green-600 shadow-lg hover:shadow-xl'
+                    }`}>Accept Offer</button>
                   )}
-                  <button className="btn-withdraw">Withdraw</button>
+                  <button className={`btn-withdraw transition-all duration-300 ${
+                    isDarkMode 
+                      ? 'bg-gray-700 text-white hover:bg-gray-600' 
+                      : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                  }`}>Withdraw</button>
                 </div>
               </div>
             </div>
@@ -185,13 +233,21 @@ function ApplicationsTab({ currentDeveloper }) {
       
       {sentApplications.length === 0 && (
         <div className="text-center py-16">
-          <div className="w-24 h-24 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+          <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 ${
+            isDarkMode ? 'bg-gray-800/50' : 'bg-gray-100 shadow-lg'
+          }`}>
+            <svg className={`w-12 h-12 transition-all duration-300 ${
+              isDarkMode ? 'text-gray-500' : 'text-gray-400'
+            }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 00-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-gray-400 mb-3">No applications yet</h3>
-          <p className="text-gray-500 mb-6">Start applying for jobs to see them here</p>
+          <h3 className={`text-2xl font-bold mb-3 transition-all duration-300 ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>No applications yet</h3>
+          <p className={`mb-6 transition-all duration-300 ${
+            isDarkMode ? 'text-gray-500' : 'text-gray-500'
+          }`}>Start applying for jobs to see them here</p>
         </div>
       )}
     </div>

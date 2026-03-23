@@ -1,16 +1,23 @@
 import React from 'react';
+import { useTheme } from '../../hooks/useThemeContext';
 
 const EditButton = ({ setIsEditing }) => {
+  const { isDarkMode } = useTheme();
+  
   return (
     <button
       onClick={() => setIsEditing(true)}
-      className="fixed bottom-8 left-8 z-40 w-14 h-14 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:rotate-90 group"
+      className={`fixed bottom-8 left-8 z-40 w-14 h-14 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:rotate-90 group ${
+        isDarkMode ? '' : 'shadow-teal-400/30'
+      }`}
       title="Edit Profile"
     >
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
       </svg>
-      <span className="absolute left-full ml-3 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+      <span className={`absolute left-full ml-3 px-3 py-1 text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap ${
+        isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-800 text-white'
+      }`}>
         Edit Profile
       </span>
     </button>

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { JobCard } from '../../companies/PosteCompany/JobCard';
 import { postsData } from '../../companies/PosteCompany/postsData';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function SavedJobsTab({ savedJobs }) {
+  const { isDarkMode } = useThemeContext();
   const [likedJobs, setLikedJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('recent'); // recent, likes, salary
@@ -13,7 +15,7 @@ function SavedJobsTab({ savedJobs }) {
     const savedLikedJobs = localStorage.getItem('likedJobs');
     if (savedLikedJobs) {
       const likedJobIds = JSON.parse(savedLikedJobs);
-      // Get the actual job data from postsData
+      // Get actual job data from postsData
       const actualLikedJobs = postsData.filter(job => likedJobIds.includes(job.id));
       setLikedJobs(actualLikedJobs);
     } else {
@@ -102,11 +104,19 @@ function SavedJobsTab({ savedJobs }) {
     });
 
   return (
-    <div className="dashboard-saved-jobs">
-      <h2>Saved Jobs</h2>
+    <div className={`dashboard-saved-jobs transition-all duration-300 ${
+      isDarkMode ? 'text-white' : 'text-gray-800'
+    }`}>
+      <h2 className={`mb-6 transition-all duration-300 ${
+        isDarkMode ? 'text-white' : 'text-gray-800'
+      }`}>Saved Jobs</h2>
       
       {/* Search and Filters */}
-      <div className="bg-gray-800/50 rounded-xl border border-gray-700 p-4 mb-6">
+      <div className={`rounded-xl border p-4 mb-6 transition-all duration-300 ${
+        isDarkMode 
+          ? 'bg-gray-800/50 border-gray-700' 
+          : 'bg-white border-gray-200 shadow-lg'
+      }`}>
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1">
             <input
@@ -114,7 +124,11 @@ function SavedJobsTab({ savedJobs }) {
               placeholder="Search your saved jobs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-teal-500 focus:outline-none transition-colors"
+              className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-colors ${
+                isDarkMode 
+                  ? 'bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-teal-500' 
+                  : 'bg-white border-gray-300 text-gray-800 placeholder-gray-500 focus:border-teal-500'
+              }`}
             />
           </div>
           
@@ -122,7 +136,11 @@ function SavedJobsTab({ savedJobs }) {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
+              className={`px-4 py-3 rounded-lg focus:outline-none transition-colors ${
+                isDarkMode 
+                  ? 'bg-gray-900/50 border-gray-600 text-white focus:border-teal-500' 
+                  : 'bg-white border-gray-300 text-gray-800 focus:border-teal-500'
+              }`}
             >
               <option value="recent">Most Recent</option>
               <option value="likes">Most Liked</option>
@@ -134,7 +152,11 @@ function SavedJobsTab({ savedJobs }) {
                 setSearchTerm('');
                 setSortBy('recent');
               }}
-              className="px-4 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors"
+              className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+                isDarkMode 
+                  ? 'bg-gray-700 text-white hover:bg-gray-600' 
+                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              }`}
             >
               Clear Filters
             </button>
@@ -151,21 +173,34 @@ function SavedJobsTab({ savedJobs }) {
               post={job} 
               initialLiked={isJobInitiallyLiked(job.id)}
               onLikeChange={handleLikeChange}
+              isDarkMode={isDarkMode}
             />
           ))}
         </div>
       ) : (
         <div className="text-center py-16">
-          <div className="w-24 h-24 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 ${
+            isDarkMode ? 'bg-gray-800/50' : 'bg-gray-100 shadow-lg'
+          }`}>
+            <svg className={`w-12 h-12 transition-all duration-300 ${
+              isDarkMode ? 'text-gray-500' : 'text-gray-400'
+            }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-gray-400 mb-3">No saved jobs yet</h3>
-          <p className="text-gray-500 mb-6">Start liking jobs to see them here</p>
+          <h3 className={`text-2xl font-bold mb-3 transition-all duration-300 ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>No saved jobs yet</h3>
+          <p className={`mb-6 transition-all duration-300 ${
+            isDarkMode ? 'text-gray-500' : 'text-gray-500'
+          }`}>Start liking jobs to see them here</p>
           <Link
             to="/jobs"
-            className="inline-block px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
+            className={`inline-block px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+              isDarkMode 
+                ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white hover:from-teal-600 hover:to-cyan-600' 
+                : 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white hover:from-teal-600 hover:to-cyan-600 shadow-lg hover:shadow-xl'
+              }`}
           >
             Browse Jobs
           </Link>

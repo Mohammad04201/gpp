@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { JobCard } from '../components/companies/PosteCompany/JobCard';
 import { postsData, searchPosts, filterPostsBySkills, filterPostsByLocation, filterPostsByExperience } from '../components/companies/PosteCompany/postsData';
 import JobFilters from '../components/companies/PosteCompany/JobFilters';
+import { useThemeContext } from '../components/contexts/ThemeContext';
 
 function Jops() {
+  const { isDarkMode } = useThemeContext();
   const [posts, setPosts] = useState(postsData);
   const [filteredPosts, setFilteredPosts] = useState(postsData);
   const [searchQuery, setSearchQuery] = useState('');
@@ -81,18 +83,27 @@ function Jops() {
   };
 
   return (
-    <div className="min-vh-100 bg-[#20232A] text-white">
+    <div className={`min-vh-100 transition-all duration-300 ${
+      isDarkMode ? 'bg-[#20232A] text-white' : 'bg-gradient-to-br from-[#f9f9f9] via-white to-[#f0f9ff] text-gray-800'
+    }`}>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#11a3a3] to-[#0d8383] bg-clip-text text-transparent">
+          <h1 className={`text-4xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent transition-all duration-300 ${
+            isDarkMode 
+              ? 'from-teal-400 to-teal-600' 
+              : 'from-teal-500 to-teal-700'
+          }`}>
             Job Opportunities
           </h1>
-          <p className="text-gray-400 text-lg">Discover the best job opportunities at leading companies</p>
+          <p className={`text-lg transition-all duration-300 ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>Discover the best job opportunities at leading companies</p>
         </div>
 
         {/* New Filters Component */}
         <JobFilters
+          isDarkMode={isDarkMode}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           selectedSkills={selectedSkills}
@@ -111,7 +122,9 @@ function Jops() {
         />
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-8 border-b border-[#3a4750] overflow-x-auto">
+        <div className={`flex gap-2 mb-8 border-b overflow-x-auto transition-all duration-300 ${
+          isDarkMode ? 'border-[#3a4750]' : 'border-gray-200'
+        }`}>
           {[
             { id: 'all', label: 'All Jobs', count: filteredPosts.length },
             { id: 'trending', label: 'Most Popular', count: 5 },
@@ -121,10 +134,14 @@ function Jops() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 font-medium transition-all whitespace-nowrap ${
+              className={`px-6 py-3 font-medium transition-all duration-300 whitespace-nowrap transform hover:scale-105 rounded-t-lg ${
                 activeTab === tab.id
-                  ? 'text-[#11a3a3] border-b-2 border-[#11a3a3] bg-[#11a3a3]/10'
-                  : 'text-gray-400 hover:text-white hover:bg-[#3a4750]/30'
+                  ? isDarkMode 
+                    ? 'text-[#11a3a3] border-b-2 border-[#11a3a3] bg-[#11a3a3]/10' 
+                    : 'text-blue-600 border-b-2 border-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'
+                  : isDarkMode 
+                    ? 'text-gray-400 hover:text-white hover:bg-[#3a4750]/30' 
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
               }`}
             >
               {tab.label} ({tab.count})
@@ -134,12 +151,22 @@ function Jops() {
 
         {/* Results Count */}
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#282C34] rounded-lg border border-[#3a4750]">
-            <span className="text-gray-400">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-300 ${
+            isDarkMode 
+              ? 'bg-[#282C34] border-[#3a4750]' 
+              : 'bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200 shadow-lg'
+          }`}>
+            <span className={`transition-all duration-300 ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               {searchQuery || selectedSkills.length > 0 || selectedLocation || selectedExperience ? (
-                <><span className="text-[#11a3a3] font-bold mx-1">{getActivePosts().length}</span> jobs</>
+                <><span className={`font-bold mx-1 transition-all duration-300 ${
+                  isDarkMode ? 'text-[#11a3a3]' : 'text-blue-600'
+                }`}>{getActivePosts().length}</span> jobs</>
               ) : (
-                <>All Jobs <span className="text-[#11a3a3] font-bold mx-1">{getActivePosts().length}</span></>
+                <>All Jobs <span className={`font-bold mx-1 transition-all duration-300 ${
+                  isDarkMode ? 'text-[#11a3a3]' : 'text-blue-600'
+                }`}>{getActivePosts().length}</span></>
               )}
             </span>
           </div>
@@ -149,20 +176,34 @@ function Jops() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {getActivePosts().length > 0 ? (
             getActivePosts().map((post) => (
-              <JobCard key={post.id} post={post} />
+              <JobCard key={post.id} post={post} isDarkMode={isDarkMode} />
             ))
           ) : (
             <div className="col-span-full text-center py-20">
-              <div className="w-24 h-24 bg-gradient-to-br from-[#3a4750] to-[#4a5568] rounded-full flex items-center justify-center mx-auto mb-8">
-                <svg className="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-gradient-to-br from-[#3a4750] to-[#4a5568]' 
+                  : 'bg-gradient-to-br from-blue-100 via-cyan-100 to-blue-200 shadow-xl'
+              }`}>
+                <svg className={`w-12 h-12 transition-all duration-300 ${
+                  isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                }`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"/>
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-4">No Jobs Available</h3>
-              <p className="text-gray-400 text-lg mb-8">Try adjusting filters or search terms</p>
+              <h3 className={`text-3xl font-bold mb-4 transition-all duration-300 ${
+                isDarkMode ? 'text-white' : 'text-gray-800'
+              }`}>No Jobs Available</h3>
+              <p className={`text-lg mb-8 transition-all duration-300 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-600'
+              }`}>Try adjusting filters or search terms</p>
               <button
                 onClick={clearFilters}
-                className="px-8 py-4 bg-gradient-to-r from-[#11a3a3] to-[#0d8383] text-white rounded-xl hover:from-[#0d8383] hover:to-[#11a3a3] transition-all duration-300 transform hover:scale-105 font-medium text-lg shadow-lg shadow-[#11a3a3]/25"
+                className={`px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-medium text-lg ${
+                  isDarkMode 
+                    ? 'bg-gradient-to-r from-[#11a3a3] to-[#0d8383] text-white hover:from-[#0d8383] hover:to-[#11a3a3] shadow-lg shadow-[#11a3a3]/25' 
+                    : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 shadow-xl hover:shadow-2xl'
+                }`}
               >
                 Clear All Filters
               </button>

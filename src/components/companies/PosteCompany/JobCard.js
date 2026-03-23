@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from '../../hooks/useThemeContext';
 import JobCardHeader from './JobCardHeader';
 import JobCardContent from './JobCardContent';
 import JobCardActions from './JobCardActions';
@@ -9,6 +10,7 @@ import EmptyState from './EmptyState';
 import { postsData } from './postsData';
 
 function JobCard({ post, initialLiked = false, onLikeChange }) {
+  const { isDarkMode } = useTheme();
   const [showContactForm, setShowContactForm] = useState(false);
   const [showCompanyInfo, setShowCompanyInfo] = useState(false);
   const [isLiked, setIsLiked] = useState(initialLiked);
@@ -80,22 +82,25 @@ function JobCard({ post, initialLiked = false, onLikeChange }) {
   };
 
   return (
-    <div className="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden hover:border-teal-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20">
+    <div className={`rounded-xl border overflow-hidden transition-all duration-300 hover:shadow-lg ${
+      isDarkMode 
+        ? 'bg-gray-800/50 border-gray-700 hover:border-teal-500/50 hover:shadow-teal-500/20' 
+        : 'bg-white border-gray-200 hover:border-teal-400/50 hover:shadow-teal-400/20 shadow-md'
+    }`}>
       <JobCardHeader post={post} />
-      
       <JobCardContent 
         post={post} 
         isLiked={isLiked}
         likesCount={likesCount}
         handleLike={handleLike}
       />
-      
       <JobCardActions 
         post={post}
         setShowContactForm={setShowContactForm}
         setShowCompanyInfo={setShowCompanyInfo}
       />
 
+      {/* Contact Form Modal */}
       <ContactFormModal
         show={showContactForm}
         post={post}
@@ -105,14 +110,12 @@ function JobCard({ post, initialLiked = false, onLikeChange }) {
         onInputChange={handleInputChange}
       />
 
+      {/* Company Info Modal */}
       <CompanyInfoModal
         show={showCompanyInfo}
         post={post}
         onClose={() => setShowCompanyInfo(false)}
-        onApply={() => {
-          setShowCompanyInfo(false);
-          setShowContactForm(true);
-        }}
+        onApply={() => setShowContactForm(true)}
       />
     </div>
   );
@@ -121,11 +124,12 @@ function JobCard({ post, initialLiked = false, onLikeChange }) {
 function JobPostsList() {
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const { isDarkMode } = useTheme();
 
   const filteredPosts = postsData.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
+                       post.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                       post.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
     
     if (filter === 'all') return matchesSearch;
     return matchesSearch && post.urgency === filter;

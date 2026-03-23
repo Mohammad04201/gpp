@@ -1,8 +1,11 @@
 import React from 'react';
+import { useTheme } from '../../hooks/useThemeContext';
 
 const DashboardSidebar = ({ activeTab, setActiveTab, menuItems }) => {
+  const { isDarkMode } = useTheme();
+  
   return (
-    <div className="dashboard-sidebar">
+    <div className={`dashboard-sidebar ${isDarkMode ? '' : 'light-mode'}`}>
       <div className="company-info">
         <div className="company-logo">
           <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">

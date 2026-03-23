@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTheme } from '../../hooks/useThemeContext';
 import './CreatePost.css';
 
 const CreatePost = () => {
+  const { isDarkMode } = useTheme();
   const [formData, setFormData] = useState({
     title: '',
     type: 'Full-time',
@@ -118,6 +120,9 @@ const CreatePost = () => {
     posts.push(newPost);
     localStorage.setItem('companyJobPosts', JSON.stringify(posts));
 
+    // Trigger event to notify MyJob component
+    window.dispatchEvent(new CustomEvent('jobPostCreated', { detail: newPost }));
+
     // Reset form
     setFormData({
       title: '',
@@ -137,7 +142,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="dashboard-create-post">
+    <div className={`dashboard-create-post ${isDarkMode ? '' : 'light-mode'}`}>
       <h2>Create New Job Post</h2>
       
       <form onSubmit={handleSubmit} className="create-post-form">
@@ -198,7 +203,7 @@ const CreatePost = () => {
                   name="salary"
                   value={formData.salary}
                   onChange={handleInputChange}
-                  placeholder="e.g. 15,000 - 25,000 SAR"
+                  placeholder="e.g. $80,000 - $120,000"
                 />
               </div>
             </div>
@@ -234,8 +239,8 @@ const CreatePost = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleInputChange}
-                placeholder="We are looking for an experienced React developer to join our innovative team. You will work on leading projects in the region."
                 rows="6"
+                placeholder="We are looking for an experienced React developer to join our innovative team. You will work on leading projects in the region."
                 required
               />
             </div>

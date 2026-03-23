@@ -11,8 +11,10 @@ import {
   getTrendingDevelopers
 } from '../components/DevloperP/developersData';
 import { SearchFilters, DeveloperTabs, ResultsCount, EmptyState } from '../components/DevloperP/filters/filters';
+import { useThemeContext } from '../components/contexts/ThemeContext';
 
 function DevelopersPage() {
+  const { isDarkMode } = useThemeContext();
   const [developers, setDevelopers] = useState(developersData);
   const [filteredDevelopers, setFilteredDevelopers] = useState(developersData);
   const [searchQuery, setSearchQuery] = useState('');
@@ -81,16 +83,23 @@ function DevelopersPage() {
   };
 
   return (
-    <div className="min-vh-100 bg-[#20232A] text-white">      
+    <div className={`min-vh-100 transition-all duration-300 ${
+      isDarkMode ? 'bg-[#20232A] text-white' : 'bg-[#f9f9f9] text-gray-800'
+    }`}>      
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Talented Developers</h1>
-          <p className="text-gray-400">Discover the best tech talent in the region</p>
+          <h1 className={`text-3xl font-bold mb-2 transition-all duration-300 ${
+            isDarkMode ? 'text-white' : 'text-gray-800'
+          }`}>Talented Developers</h1>
+          <p className={`transition-all duration-300 ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>Discover best tech talent in the region</p>
         </div>
 
         {/* Search and Filters */}
         <SearchFilters
+          isDarkMode={isDarkMode}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           selectedSkills={selectedSkills}
@@ -104,6 +113,7 @@ function DevelopersPage() {
 
         {/* Tabs */}
         <DeveloperTabs
+          isDarkMode={isDarkMode}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           filteredCount={getActiveDevelopers().length}
@@ -111,6 +121,7 @@ function DevelopersPage() {
 
         {/* Results Count */}
         <ResultsCount
+          isDarkMode={isDarkMode}
           searchQuery={searchQuery}
           selectedSkills={selectedSkills}
           selectedLocation={selectedLocation}
@@ -121,9 +132,16 @@ function DevelopersPage() {
         {/* Developers List */}
         <div className="space-y-4">
           {getActiveDevelopers().length > 0 ? (
-            <DevelopersList developers={getActiveDevelopers()} onViewProfile={handleViewProfile} />
+            <DevelopersList 
+              developers={getActiveDevelopers()} 
+              onViewProfile={handleViewProfile} 
+              isDarkMode={isDarkMode}
+            />
           ) : (
-            <EmptyState onClearFilters={clearFilters} />
+            <EmptyState 
+              isDarkMode={isDarkMode}
+              onClearFilters={clearFilters} 
+            />
           )}
         </div>
       </div>

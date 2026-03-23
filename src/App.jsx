@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AppProvider } from './components/contexts/AppProvider';
 
 import LandingPage from './components/Home/Home';
 import CompaniesPage from './pages/CompaniesPage';
@@ -29,192 +30,194 @@ import PrivacyPage from './components/pageFooter/PrivacyPage';
 
 function App() {
   return (
-    <Router>
-      <Routes>
+    <AppProvider>
+      <Router>
+        <Routes>
 
-        <Route path="/" element={
-          <>
-            <MainNavbar />
-            <LandingPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/" element={
+            <>
+              <MainNavbar />
+              <LandingPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/about" element={
-          <>
-            <MainNavbar />
-            <AboutPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/about" element={
+            <>
+              <MainNavbar />
+              <AboutPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/contact" element={
-          <>
-            <MainNavbar />
-            <ContactPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/contact" element={
+            <>
+              <MainNavbar />
+              <ContactPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/help" element={
-          <>
-            <MainNavbar />
-            <HelpPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/help" element={
+            <>
+              <MainNavbar />
+              <HelpPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/privacy" element={
-          <>
-            <MainNavbar />
-            <PrivacyPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/privacy" element={
+            <>
+              <MainNavbar />
+              <PrivacyPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/terms" element={
-          <>
-            <MainNavbar />
-            <FovertDevloper />
-            <Footer />
-          </>
-        } />
+          <Route path="/terms" element={
+            <>
+              <MainNavbar />
+              <FovertDevloper />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/companies" element={
-          <>
-            <MainNavbar />
-            <CompaniesPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/companies" element={
+            <>
+              <MainNavbar />
+              <CompaniesPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/developers" element={
-          <>
-            <MainNavbar />
-            <DevelopersPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/developers" element={
+            <>
+              <MainNavbar />
+              <DevelopersPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/developer/profile/:id" element={
-          <>
-            <MainNavbar />
-            <DeveloperProfile />
-            <Footer />
-          </>
-        } />
+          <Route path="/developer/profile/:id" element={
+            <>
+              <MainNavbar />
+              <DeveloperProfile />
+              <Footer />
+            </>
+          } />
 
 
-        <Route path="/jobs" element={
-          <>
-            <MainNavbar />
-            <Jops />
-            <Footer />
-          </>
-        } />
+          <Route path="/jobs" element={
+            <>
+              <MainNavbar />
+              <Jops />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/favorites" element={
-          <>
-            <MainNavbar />
-            <Favorites />
-            <Footer />
-          </>
-        } />
+          <Route path="/favorites" element={
+            <>
+              <MainNavbar />
+              <Favorites />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/FovertDevloper" element={
-          <>
-            <MainNavbar />
-            <FovertDevloper />
-            <Footer />
-          </>
-        } />
+          <Route path="/FovertDevloper" element={
+            <>
+              <MainNavbar />
+              <FovertDevloper />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/select-role" element={
-          <>
-            <MainNavbar />
-            <RoleSelection />
-            <Footer />
-          </>
-        } />
+          <Route path="/select-role" element={
+            <>
+              <MainNavbar />
+              <RoleSelection />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/login/developer" element={
-          <>
-            <MainNavbar />
-            <DeveloperLogin />
-            <Footer />
-          </>
-        } />
+          <Route path="/login/developer" element={
+            <>
+              <MainNavbar />
+              <DeveloperLogin />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/login/company" element={
-          <>
-            <MainNavbar />
-            <CompanyLogin />
-            <Footer />
-          </>
-        } />
+          <Route path="/login/company" element={
+            <>
+              <MainNavbar />
+              <CompanyLogin />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/register/developer" element={
-          <>
-            <MainNavbar />
-            <DeveloperRegister />
-            <Footer />
-          </>
-        } />
+          <Route path="/register/developer" element={
+            <>
+              <MainNavbar />
+              <DeveloperRegister />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/register/company" element={
-          <>
-            <MainNavbar />
-            <CompanyRegister />
-            <Footer />
-          </>
-        } />
+          <Route path="/register/company" element={
+            <>
+              <MainNavbar />
+              <CompanyRegister />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/dashboard/developer" element={<DeveloperDashboard />} />
-        <Route path="/dashboard/company" element={<CompanyDashboardNew />} />
-        <Route path="/my-jobs" element={<CompanyDashboardNew />} />
+          <Route path="/dashboard/developer" element={<DeveloperDashboard />} />
+          <Route path="/dashboard/company" element={<CompanyDashboardNew />} />
+          <Route path="/my-jobs" element={<CompanyDashboardNew />} />
 
-        <Route path="/dashboard" element={
-          <>
-            <MainNavbar />
-            <DashboardPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/dashboard" element={
+            <>
+              <MainNavbar />
+              <DashboardPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/dashboard/main" element={
-          <>
-            <MainNavbar />
-            <DashboardPage />
-            <Footer />
-          </>
-        } />
+          <Route path="/dashboard/main" element={
+            <>
+              <MainNavbar />
+              <DashboardPage />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/dashboard/developer/profile" element={
-          <>
-            <MainNavbar />
-            <DeveloperProfile />
-            <Footer />
-          </>
-        } />
+          <Route path="/dashboard/developer/profile" element={
+            <>
+              <MainNavbar />
+              <DeveloperProfile />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/company/profile/:id" element={
-          <>
-            <MainNavbar />
-            <CompanyProfileView />
-            <Footer />
-          </>
-        } />
+          <Route path="/company/profile/:id" element={
+            <>
+              <MainNavbar />
+              <CompanyProfileView />
+              <Footer />
+            </>
+          } />
 
-        <Route path="/dashboard/company/profile" element={
-          <>
-            <MainNavbar />
-            <CompanyProfileView />
-            <Footer />
-          </>
-        } />
+          <Route path="/dashboard/company/profile" element={
+            <>
+              <MainNavbar />
+              <CompanyProfileView />
+              <Footer />
+            </>
+          } />
 
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </AppProvider>
   );
 }
 

@@ -21,8 +21,14 @@ src/
 │   ├── DeveloperDashboard.js # داشبورد المطور (قديم)
 │   └── CompanyDashboard.js # داشبورد الشركة (قديم)
 │
-├── pages/              # الصفحات الكاملة والمكونات الخاصة
-│   ├── DashboardPage.js # صفحة الداشبورد الرئيسية الجديدة
+├── pageFooter/          # صفحات المعلومات والإعدادات
+│   ├── DashboardPage.js # صفحة الداشبورد الرئيسية
+│   ├── AboutPage.js # صفحة من نحن
+│   ├── ContactPage.js # صفحة اتصل بنا
+│   ├── HelpPage.js # صفحة المساعدة
+│   ├── PrivacyPage.js # صفحة سياسة الخصوصية
+│   └── TermsPage.js # صفحة الشروط والأحكام
+│
 │   ├── developer/      # صفحات خاصة بالمطورين
 │   │   ├── DeveloperProfilePage.js # ملف المطور الشخصي
 │   │   ├── SkillsPage.js # صفحة المهارات
@@ -57,6 +63,13 @@ const pageRoutes = {
   '/login/company': 'CompanyLogin.js - تسجيل دخول الشركة',
   '/register/developer': 'DeveloperRegister.js - تسجيل مطور جديد',
   '/register/company': 'CompanyRegister.js - تسجيل شركة جديدة',
+  
+  // صفحات المعلومات والإعدادات
+  '/about': 'AboutPage.js - صفحة من نحن',
+  '/contact': 'ContactPage.js - صفحة اتصل بنا',
+  '/help': 'HelpPage.js - صفحة المساعدة',
+  '/privacy': 'PrivacyPage.js - صفحة سياسة الخصوصية',
+  '/terms': 'TermsPage.js - صفحة الشروط والأحكام',
   
   // الداشبورد الجديد
   '/dashboard': 'DashboardPage.js - الداشبورد الرئيسي',
@@ -93,6 +106,13 @@ import DashboardPage from './pageFooter/DashboardPage';
 import DeveloperProfile from '../components/DevloperP/DeveloperProfile';
 import DeveloperSkills from '../components/DevloperP/DeveloperSkills';
 
+// استيراد الصفحات الإضافية من مجلد pageFooter/
+import AboutPage from './pageFooter/AboutPage';
+import ContactPage from './pageFooter/ContactPage';
+import HelpPage from './pageFooter/HelpPage';
+import PrivacyPage from './pageFooter/PrivacyPage';
+import TermsPage from './pageFooter/TermsPage';
+
 function App() {
   return (
     <Router>
@@ -109,6 +129,13 @@ function App() {
         <Route path="/login/company" element={<CompanyLogin />} />
         <Route path="/register/developer" element={<DeveloperRegister />} />
         <Route path="/register/company" element={<CompanyRegister />} />
+        
+        {/* صفحات المعلومات */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/help" element={<HelpPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         
         {/* الداشبورد */}
         <Route path="/dashboard" element={<DashboardPage />} />
@@ -132,9 +159,9 @@ const organizationRules = [
     examples: ['MainNavbar', 'LandingPage', 'auth/*']
   },
   {
-    title: 'الصفحات الكاملة (pages/)',
-    description: 'الصفحات الكاملة والمكونات الخاصة بقسم معين',
-    examples: ['DashboardPage', 'developer/*', 'company/*']
+    title: 'صفحات المعلومات والإعدادات (pageFooter/)',
+    description: 'الصفحات الثابتة مثل من نحن، اتصل بنا، المساعدة، الخصوصية والشروط',
+    examples: ['DashboardPage', 'AboutPage', 'ContactPage', 'HelpPage', 'PrivacyPage', 'TermsPage']
   },
   {
     title: 'المسارات المنظمة',
