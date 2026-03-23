@@ -77,6 +77,13 @@ function MainNavbar() {
 
           {/* Right Side: User/Auth */}
           <div className="hidden md:flex items-center space-x-3">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="px-3 py-2 text-sm border border-gray-600 text-gray-300 rounded-md hover:bg-gray-800 hover:text-white transition-all duration-200"
+            >
+              {theme === 'dark' ? 'White Mode' : 'Dark Mode'}
+            </button>
             {user ? (
               <NavbarUser
                 user={user}

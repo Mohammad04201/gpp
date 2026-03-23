@@ -15,3 +15,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html[data-theme='light'] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-theme='light'] img,
+html[data-theme='light'] video,
+html[data-theme='light'] iframe {
+  filter: invert(1) hue-rotate(180deg);
+}
